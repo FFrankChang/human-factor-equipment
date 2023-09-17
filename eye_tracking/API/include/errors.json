@@ -1,0 +1,750 @@
+[
+  {
+    "Category": "Success",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "",
+        "EnumHexEnd": "0000",
+        "Description": "Success"
+      }
+    ]
+  },
+
+  {
+    "Category": "Undefined",
+    "EnumHexStart": "0xffff",
+    "Errors": [
+      {
+        "EnumId": "Error",
+        "EnumHexEnd": "ffff",
+        "Description": "Undefined error"
+      }
+    ]
+  },
+
+  {
+    "Category": "JsonRpc",
+    "EnumHexStart": "0xffff",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "8300",
+        "Description": "Undefined JSON-RPC error"
+      },
+      {
+        "EnumId": "ParsingError",
+        "EnumHexEnd": "8044",
+        "Description": "Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text."
+      },
+      {
+        "EnumId": "InvalidRequest",
+        "EnumHexEnd": "80a8",
+        "Description": "The JSON sent is not a valid Request object."
+      },
+      {
+        "EnumId": "MethodNotFound",
+        "EnumHexEnd": "80a7",
+        "Description": "The method does not exist / is not available."
+      },
+      {
+        "EnumId": "InvalidParams",
+        "EnumHexEnd": "80a6",
+        "Description": "Invalid method parameter(s)."
+      },
+      {
+        "EnumId": "InternalError",
+        "EnumHexEnd": "80a5",
+        "Description": "Internal JSON-RPC error."
+      },
+      {
+        "EnumId": "CallFailed",
+        "EnumHexEnd": "82ff",
+        "Description": "JSON RPC call failed"
+      },
+      {
+        "EnumId": "WrongVersion",
+        "EnumHexEnd": "82fe",
+        "Description": "Wrong JSON RPC version"
+      },
+      {
+        "EnumId": "ServerNotInitialized",
+        "EnumHexEnd": "82fd",
+        "Description": "JSON RPC Server is not initialized"
+      },
+      {
+        "EnumId": "TooFewParams",
+        "EnumHexEnd": "82fc",
+        "Description": "Too few parameters were sent together with the method"
+      }
+    ]
+  },
+
+  {
+    "Category": "System",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "2000",
+        "Description": "Undefined system error"
+      },
+      {
+        "EnumId": "Busy",
+        "EnumHexEnd": "2001",
+        "Description": "System is busy with something else"
+      },
+      {
+        "EnumId": "NotImplemented",
+        "EnumHexEnd": "2002",
+        "Description": "This feature has not been implemented yet"
+      },
+      {
+        "EnumId": "NotInTrackingState",
+        "EnumHexEnd": "2003",
+        "Description": "System is not in tracking state"
+      },
+      {
+        "EnumId": "NotInIdleState",
+        "EnumHexEnd": "2004",
+        "Description": "System is not in idle state"
+      },
+      {
+        "EnumId": "OperationTimeout",
+        "EnumHexEnd": "2005",
+        "Description": "Operation timeout"
+      }
+    ]
+  },
+
+  {
+    "Category": "GazeCalibration",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "3000",
+        "Description": "Undefined gaze calibration error"
+      },
+
+      {
+        "EnumId": "NotInitialized",
+        "EnumHexEnd": "3001",
+        "Description": "Gaze calibration is not initialized"
+      },
+
+      {
+        "EnumId": "Collecting",
+        "EnumHexEnd": "3002",
+        "Description": "Gaze calibration samples are beeing collected"
+      },
+
+      {
+        "EnumId": "CalibrationPointNotFoundInWorldModel",
+        "EnumHexEnd": "3003",
+        "Description": "Calibration point not found in world model"
+      },
+
+      {
+        "EnumId": "CollectionDoesNotExist",
+        "EnumHexEnd": "3004",
+        "Description": "Collection with specified id does not exist"
+      },
+
+      {
+        "EnumId": "CollectingAutomatic",
+        "EnumHexEnd": "3005",
+        "Description": "Automatic calibration enabled"
+      },
+
+      {
+        "EnumId": "NotEnoughCalibrationData",
+        "EnumHexEnd": "3011",
+        "Description": "Not enough calibration data"
+      },
+
+      {
+        "EnumId": "NoFixationInCollection",
+        "EnumHexEnd": "3012",
+        "Description": "No fixation in collection"
+      },
+
+      {
+        "EnumId": "CalibrationCouldNotBeSolved",
+        "EnumHexEnd": "3013",
+        "Description": "Calibration could not be solved"
+      },
+
+      {
+        "EnumId": "Canceled",
+        "EnumHexEnd": "3014",
+        "Description": "Calibration canceled"
+      },
+
+      {
+        "EnumId": "CalibrationError",
+        "EnumHexEnd": "3015",
+        "Description": "An error occurred during the calibration"
+      }
+    ]
+  },
+
+  {
+    "Category": "Logging",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "4000",
+        "Description": "Undefined logging error"
+      },
+      {
+        "EnumId": "SetFileNotFound",
+        "EnumHexEnd": "4001",
+        "Description": "The specified file could not be found"
+      },
+      {
+        "EnumId": "SetFileEmpty",
+        "EnumHexEnd": "4002",
+        "Description": "Filepath is empty"
+      },
+      {
+        "EnumId": "SetSpecificationNoLogFound",
+        "EnumHexEnd": "4003",
+        "Description": "Can't set log specification because no log file is specified"
+      },
+      {
+        "EnumId": "StartNoLogfileDefined",
+        "EnumHexEnd": "4021",
+        "Description": "Can't start log because no log file is specified"
+      },
+      {
+        "EnumId": "StopNotStarted",
+        "EnumHexEnd": "4041",
+        "Description": "Can't stop log because logging is not started"
+      },
+      {
+        "EnumId": "DirectoryNotValid",
+        "EnumHexEnd": "4042",
+        "Description": "Choosen directory does not exist, specify an existing directory and try again"
+      },
+      {
+        "EnumId": "StartLogInProgress",
+        "EnumHexEnd": "4043",
+        "Description": "Can't start log because logging in specified file is on-going"
+      }
+    ]
+  },
+
+  {
+    "Category": "Profile",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "5000",
+        "Description": "Undefined profile error"
+      },
+      {
+        "EnumId": "LoadFileNotFound",
+        "EnumHexEnd": "5001",
+        "Description": "Could not load profile because the meta and binary files could not both be found"
+      },
+      {
+        "EnumId": "SaveEmptyFilename",
+        "EnumHexEnd": "5002",
+        "Description": "Filepath is empty"
+      },
+      {
+        "EnumId": "FailedToReadFile",
+        "EnumHexEnd": "5003",
+        "Description": "Failed to read profile file"
+      },
+      {
+        "EnumId": "OnlyGazeCalibration",
+        "EnumHexEnd": "5004",
+        "Description": "This profile only contains gaze calibration, you cannot use it when running profile tracking. Please load another profile"
+      },
+      {
+        "EnumId": "FailedToWriteFile",
+        "EnumHexEnd": "5005",
+        "Description": "Failed to write to file, make sure that the disk is not write protected"
+      },
+      {
+        "EnumId": "LoadTracking",
+        "EnumHexEnd": "5006",
+        "Description": "Tracking ongoing, stop tracking before loading profile"
+      },
+      {
+        "EnumId": "DirectoryNotValid",
+        "EnumHexEnd": "5007",
+        "Description": "Choosen directory does not exist, specify an existing directory and try again"
+      },
+      {
+        "EnumId": "RefinderMissing",
+        "EnumHexEnd": "5008",
+        "Description": "Failed to load profile. Tracking algorithm requires refinder."
+      },
+      {
+        "EnumId": "AlreadyInitialized",
+        "EnumHexEnd": "5009",
+        "Description": "Profile is already initialized."
+      },
+      {
+        "EnumId": "FailedToParse",
+        "EnumHexEnd": "5010",
+        "Description": "Profile could not be parsed by program."
+      },
+      {
+        "EnumId": "TrackingTypeNotSupported",
+        "EnumHexEnd": "5011",
+        "Description": "The tracking type not supported."
+      }
+    ]
+  },
+
+  {
+    "Category": "Tracking",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "6000",
+        "Description": "Undefined tracking error"
+      },
+      {
+        "EnumId": "StartFailed",
+        "EnumHexEnd": "6001",
+        "Description": "Failed to start tracking"
+      },
+      {
+        "EnumId": "StopFailed",
+        "EnumHexEnd": "6021",
+        "Description": "Failed to stop tracking"
+      },
+      {
+        "EnumId": "StartAlreadyTracking",
+        "EnumHexEnd": "6022",
+        "Description": "Tracking is already started"
+      },
+      {
+        "EnumId": "StopNoOngoingTracking",
+        "EnumHexEnd": "6023",
+        "Description": "There is no ongoing tracking"
+      }
+    ]
+  },
+
+  {
+    "Category": "ImageSource",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "7000",
+        "Description": "Undefined image source error"
+      },
+      {
+        "EnumId": "SetRecordingFailed",
+        "EnumHexEnd": "7001",
+        "Description": "Failed to set image source to recording"
+      },
+      {
+        "EnumId": "SetCamerasFailed",
+        "EnumHexEnd": "7002",
+        "Description": "Failed to set image source to cameras"
+      },
+      {
+        "EnumId": "GetCameraImageIndexOutOfBounds",
+        "EnumHexEnd": "7003",
+        "Description": "Camera index out of bounds"
+      },
+      {
+        "EnumId": "SetFileEmpty",
+        "EnumHexEnd": "7004",
+        "Description": "Filepath is empty"
+      },
+      {
+        "EnumId": "CamerasNotAvailable",
+        "EnumHexEnd": "7005",
+        "Description": "Cameras are not available"
+      },
+      {
+        "EnumId": "SetRecordingCouldNotFindRecording",
+        "EnumHexEnd": "7006",
+        "Description": "No recording with that name could be found"
+      }
+    ]
+  },
+
+  {
+    "Category": "Recording",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "8000",
+        "Description": "Undefined recording error"
+      },
+      {
+        "EnumId": "SetFileFailed",
+        "EnumHexEnd": "8001",
+        "Description": "Failed to set recording file"
+      },
+      {
+        "EnumId": "StartNoFileSet",
+        "EnumHexEnd": "8002",
+        "Description": "No recording file has been set"
+      },
+      {
+        "EnumId": "StartAlreadyRecording",
+        "EnumHexEnd": "8003",
+        "Description": "Already recording"
+      },
+      {
+        "EnumId": "StopNotRecording",
+        "EnumHexEnd": "8004",
+        "Description": "There is no active recording"
+      },
+      {
+        "EnumId": "DirectoryNotValid",
+        "EnumHexEnd": "8005",
+        "Description": "Choosen directory does not exist, specify an existing directory and try again"
+      },
+      {
+        "EnumId": "NotSupported",
+        "EnumHexEnd": "8006",
+        "Description": "Recording is not supported for this camera type"
+      },
+      {
+        "EnumId": "UnknownCompressionType",
+        "EnumHexEnd": "8007",
+        "Description": "Specified compression type is unknown"
+      },
+      {
+        "EnumId": "FileSizeLimitReached",
+        "EnumHexEnd": "8008",
+        "Description": "Recording aborted, file size limit reached"
+      },
+      {
+        "EnumId": "NotSupportedByLicense",
+        "EnumHexEnd": "8009",
+        "Description": "Recording in Tracker states other than Idle is not supported with the current license"
+      },
+      {
+        "EnumId": "InvalidSetup",
+        "EnumHexEnd": "800a",
+        "Description": "Invalid setup, no calibrated cameras available and/or no WCS defined"
+      }
+    ]
+  },
+
+  {
+    "Category": "DataStream",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "a000",
+        "Description": "Undefined data stream error"
+      },
+      {
+        "EnumId": "UDPOpenFailed",
+        "EnumHexEnd": "a001",
+        "Description": "Could not open UDP data stream"
+      },
+      {
+        "EnumId": "UDPCloseFailed",
+        "EnumHexEnd": "a002",
+        "Description": "Could not close UDP data stream"
+      },
+      {
+        "EnumId": "TCPOpenFailed",
+        "EnumHexEnd": "a003",
+        "Description": "Could not open TCP data stream"
+      },
+      {
+        "EnumId": "TCPCloseFailed",
+        "EnumHexEnd": "a004",
+        "Description": "Could not close TCP data stream"
+      },
+      {
+        "EnumId": "TCPAlreadyOpen",
+        "EnumHexEnd": "a005",
+        "Description": "TCP data stream already open"
+      },
+      {
+        "EnumId": "TCPDoesNotExist",
+        "EnumHexEnd": "a006",
+        "Description": "TCP data stream does not exist"
+      },
+      {
+        "EnumId": "UDPAlreadyOpen",
+        "EnumHexEnd": "a007",
+        "Description": "UDP data stream already open"
+      },
+      {
+        "EnumId": "UDPDoesNotExist",
+        "EnumHexEnd": "a008",
+        "Description": "UDP data stream does not exist"
+      }
+    ]
+  },
+
+  {
+    "Category": "WorldModel",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "b000",
+        "Description": "Undefined world model error"
+      },
+      {
+        "EnumId": "GetFailed",
+        "EnumHexEnd": "b001",
+        "Description": "Failed to get world model"
+      },
+      {
+        "EnumId": "SetFailed",
+        "EnumHexEnd": "b002",
+        "Description": "Failed to set world model"
+      },
+      {
+        "EnumId": "LoadFailed",
+        "EnumHexEnd": "b003",
+        "Description": "Failed to load world model"
+      },
+      {
+        "EnumId": "Invalid",
+        "EnumHexEnd": "b004",
+        "Description": "The provided world model was not a valid world model"
+      }
+    ]
+  },
+
+  {
+    "Category": "Chessboard",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "c000",
+        "Description": "Undefined chessboard error"
+      },
+      {
+        "EnumId": "NoLicense",
+        "EnumHexEnd": "c001",
+        "Description": "The laser chessboard module is not enabled in the license"
+      },
+      {
+        "EnumId": "TrackingNotActive",
+        "EnumHexEnd": "c002",
+        "Description": "Chessboard tracking is not active"
+      }
+    ]
+  },
+
+  {
+    "Category": "Key",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "e000",
+        "Description": "Undefined key error"
+      },
+      {
+        "EnumId": "AlreadyReleased",
+        "EnumHexEnd": "e001",
+        "Description": "The key has already been released"
+      },
+      {
+        "EnumId": "AlreadyPressed",
+        "EnumHexEnd": "e002",
+        "Description": "The key has already been pressed"
+      }
+    ]
+  },
+
+  {
+    "Category": "Playback",
+    "EnumHexStart": "0x0000",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "f000",
+        "Description": "Undefined playback error"
+      },
+      {
+        "EnumId": "PauseFailed",
+        "EnumHexEnd": "f001",
+        "Description": "Unable to pause recording"
+      },
+      {
+        "EnumId": "ResumeFailed",
+        "EnumHexEnd": "f002",
+        "Description": "Unable to resume recording"
+      },
+      {
+        "EnumId": "SetPositionFailed",
+        "EnumHexEnd": "f003",
+        "Description": "Set position failed - Not a valid frame position"
+      },
+      {
+        "EnumId": "SetStartStopPositionFailed",
+        "EnumHexEnd": "f004",
+        "Description": "Set start/stop position failed - Not a valid frame position"
+      }
+    ]
+  },
+
+  {
+    "Category": "Notification",
+    "EnumHexStart": "0x0001",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "0000",
+        "Description": "Undefined notification error"
+      },
+      {
+        "EnumId": "SubscribeAlreadySubscribing",
+        "EnumHexEnd": "0001",
+        "Description": "Subscribe failed - Already subscribing to notification"
+      },
+      {
+        "EnumId": "UnsubscribeNotSubscribing",
+        "EnumHexEnd": "0002",
+        "Description": "Unsubscribe failed - Not subscribing to notification"
+      }
+    ]
+  },
+
+  {
+    "Category": "Usb",
+    "EnumHexStart": "0x0003",
+    "Errors": [
+      {
+        "EnumId": "SpeedInvalidCameraType",
+        "EnumHexEnd": "0000",
+        "Description": "USB speed is only available on Aurora system"
+      },
+      {
+        "EnumId": "SpeedInvalidCameraId",
+        "EnumHexEnd": "0001",
+        "Description": "No camera with provided id was found"
+      },
+      {
+        "EnumId": "TypeNotSupported",
+        "EnumHexEnd": "0002",
+        "Description": "USB type not supported. Only USB-C supported"
+      },
+      {
+        "EnumId": "CameraFirmwareNotSupported",
+        "EnumHexEnd": "0003",
+        "Description": "Firmware version is not supported"
+      },
+      {
+        "EnumId": "CameraFirmwareVersionNotAvailable",
+        "EnumHexEnd": "0004",
+        "Description": "Cannot read firmware version from camera"
+      }
+    ]
+  },
+
+  {
+    "Category": "UserMarker",
+    "EnumHexStart": "0x0004",
+    "Errors": [
+      {
+        "EnumId": "DefaultError",
+        "EnumHexEnd": "0000",
+        "Description": "Undefined user marker error"
+      },
+      {
+        "EnumId": "InvalidTimestamp",
+        "EnumHexEnd": "0001",
+        "Description": "Invalid timestamp"
+      },
+      {
+        "EnumId": "DataOutOfRange",
+        "EnumHexEnd": "0002",
+        "Description": "Data out of range"
+      },
+      {
+        "EnumId": "2PositiveEdgeInRow",
+        "EnumHexEnd": "0003",
+        "Description": "Received two positive edges in row"
+      },
+      {
+        "EnumId": "2NegativeEdgeInRow",
+        "EnumHexEnd": "0004",
+        "Description": "Received two negative edges in row"
+      },
+      {
+        "EnumId": "FirmwareNotSupported",
+        "EnumHexEnd": "0005",
+        "Description": "Camera firmware not supported"
+      },
+      {
+        "EnumId": "MissedEdgeDetected",
+        "EnumHexEnd": "0006",
+        "Description": "The edge associated with this UserMarker overwrote one or multiple unhandled edges."
+      }
+    ]
+  },
+
+  {
+    "Category": "ReflexReduction",
+    "EnumHexStart": "0x0005",
+    "Errors": [
+      {
+        "EnumId": "SetFailed",
+        "EnumHexEnd": "0000",
+        "Description": "Failed to set reflex reduction mode"
+      },
+      {
+        "EnumId": "NotSupported",
+        "EnumHexEnd": "0001",
+        "Description": "Reflex reduction not supported"
+      }
+    ]
+  },
+
+  {
+    "Category": "HeadTracking",
+    "EnumHexStart": "0x0006",
+    "Errors": [
+      {
+        "EnumId": "SetFailed",
+        "EnumHexEnd": "0000",
+        "Description": "Failed to set head tracking mode"
+      }
+    ]
+  },
+
+  {
+    "Category": "SubjectCategory",
+    "EnumHexStart": "0x0007",
+    "Errors": [
+      {
+        "EnumId": "NotSupportedByLicense",
+        "EnumHexEnd": "0000",
+        "Description": "This subject category is not supported by the current license."
+      }
+    ]
+  },
+  
+  {
+    "Category": "IlluminationMode",
+    "EnumHexStart": "0x0008",
+    "Errors": [
+      {
+        "EnumId": "NotSupported",
+        "EnumHexEnd": "0000",
+        "Description": "This illumination mode is not supported by the current license, hardware or firmware."
+      }
+    ]
+  }
+]

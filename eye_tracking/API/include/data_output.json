@@ -1,0 +1,3064 @@
+[
+  {
+    "EnumID": "SEFrameNumber",
+    "EnumNumber": "0x0001",
+    "DataType": "SEType_u32",
+    "Name": "FrameNumber",
+    "Unit": "",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "A sequential frame number, set by the image capture subsystem. The frame number starts counting from 0 at application start and increments by +1 for each successfully captured image. This means that the frame number of two consecutive frames will always differ by 1 even if the image capture subsystem should happen to drop one or more frames in between. \nIf the frame numbers in the data output should increment by more than +1 from one data record to the next, then it is either an indication of frame loss in the image processing subsystem, probably due to CPU overload or, in the case of UDP communication, loss of network data packets. \nIf an image source error, such as an Ethernet cable temporarily loosing connection to its socket, occurs when Smart Eye Pro is running the frame numbering will restart from 0 to indicate that a problem has occurred. \nN.B: The frame number should not be used to detect frame loss. The only reliable way to determine frame loss is to check the time stamp difference between two consecutive data records."
+  },
+  {
+    "EnumID": "SEEstimatedDelay",
+    "EnumNumber": "0x0002",
+    "DataType": "SEType_u32",
+    "Name": "EstimatedDelay",
+    "Unit": "100ns",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Frame Information",
+    "RequiredModule": "Time Sync",
+    "Public": true,
+    "Description": "The estimated delay from the real-world event (midpoint of image exposure for live cameras, or time of finished read when reading from file) to the network socket send() system call."
+  },
+  {
+    "EnumID": "SETimeStamp",
+    "EnumNumber": "0x0003",
+    "DataType": "SEType_u64",
+    "Name": "TimeStamp",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "A high-resolution time stamp, measured at the midpoint of image exposure and starting to count from 0 when the application is started. Since this time stamp is based on the PC hardware high-resolution clock, it should only be used to measure time differences over relatively short periods of time."
+  },
+  {
+    "EnumID": "SEUserTimeStamp",
+    "EnumNumber": "0x0004",
+    "DataType": "SEType_u64",
+    "Name": "UserTimeStamp",
+    "Unit": "User defined",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "Time Sync",
+    "Public": true,
+    "Description": "64 bits of user defined information, usually an absolute-time time stamp and/or annotation data. The .dll generating this value has to follow the TimeService.h interface (See Chapter \\ref{ChapterTimeSynchronizationSpecification} for detailed information)."
+  },
+  {
+    "EnumID": "SEFrameRate",
+    "EnumNumber": "0x0005",
+    "DataType": "SEType_f64",
+    "Name": "FrameRate",
+    "Unit": "Hz",
+    "Range": [
+      0.0,
+      120.0
+    ],
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The current frame rate of the system in frames. Should ideally be 60 or 120 frames per second depending on system configuration."
+  },
+  {
+    "EnumID": "SECameraPositions",
+    "EnumNumber": "0x0006",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point3D",
+    "Name": "CameraPositions",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The position of all the cameras defined in the World Coordinate System."
+  },
+  {
+    "EnumID": "SECameraRotations",
+    "EnumNumber": "0x0007",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect3D",
+    "Name": "CameraRotations",
+    "Unit": "rad",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The rodrigues rotation of all the cameras defined in the World Coordinate System."
+  },
+  {
+    "EnumID": "SEUserDefinedData",
+    "EnumNumber": "0x0008",
+    "DataType": "SEType_u64",
+    "Name": "UserDefinedData",
+    "Unit": "",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "UserDefinedData",
+    "Public": true,
+    "Description": "User defined data, not used at the moment."
+  },
+  {
+    "EnumID": "SERealTimeClock",
+    "EnumNumber": "0x0009",
+    "DataType": "SEType_u64",
+    "Name": "RealTimeClock",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The real time clock reads the computer clock and represents it as a 64-bit value in FILETIME format as an absolute time since January 1, 1601 (UTC)."
+  },
+  {
+    "EnumID": "SEHeadPosition",
+    "EnumNumber": "0x0010",
+    "DataType": "SEType_Point3D",
+    "Name": "HeadPosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The 3D head position in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SEHeadPositionQ",
+    "EnumNumber": "0x0011",
+    "DataType": "SEType_f64",
+    "Name": "HeadPositionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of the head position [0..1]."
+  },
+  {
+    "EnumID": "SEHeadRotationRodrigues",
+    "EnumNumber": "0x0012",
+    "DataType": "SEType_Vect3D",
+    "Name": "HeadRotationRodrigues",
+    "Unit": "rad",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The 3D head orientation in Rodrigues format in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SEHeadRotationQuaternion",
+    "EnumNumber": "0x001d",
+    "DataType": "SEType_Quaternion",
+    "Name": "HeadRotationQuaternion",
+    "Unit": "",
+    "Range": "",
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The 3D head orientation as a quaternion in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SEHeadLeftEarDirection",
+    "EnumNumber": "0x0015",
+    "DataType": "SEType_Vect3D",
+    "Name": "HeadLeftEarDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Unit vector defining the 'left ear' direction. Identical to the x-axis of the head rotation matrix."
+  },
+  {
+    "EnumID": "SEHeadUpDirection",
+    "EnumNumber": "0x0014",
+    "DataType": "SEType_Vect3D",
+    "Name": "HeadUpDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Unit vector defining the 'up' direction. Identical to the y-axis of the head rotation matrix."
+  },
+  {
+    "EnumID": "SEHeadNoseDirection",
+    "EnumNumber": "0x0013",
+    "DataType": "SEType_Vect3D",
+    "Name": "HeadNoseDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Unit vector defining the 'nose' direction. Identical to the z-axis of the head rotation matrix."
+  },
+  {
+    "EnumID": "SEHeadHeading",
+    "EnumNumber": "0x0016",
+    "DataType": "SEType_f64",
+    "Name": "HeadHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The left/right-rotation of the head. Also known as \"no\"-rotation (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEHeadPitch",
+    "EnumNumber": "0x0017",
+    "DataType": "SEType_f64",
+    "Name": "HeadPitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The up/down-rotation of the head. Also known as \"yes\"-rotation (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEHeadRoll",
+    "EnumNumber": "0x0018",
+    "DataType": "SEType_f64",
+    "Name": "HeadRoll",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The tilt-rotation of the head. Also known as \"maybe\"-rotation (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEHeadRotationQ",
+    "EnumNumber": "0x0019",
+    "DataType": "SEType_f64",
+    "Name": "HeadRotationQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Head Position",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of the head orientation [0..1] (The same value as the head position quality)."
+  },
+  {
+    "EnumID": "SEGazeOrigin",
+    "EnumNumber": "0x001a",
+    "DataType": "SEType_Point3D",
+    "Name": "GazeOrigin",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The consensus of the LeftGazeOrigin and RightGazeOrigin."
+  },
+  {
+    "EnumID": "SELeftGazeOrigin",
+    "EnumNumber": "0x001b",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftGazeOrigin",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The center of the pupil/iris of the left eye, where the gaze vector originates."
+  },
+  {
+    "EnumID": "SERightGazeOrigin",
+    "EnumNumber": "0x001c",
+    "DataType": "SEType_Point3D",
+    "Name": "RightGazeOrigin",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The center of the pupil/iris of the right eye, where the gaze vector originates."
+  },
+  {
+    "EnumID": "SEEyePosition",
+    "EnumNumber": "0x0020",
+    "DataType": "SEType_Point3D",
+    "Name": "EyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The virtual 3D eye position given in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SEGazeDirection",
+    "EnumNumber": "0x0021",
+    "DataType": "SEType_Vect3D",
+    "Name": "GazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "A unit vector originating in the virtual eye position describing the direction of the gaze. Calculated as the average direction of the two gaze vectors originating at the physical eyes. If vergence is of interest, the eyes should be handled separately instead."
+  },
+  {
+    "EnumID": "SEGazeDirectionQ",
+    "EnumNumber": "0x0022",
+    "DataType": "SEType_f64",
+    "Name": "GazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of the gaze direction measurement [0..1]. Depends on the quality of the pupil, iris and glint detection and the degree of agreement between measurements from different eye clips. Calculated as the maximum of the quality of the both physical eyes (see Section \\ref{SubsectionGazeDirectionQuality})."
+  },
+  {
+    "EnumID": "SELeftEyePosition",
+    "EnumNumber": "0x0023",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftEyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The 3D position of the center of the left eye ball given in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SELeftGazeDirection",
+    "EnumNumber": "0x0024",
+    "DataType": "SEType_Vect3D",
+    "Name": "LeftGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "A unit vector describing the direction of the gaze of the left eye originating from the LeftGazeOrigin."
+  },
+  {
+    "EnumID": "SELeftGazeDirectionQ",
+    "EnumNumber": "0x0025",
+    "DataType": "SEType_f64",
+    "Name": "LeftGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of the left gaze direction measurement [0..1]. Depends on the quality of the pupil, iris and glint detection of the left eye and the degree of agreement between measurements from different eye clips for the left eye (see Section \\ref{SubsectionGazeDirectionQuality})."
+  },
+  {
+    "EnumID": "SERightEyePosition",
+    "EnumNumber": "0x0026",
+    "DataType": "SEType_Point3D",
+    "Name": "RightEyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The 3D position of the center of the right eye ball given in the defined World Coordinate System."
+  },
+  {
+    "EnumID": "SERightGazeDirection",
+    "EnumNumber": "0x0027",
+    "DataType": "SEType_Vect3D",
+    "Name": "RightGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "A unit vector describing the direction of the gaze of the right eye, originating from the LeftGazeOrigin."
+  },
+  {
+    "EnumID": "SERightGazeDirectionQ",
+    "EnumNumber": "0x0028",
+    "DataType": "SEType_f64",
+    "Name": "RightGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of the right gaze direction measurement [0..1]. Depends on the quality of the pupil, iris and glint detection of the right eye and the degree of agreement between measurements from different eye clips for the right eye (see Section \\ref{SubsectionGazeDirectionQuality})."
+  },
+  {
+    "EnumID": "SEGazeHeading",
+    "EnumNumber": "0x0029",
+    "DataType": "SEType_f64",
+    "Name": "GazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The left/right angle of the GazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEGazePitch",
+    "EnumNumber": "0x002a",
+    "DataType": "SEType_f64",
+    "Name": "GazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The up/down angle of the GazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SELeftGazeHeading",
+    "EnumNumber": "0x002b",
+    "DataType": "SEType_f64",
+    "Name": "LeftGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The left/right angle of the LeftGazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SELeftGazePitch",
+    "EnumNumber": "0x002c",
+    "DataType": "SEType_f64",
+    "Name": "LeftGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The up/down angle of the LeftGazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SERightGazeHeading",
+    "EnumNumber": "0x002d",
+    "DataType": "SEType_f64",
+    "Name": "RightGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The left/right angle of the RightGazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SERightGazePitch",
+    "EnumNumber": "0x002e",
+    "DataType": "SEType_f64",
+    "Name": "RightGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The up/down angle of the RightGazeDirection (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEFilteredGazeDirection",
+    "EnumNumber": "0x0030",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredGazeDirectionQ",
+    "EnumNumber": "0x0031",
+    "DataType": "SEType_f64",
+    "Name": "FilteredGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftGazeDirection",
+    "EnumNumber": "0x0032",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredLeftGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftGazeDirectionQ",
+    "EnumNumber": "0x0033",
+    "DataType": "SEType_f64",
+    "Name": "FilteredLeftGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightGazeDirection",
+    "EnumNumber": "0x0034",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredRightGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightGazeDirectionQ",
+    "EnumNumber": "0x0035",
+    "DataType": "SEType_f64",
+    "Name": "FilteredRightGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredGazeHeading",
+    "EnumNumber": "0x0036",
+    "DataType": "SEType_f64",
+    "Name": "FilteredGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredGazePitch",
+    "EnumNumber": "0x0037",
+    "DataType": "SEType_f64",
+    "Name": "FilteredGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftGazeHeading",
+    "EnumNumber": "0x0038",
+    "DataType": "SEType_f64",
+    "Name": "FilteredLeftGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftGazePitch",
+    "EnumNumber": "0x0039",
+    "DataType": "SEType_f64",
+    "Name": "FilteredLeftGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightGazeHeading",
+    "EnumNumber": "0x003a",
+    "DataType": "SEType_f64",
+    "Name": "FilteredRightGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightGazePitch",
+    "EnumNumber": "0x003b",
+    "DataType": "SEType_f64",
+    "Name": "FilteredRightGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SESaccade",
+    "EnumNumber": "0x003d",
+    "DataType": "SEType_u32",
+    "Name": "Saccade",
+    "Unit": "",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "When the saccade detection filter detects a saccade, this value will be a non-zero integer for the duration of the saccade. This integer increases for each saccade and can be seen as a unique saccade identifier."
+  },
+  {
+    "EnumID": "SEFixation",
+    "EnumNumber": "0x003e",
+    "DataType": "SEType_u32",
+    "Name": "Fixation",
+    "Unit": "",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "When the fixation detection filter detects a fixation, this value will be a non-zero integer for the duration of the fixation. This integer increases for each fixation and can be seen as a unique fixation identifier."
+  },
+  {
+    "EnumID": "SEBlink",
+    "EnumNumber": "0x003f",
+    "DataType": "SEType_u32",
+    "Name": "Blink",
+    "Unit": "",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "When the blink detection filter detects a blink, this value will be a non-zero integer for the duration of the blink. This integer increases for each blink and can be seen as a unique blink identifier."
+  },
+  {
+    "EnumID": "SEClosestWorldIntersection",
+    "EnumNumber": "0x0040",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "ClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest gaze intersection with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEFilteredClosestWorldIntersection",
+    "EnumNumber": "0x0041",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEAllWorldIntersections",
+    "EnumNumber": "0x0042",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "AllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to ClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredAllWorldIntersections",
+    "EnumNumber": "0x0043",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected.As with ClosestWorldIntersections, each sub packet of this type starts with an integer indi- cating the number of world intersections con- tained in the sub packet.  The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEZoneId",
+    "EnumNumber": "0x0044",
+    "DataType": "SEType_u16",
+    "Name": "NumericalClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": "Used only for CAN output"
+  },
+  {
+    "EnumID": "SEEstimatedClosestWorldIntersection",
+    "EnumNumber": "0x0045",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "EstimatedClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the estimated gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEEstimatedAllWorldIntersections",
+    "EnumNumber": "0x0046",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "EstimatedAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to EstimatedClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEHeadClosestWorldIntersection",
+    "EnumNumber": "0x0049",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "HeadClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the head nose vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEHeadAllWorldIntersections",
+    "EnumNumber": "0x004a",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "HeadAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to HeadClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEEyelidOpening",
+    "EnumNumber": "0x0050",
+    "DataType": "SEType_f64",
+    "Name": "EyelidOpening",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.020
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The average distance between the eyelids of both eyes."
+  },
+  {
+    "EnumID": "SEEyelidOpeningQ",
+    "EnumNumber": "0x0051",
+    "DataType": "SEType_f64",
+    "Name": "EyelidOpeningQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Normally in the range 0..1, some subjects may have values larger than 1.0. The value depends on how distinct the eyelids can be detected. The range is individual and can not be compared between subjects. Calculates as the average quality of the both physical eyes."
+  },
+  {
+    "EnumID": "SELeftEyelidOpening",
+    "EnumNumber": "0x0052",
+    "DataType": "SEType_f64",
+    "Name": "LeftEyelidOpening",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.02
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The distance between the eyelids of the left eye."
+  },
+  {
+    "EnumID": "SELeftEyelidOpeningQ",
+    "EnumNumber": "0x0053",
+    "DataType": "SEType_f64",
+    "Name": "LeftEyelidOpeningQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of left eyelid detection (See description for EyelidOpeningQ)."
+  },
+  {
+    "EnumID": "SERightEyelidOpening",
+    "EnumNumber": "0x0054",
+    "DataType": "SEType_f64",
+    "Name": "RightEyelidOpening",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.02
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The distance between the eyelids of the right eye."
+  },
+  {
+    "EnumID": "SERightEyelidOpeningQ",
+    "EnumNumber": "0x0055",
+    "DataType": "SEType_f64",
+    "Name": "RightEyelidOpeningQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Quality of right eyelid detection (See description for EyelidOpeningQ)."
+  },
+  {
+    "EnumID": "SEKeyboardState",
+    "EnumNumber": "0x0056",
+    "DataType": "SEType_String",
+    "Name": "KeyboardState",
+    "Unit": "",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The keys that are currently pressed (A-Z, 0-9), useful for marking events in log files or movie recordings. Please note that due to limitations in a normal PC-keyboard, pressing more than two keys at a time gives undefined output."
+  },
+  {
+    "EnumID": "SELeftLowerEyelidExtremePointDEPRECATED",
+    "EnumNumber": "0x0058",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftLowerEyelidExtremePoint",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": "The midpoint of the eyelid represented in the 3D coordinates of the World Coordinate System."
+  },
+  {
+    "EnumID": "SELeftUpperEyelidExtremePointDEPRECATED",
+    "EnumNumber": "0x0059",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftUpperEyelidExtremePoint",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": "The midpoint of the eyelid represented in the 3D coordinates of the World Coordinate System."
+  },
+  {
+    "EnumID": "SERightLowerEyelidExtremePointDEPRECATED",
+    "EnumNumber": "0x005a",
+    "DataType": "SEType_Point3D",
+    "Name": "RightLowerEyelidExtremePoint",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": "The midpoint of the eyelid represented in the 3D coordinates of the World Coordinate System."
+  },
+  {
+    "EnumID": "SERightUpperEyelidExtremePointDEPRECATED",
+    "EnumNumber": "0x005b",
+    "DataType": "SEType_Point3D",
+    "Name": "RightUpperEyelidExtremePoint",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": "The midpoint of the eyelid represented in the 3D coordinates of the World Coordinate System."
+  },
+  {
+    "EnumID": "SEPupilDiameter",
+    "EnumNumber": "0x0060",
+    "DataType": "SEType_f64",
+    "Name": "PupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The consensus diameter of the pupils of both eyes."
+  },
+  {
+    "EnumID": "SEPupilDiameterQ",
+    "EnumNumber": "0x0061",
+    "DataType": "SEType_f64",
+    "Name": "PupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The quality value for the PupilDiameter. The value depends on how distinct the pupil/iris edge can be detected. The value is normalized and will be in the range of [0.0, 1.0]."
+  },
+  {
+    "EnumID": "SELeftPupilDiameter",
+    "EnumNumber": "0x0062",
+    "DataType": "SEType_f64",
+    "Name": "LeftPupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The diameter of the pupil of the left eye."
+  },
+  {
+    "EnumID": "SELeftPupilDiameterQ",
+    "EnumNumber": "0x0063",
+    "DataType": "SEType_f64",
+    "Name": "LeftPupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The quality value for the LeftPupilDiameter. The value depends on how distinct the pupil/iris edge can be detected. The value is normalized and will be in the range of [0.0, 1.0]."
+  },
+  {
+    "EnumID": "SERightPupilDiameter",
+    "EnumNumber": "0x0064",
+    "DataType": "SEType_f64",
+    "Name": "RightPupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The diameter of the pupil of the right eye."
+  },
+  {
+    "EnumID": "SERightPupilDiameterQ",
+    "EnumNumber": "0x0065",
+    "DataType": "SEType_f64",
+    "Name": "RightPupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": "The quality value for the RightPupilDiameter. The value depends on how distinct the pupil/iris edge can be detected. The value is normalized and will be in the range of [0.0, 1.0]."
+  },
+  {
+    "EnumID": "SEFilteredPupilDiameter",
+    "EnumNumber": "0x0066",
+    "DataType": "SEType_f64",
+    "Name": "FilteredPupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredPupilDiameterQ",
+    "EnumNumber": "0x0067",
+    "DataType": "SEType_f64",
+    "Name": "FilteredPupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftPupilDiameter",
+    "EnumNumber": "0x0068",
+    "DataType": "SEType_f64",
+    "Name": "FilteredLeftPupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredLeftPupilDiameterQ",
+    "EnumNumber": "0x0069",
+    "DataType": "SEType_f64",
+    "Name": "FilteredLeftPupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightPupilDiameter",
+    "EnumNumber": "0x006a",
+    "DataType": "SEType_f64",
+    "Name": "FilteredRightPupilDiameter",
+    "Unit": "m",
+    "Range": [
+      0.0,
+      0.01
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredRightPupilDiameterQ",
+    "EnumNumber": "0x006b",
+    "DataType": "SEType_f64",
+    "Name": "FilteredRightPupilDiameterQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Pupilometry",
+    "RequiredModule": "Pupilometry",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEGPSPosition",
+    "EnumNumber": "0x0070",
+    "DataType": "SEType_Point2D",
+    "Name": "GPSPosition",
+    "Unit": "",
+    "Range": "",
+    "Category": "GPS Information",
+    "RequiredModule": "GPS",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEGPSGroundSpeed",
+    "EnumNumber": "0x0071",
+    "DataType": "SEType_f64",
+    "Name": "GPSGroundSpeed",
+    "Unit": "km/h",
+    "Range": "",
+    "Category": "GPS Information",
+    "RequiredModule": "GPS",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEGPSCourse",
+    "EnumNumber": "0x0072",
+    "DataType": "SEType_f64",
+    "Name": "GPSCourse",
+    "Unit": "deg",
+    "Range": "",
+    "Category": "GPS Information",
+    "RequiredModule": "GPS",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEGPSTime",
+    "EnumNumber": "0x0073",
+    "DataType": "SEType_u64",
+    "Name": "GPSTime",
+    "Unit": "",
+    "Range": "",
+    "Category": "GPS Information",
+    "RequiredModule": "GPS",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEstimatedGazeOrigin",
+    "EnumNumber": "0x007a",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedGazeOrigin",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. Its origin is the pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedLeftGazeOrigin",
+    "EnumNumber": "0x007b",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedLeftGazeOrigin",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. Its origin is the pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedRightGazeOrigin",
+    "EnumNumber": "0x007c",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedRightGazeOrigin",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. Its origin is the pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedEyePosition",
+    "EnumNumber": "0x0080",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedEyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The position of the consensus eye as obtained from head tracking."
+  },
+  {
+    "EnumID": "SEEstimatedGazeDirection",
+    "EnumNumber": "0x0081",
+    "DataType": "SEType_Vect3D",
+    "Name": "EstimatedGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. This is the direction is the vector from estimated eye center to pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedGazeDirectionQ",
+    "EnumNumber": "0x0082",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. The gaze direction quality depends on how distinct the pupil/iris can be detected and how well gaze measurements from different eye clips coincide."
+  },
+  {
+    "EnumID": "SEEstimatedGazeHeading",
+    "EnumNumber": "0x0083",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The heading angle of the estimated consensus gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEEstimatedGazePitch",
+    "EnumNumber": "0x0084",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The pitch angle of the estimated consensus gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEEstimatedLeftEyePosition",
+    "EnumNumber": "0x0085",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedLeftEyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The position of the left eye as obtained from head tracking."
+  },
+  {
+    "EnumID": "SEEstimatedLeftGazeDirection",
+    "EnumNumber": "0x0086",
+    "DataType": "SEType_Vect3D",
+    "Name": "EstimatedLeftGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. This is the normalized vector from the left estimated eye center to pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedLeftGazeDirectionQ",
+    "EnumNumber": "0x0087",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedLeftGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. The gaze direction quality depends on how distinct the pupil/iris can be detected and how well gaze measurements from several left eye clips coincide."
+  },
+  {
+    "EnumID": "SEEstimatedLeftGazeHeading",
+    "EnumNumber": "0x0088",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedLeftGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The heading angle of the estimated left gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEEstimatedLeftGazePitch",
+    "EnumNumber": "0x0089",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedLeftGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The pitch angle of the estimated left gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEEstimatedRightEyePosition",
+    "EnumNumber": "0x008a",
+    "DataType": "SEType_Point3D",
+    "Name": "EstimatedRightEyePosition",
+    "Unit": "m",
+    "Range": [
+      -0.5,
+      0.5
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The position of the right eye as obtained from head tracking."
+  },
+  {
+    "EnumID": "SEEstimatedRightGazeDirection",
+    "EnumNumber": "0x008b",
+    "DataType": "SEType_Vect3D",
+    "Name": "EstimatedRightGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. This is the normalized vector from the right estimated eye center to pupil or iris."
+  },
+  {
+    "EnumID": "SEEstimatedRightGazeDirectionQ",
+    "EnumNumber": "0x008c",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedRightGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      1.0
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The calculation of the estimated gaze is based on the estimated eye center as obtained from head tracking. The gaze direction quality depends on how distinct the pupil/iris can be detected and how well gaze measurements from several right eye clips coincide."
+  },
+  {
+    "EnumID": "SEEstimatedRightGazeHeading",
+    "EnumNumber": "0x008d",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedRightGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The heading angle of the estimated right gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEEstimatedRightGazePitch",
+    "EnumNumber": "0x008e",
+    "DataType": "SEType_f64",
+    "Name": "EstimatedRightGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Raw Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The pitch angle of the estimated right gaze direction. (See Section on \"Definition of Euler Angles\" in the \\ProductName manual)."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedGazeDirection",
+    "EnumNumber": "0x0091",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredEstimatedGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedGazeDirectionQ",
+    "EnumNumber": "0x0092",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedGazeHeading",
+    "EnumNumber": "0x0093",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedGazePitch",
+    "EnumNumber": "0x0094",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftGazeDirection",
+    "EnumNumber": "0x0096",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredEstimatedLeftGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftGazeDirectionQ",
+    "EnumNumber": "0x0097",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedLeftGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftGazeHeading",
+    "EnumNumber": "0x0098",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedLeftGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftGazePitch",
+    "EnumNumber": "0x0099",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedLeftGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightGazeDirection",
+    "EnumNumber": "0x009b",
+    "DataType": "SEType_Vect3D",
+    "Name": "FilteredEstimatedRightGazeDirection",
+    "Unit": "",
+    "Range": [
+      -1.0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightGazeDirectionQ",
+    "EnumNumber": "0x009c",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedRightGazeDirectionQ",
+    "Unit": "",
+    "Range": [
+      0,
+      1.0
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightGazeHeading",
+    "EnumNumber": "0x009d",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedRightGazeHeading",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightGazePitch",
+    "EnumNumber": "0x009e",
+    "DataType": "SEType_f64",
+    "Name": "FilteredEstimatedRightGazePitch",
+    "Unit": "rad",
+    "Range": [
+      "-PIHALF",
+      "PIHALF"
+    ],
+    "Category": "Filtered Estimated Gaze",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEASCIIKeyboardState",
+    "EnumNumber": "0x00a4",
+    "DataType": "SEType_u16",
+    "Name": "ASCIIKeyboardState",
+    "Unit": "",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The ASCII code of the pressed key as an integer."
+  },
+  {
+    "EnumID": "SECalibrationGazeIntersection",
+    "EnumNumber": "0x00b0",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "CalibrationGazeIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Only used to send the selected calibration object to clients. Useful if a calibration point shall be displayed on a screen when performing the gaze calibration."
+  },
+  {
+    "EnumID": "SETaggedGazeIntersection",
+    "EnumNumber": "0x00b1",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "TaggedGazeIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The position of the current gaze target. It contains the name of the object, the position in world coordinates and the position in object coordinates."
+  },
+  {
+    "EnumID": "SELeftClosestWorldIntersection",
+    "EnumNumber": "0x00b2",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "LeftClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the left eye gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SELeftAllWorldIntersections",
+    "EnumNumber": "0x00b3",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "LeftAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to LeftClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with LeftClosestWorldIntersection, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SERightClosestWorldIntersection",
+    "EnumNumber": "0x00b4",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "RightClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the right eye gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SERightAllWorldIntersections",
+    "EnumNumber": "0x00b5",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "RightAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to RightClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with RightClosestWorldIntersection, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredLeftClosestWorldIntersection",
+    "EnumNumber": "0x00b6",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredLeftClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the filtered left gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEFilteredLeftAllWorldIntersections",
+    "EnumNumber": "0x00b7",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredLeftAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredLeftClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected.As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredRightClosestWorldIntersection",
+    "EnumNumber": "0x00b8",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredRightClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the filtered right gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEFilteredRightAllWorldIntersections",
+    "EnumNumber": "0x00b9",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredRightAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredRightClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected.As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEEstimatedLeftClosestWorldIntersection",
+    "EnumNumber": "0x00ba",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "EstimatedLeftClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the estimated left gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEEstimatedLeftAllWorldIntersections",
+    "EnumNumber": "0x00bb",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "EstimatedLeftAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to EstimatedLeftClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEEstimatedRightClosestWorldIntersection",
+    "EnumNumber": "0x00bc",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "EstimatedRightClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the estimated right gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEEstimatedRightAllWorldIntersections",
+    "EnumNumber": "0x00bd",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "EstimatedRightAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to EstimatedRightClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. \n As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedClosestWorldIntersection",
+    "EnumNumber": "0x0141",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredEstimatedClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEFilteredEstimatedAllWorldIntersections",
+    "EnumNumber": "0x0143",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredEstimatedAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredEstimatedClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftClosestWorldIntersection",
+    "EnumNumber": "0x01b6",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredEstimatedLeftClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the filtered estimated left gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedLeftAllWorldIntersections",
+    "EnumNumber": "0x01b7",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredEstimatedLeftAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredEstimatedLeftClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightClosestWorldIntersection",
+    "EnumNumber": "0x01b8",
+    "DataType": "SEType_WorldIntersection",
+    "Name": "FilteredEstimatedRightClosestWorldIntersection",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "The closest intersection of the filtered sstimated right gaze vector with any of the world objects. The intersection information contains name of object, intersection point in world coordinates and intersection point in object coordinates. \nEach sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. If there are no gaze intersections with world objects for the current frame this integer will be 0, otherwise 1."
+  },
+  {
+    "EnumID": "SEFilteredEstimatedRightAllWorldIntersections",
+    "EnumNumber": "0x01b9",
+    "DataType": "SEType_WorldIntersections",
+    "Name": "FilteredEstimatedRightAllWorldIntersections",
+    "Unit": "",
+    "Range": "",
+    "Category": "Intersections",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Analogue to FilteredEstimatedRightClosestWorldIntersection, but it contains the whole list of intersected world objects. E.g., if the right window of a car is intersected it may be interesting to also find out if the right rear mirror is intersected. As with ClosestWorldIntersections, each sub packet of this type starts with an integer indicating the number of world intersections contained in the sub packet. The difference is that in this case there may be any number of intersections."
+  },
+  {
+    "EnumID": "SETrackingState",
+    "EnumNumber": "0x00c0",
+    "DataType": "SEType_u8",
+    "Name": "TrackingState",
+    "Unit": "",
+    "Range": "",
+    "Category": "Status",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEyeglassesStatus",
+    "EnumNumber": "0x00c1",
+    "DataType": "SEType_u8",
+    "Name": "EyeglassesStatus",
+    "Unit": "",
+    "Range": "",
+    "Category": "Status",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEReflexReductionStateDEPRECATED",
+    "EnumNumber": "0x00c2",
+    "DataType": "SEType_u8",
+    "Name": "ReflexReductionStateDEPRECATED",
+    "Unit": "",
+    "Range": "",
+    "Category": "Status",
+    "RequiredModule": "",
+    "Public": false,
+    "Description": ""
+  },
+  {
+    "EnumID": "SELeftBlinkClosingMidTime",
+    "EnumNumber": "0x00e0",
+    "DataType": "SEType_u64",
+    "Name": "LeftBlinkClosingMidTime",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftBlinkOpeningMidTime",
+    "EnumNumber": "0x00e1",
+    "DataType": "SEType_u64",
+    "Name": "LeftBlinkOpeningMidTime",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftBlinkClosingAmplitude",
+    "EnumNumber": "0x00e2",
+    "DataType": "SEType_f64",
+    "Name": "LeftBlinkClosingAmplitude",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftBlinkOpeningAmplitude",
+    "EnumNumber": "0x00e3",
+    "DataType": "SEType_f64",
+    "Name": "LeftBlinkOpeningAmplitude",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftBlinkClosingSpeed",
+    "EnumNumber": "0x00e4",
+    "DataType": "SEType_f64",
+    "Name": "LeftBlinkClosingSpeed",
+    "Unit": "m/s",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftBlinkOpeningSpeed",
+    "EnumNumber": "0x00e5",
+    "DataType": "SEType_f64",
+    "Name": "LeftBlinkOpeningSpeed",
+    "Unit": "m/s",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkClosingMidTime",
+    "EnumNumber": "0x00e6",
+    "DataType": "SEType_u64",
+    "Name": "RightBlinkClosingMidTime",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkOpeningMidTime",
+    "EnumNumber": "0x00e7",
+    "DataType": "SEType_u64",
+    "Name": "RightBlinkOpeningMidTime",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkClosingAmplitude",
+    "EnumNumber": "0x00e8",
+    "DataType": "SEType_f64",
+    "Name": "RightBlinkClosingAmplitude",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkOpeningAmplitude",
+    "EnumNumber": "0x00e9",
+    "DataType": "SEType_f64",
+    "Name": "RightBlinkOpeningAmplitude",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkClosingSpeed",
+    "EnumNumber": "0x00ea",
+    "DataType": "SEType_f64",
+    "Name": "RightBlinkClosingSpeed",
+    "Unit": "m/s",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SERightBlinkOpeningSpeed",
+    "EnumNumber": "0x00eb",
+    "DataType": "SEType_f64",
+    "Name": "RightBlinkOpeningSpeed",
+    "Unit": "m/s",
+    "Range": "",
+    "Category": "Analysis (non-real-time)",
+    "Realtime": false,
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "See Section \\ref{sec:blinks}."
+  },
+  {
+    "EnumID": "SELeftEyeOuterCorner3D",
+    "EnumNumber": "0x0300",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftEyeOuterCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the left eye outer corner headmodel point."
+  },
+  {
+    "EnumID": "SELeftEyeInnerCorner3D",
+    "EnumNumber": "0x0301",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftEyeInnerCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the left eye inner corner headmodel point."
+  },
+  {
+    "EnumID": "SERightEyeInnerCorner3D",
+    "EnumNumber": "0x0302",
+    "DataType": "SEType_Point3D",
+    "Name": "RightEyeInnerCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the right eye inner corner headmodel point."
+  },
+  {
+    "EnumID": "SERightEyeOuterCorner3D",
+    "EnumNumber": "0x0303",
+    "DataType": "SEType_Point3D",
+    "Name": "RightEyeOuterCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the right eye outer corner headmodel point."
+  },
+  {
+    "EnumID": "SELeftNostril3D",
+    "EnumNumber": "0x0304",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftNostril3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the left nostril headmodel point."
+  },
+  {
+    "EnumID": "SERightNostril3D",
+    "EnumNumber": "0x0305",
+    "DataType": "SEType_Point3D",
+    "Name": "RightNostril3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the right nostril headmodel point."
+  },
+  {
+    "EnumID": "SELeftMouthCorner3D",
+    "EnumNumber": "0x0306",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftMouthCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the left mouth corner headmodel point."
+  },
+  {
+    "EnumID": "SERightMouthCorner3D",
+    "EnumNumber": "0x0307",
+    "DataType": "SEType_Point3D",
+    "Name": "RightMouthCorner3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the right mouth corner headmodel point."
+  },
+  {
+    "EnumID": "SELeftEar3D",
+    "EnumNumber": "0x0308",
+    "DataType": "SEType_Point3D",
+    "Name": "LeftEar3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the left ear headmodel point."
+  },
+  {
+    "EnumID": "SERightEar3D",
+    "EnumNumber": "0x0309",
+    "DataType": "SEType_Point3D",
+    "Name": "RightEar3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the right ear headmodel point."
+  },
+  {
+    "EnumID": "SENoseTip3D",
+    "EnumNumber": "0x0360",
+    "DataType": "SEType_Point3D",
+    "Name": "NoseTip3D",
+    "Unit": "m",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "3D position of the nose tip headmodel point."
+  },
+  {
+    "EnumID": "SELeftEyeOuterCorner2D",
+    "EnumNumber": "0x0310",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "LeftEyeOuterCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the left eye outer corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SELeftEyeInnerCorner2D",
+    "EnumNumber": "0x0311",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "LeftEyeInnerCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the left eye inner corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SERightEyeInnerCorner2D",
+    "EnumNumber": "0x0312",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "RightEyeInnerCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the right eye inner corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SERightEyeOuterCorner2D",
+    "EnumNumber": "0x0313",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "RightEyeOuterCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the right eye outer corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SELeftNostril2D",
+    "EnumNumber": "0x0314",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "LeftNostril2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the left nostril headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SERightNostril2D",
+    "EnumNumber": "0x0315",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "RightNostril2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the right nostril headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SELeftMouthCorner2D",
+    "EnumNumber": "0x0316",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "LeftMouthCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the left mouth corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SERightMouthCorner2D",
+    "EnumNumber": "0x0317",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "RightMouthCorner2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the right mouth corner headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SELeftEar2D",
+    "EnumNumber": "0x0318",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "LeftEar2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the left ear headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SERightEar2D",
+    "EnumNumber": "0x0319",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "RightEar2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the right ear headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SENoseTip2D",
+    "EnumNumber": "0x0370",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Vect2D",
+    "Name": "NoseTip2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "2D positions of the nose tip headmodel point projected into all cameras."
+  },
+  {
+    "EnumID": "SEMouthShapePoints2D",
+    "EnumNumber": "0x0320",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "MouthShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of mouth shape points in 2D represented by 10 pixel coordinates per camera. The first 10 x,y pairs belong to the first camera, the next 10 to the second, and so on."
+  },
+  {
+    "EnumID": "SELeftEarShapePoints2D",
+    "EnumNumber": "0x0321",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "LeftEarShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of left ear shape points in 2D represented by 5 pixel coordinates per camera. The first 5 x,y pairs belong to the first camera, the next 5 to the second, and so on."
+  },
+  {
+    "EnumID": "SERightEarShapePoints2D",
+    "EnumNumber": "0x0322",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "RightEarShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of right ear shape points in 2D represented by 5 pixel coordinates per camera. The first 5 x,y pairs belong to the first camera, the next 5 to the second, and so on."
+  },
+  {
+    "EnumID": "SENoseShapePoints2D",
+    "EnumNumber": "0x0323",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "NoseShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of nose shape points in 2D represented by 9 pixel coordinates per camera. The first 9 x,y pairs belong to the first camera, the next 9 to the second, and so on."
+  },
+  {
+    "EnumID": "SELeftEyeShapePoints2D",
+    "EnumNumber": "0x0324",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "LeftEyeShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of left eye shape points in 2D represented by 8 pixel coordinates per camera. The first 8 x,y pairs belong to the first camera, the next 8 to the second, and so on. Output will only be provided for camera-eye pairs where the algorithms selected an eye clip, while it is zeroed for other pairs."
+  },
+  {
+    "EnumID": "SERightEyeShapePoints2D",
+    "EnumNumber": "0x0325",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_Point2D",
+    "Name": "RightEyeShapePoints2D",
+    "Unit": "Pixels",
+    "Range": "",
+    "Category": "Facial Feature Positions",
+    "RequiredModule": "FacialFeatures",
+    "Public": true,
+    "Description": "Vector of right eye shape points in 2D represented by 8 pixel coordinates per camera. The first 8 x,y pairs belong to the first camera, the next 8 to the second, and so on. Output will only be provided for camera-eye pairs where the algorithms selected an eye clip, while it is zeroed for other pairs."
+  },
+  {
+    "EnumID": "SELeftEyelidState",
+    "EnumNumber": "0x0390",
+    "DataType": "SEType_u8",
+    "Name": "LeftEyelidState",
+    "Unit": "",
+    "Range": [
+      0,
+      2
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Detected state of left eyelid. Possible values: \"Not Set\" (0), \"Open\" (1), or \"Closed\" (2)."
+  },
+  {
+    "EnumID": "SERightEyelidState",
+    "EnumNumber": "0x0391",
+    "DataType": "SEType_u8",
+    "Name": "RightEyelidState",
+    "Unit": "",
+    "Range": [
+      0,
+      2
+    ],
+    "Category": "Eyelid",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Detected state of right eyelid. Possible values: \"Not Set\" (0), \"Open\" (1), or \"Closed\" (2)."
+  },
+  {
+    "EnumID": "SEUserMarker",
+    "EnumNumber": "0x03a0",
+    "DataType": "SEType_UserMarker",
+    "Name": "UserMarker",
+    "Unit": "",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "User defined marker, containing some data and the specific time it was received. The marker could, for example, represent a key press on some external experiment equipment. \n The marker also contains an \"Error\" field, containing an error code from the Smart Eye error specification. The start of each subpacket of this type contains a 1 if a marker is received, otherwise 0."
+  },
+  {
+    "EnumID": "SECameraClocks",
+    "EnumNumber": "0x03a1",
+    "DataType": "SEType_Vector",
+    "SubDataType": "SEType_u64",
+    "Name": "CameraClocks",
+    "Unit": "100ns",
+    "Range": "",
+    "Category": "Frame Information",
+    "RequiredModule": "",
+    "Public": true,
+    "Description": "Camera hardware provided time stamps of image exposure. Characteristics of these time stamps are camera dependent."
+  },
+  {
+    "EnumID": "SEEmotionJoy",
+    "EnumNumber": "0x03b0",
+    "DataType": "SEType_f64",
+    "Name": "Joy",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionFear",
+    "EnumNumber": "0x03b1",
+    "DataType": "SEType_f64",
+    "Name": "Fear",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionDisgust",
+    "EnumNumber": "0x03b2",
+    "DataType": "SEType_f64",
+    "Name": "Disgust",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionSadness",
+    "EnumNumber": "0x03b3",
+    "DataType": "SEType_f64",
+    "Name": "Sadness",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionSurprise",
+    "EnumNumber": "0x03b5",
+    "DataType": "SEType_f64",
+    "Name": "Surprise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionValence",
+    "EnumNumber": "0x03b7",
+    "DataType": "SEType_f64",
+    "Name": "Valence",
+    "Unit": "",
+    "Range": [
+      -100.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionEngagement",
+    "EnumNumber": "0x03b8",
+    "DataType": "SEType_f64",
+    "Name": "Engagement",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionSentimentality",
+    "EnumNumber": "0x03b9",
+    "DataType": "SEType_f64",
+    "Name": "Sentimentality",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionConfusion",
+    "EnumNumber": "0x03ba",
+    "DataType": "SEType_f64",
+    "Name": "Confusion",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionNeutral",
+    "EnumNumber": "0x03bb",
+    "DataType": "SEType_f64",
+    "Name": "Neutral",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEEmotionQ",
+    "EnumNumber": "0x03bc",
+    "DataType": "SEType_f64",
+    "Name": "EmotionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Emotion",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": "Confidence of the Emotion SDK in the presence of Emotion."
+  },
+  {
+    "EnumID": "SEExpressionSmile",
+    "EnumNumber": "0x03c0",
+    "DataType": "SEType_f64",
+    "Name": "Smile",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionInnerBrowRaise",
+    "EnumNumber": "0x03c1",
+    "DataType": "SEType_f64",
+    "Name": "InnerBrowRaise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionBrowRaise",
+    "EnumNumber": "0x03c2",
+    "DataType": "SEType_f64",
+    "Name": "BrowRaise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionBrowFurrow",
+    "EnumNumber": "0x03c3",
+    "DataType": "SEType_f64",
+    "Name": "BrowFurrow",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionNoseWrinkle",
+    "EnumNumber": "0x03c4",
+    "DataType": "SEType_f64",
+    "Name": "NoseWrinkle",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionUpperLipRaise",
+    "EnumNumber": "0x03c5",
+    "DataType": "SEType_f64",
+    "Name": "UpperLipRaise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLipCornerDepressor",
+    "EnumNumber": "0x03c6",
+    "DataType": "SEType_f64",
+    "Name": "LipCornerDepressor",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionChinRaise",
+    "EnumNumber": "0x03c7",
+    "DataType": "SEType_f64",
+    "Name": "ChinRaise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLipPucker",
+    "EnumNumber": "0x03c8",
+    "DataType": "SEType_f64",
+    "Name": "LipPucker",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLipPress",
+    "EnumNumber": "0x03c9",
+    "DataType": "SEType_f64",
+    "Name": "LipPress",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLipSuck",
+    "EnumNumber": "0x03ca",
+    "DataType": "SEType_f64",
+    "Name": "LipSuck",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionMouthOpen",
+    "EnumNumber": "0x03cb",
+    "DataType": "SEType_f64",
+    "Name": "MouthOpen",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionSmirk",
+    "EnumNumber": "0x03d0",
+    "DataType": "SEType_f64",
+    "Name": "Smirk",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionAttention",
+    "EnumNumber": "0x03d3",
+    "DataType": "SEType_f64",
+    "Name": "Attention",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionEyeWiden",
+    "EnumNumber": "0x03d4",
+    "DataType": "SEType_f64",
+    "Name": "EyeWiden",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionCheekRaise",
+    "EnumNumber": "0x03d5",
+    "DataType": "SEType_f64",
+    "Name": "CheekRaise",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLidTighten",
+    "EnumNumber": "0x03d6",
+    "DataType": "SEType_f64",
+    "Name": "LidTighten",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionDimpler",
+    "EnumNumber": "0x03d7",
+    "DataType": "SEType_f64",
+    "Name": "Dimpler",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionLipStretch",
+    "EnumNumber": "0x03d8",
+    "DataType": "SEType_f64",
+    "Name": "LipStretch",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionJawDrop",
+    "EnumNumber": "0x03d9",
+    "DataType": "SEType_f64",
+    "Name": "JawDrop",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": ""
+  },
+  {
+    "EnumID": "SEExpressionQ",
+    "EnumNumber": "0x03e0",
+    "DataType": "SEType_f64",
+    "Name": "ExpressionQ",
+    "Unit": "",
+    "Range": [
+      0.0,
+      100.0
+    ],
+    "Category": "Expression",
+    "RequiredModule": "Emotion",
+    "Public": true,
+    "Description": "Confidence of the Emotion SDK in the presence of Expression."
+  },
+  {
+    "EnumID": "SESpeaking",
+    "EnumNumber": "0x03f0",
+    "DataType": "SEType_u8",
+    "Name": "Speaking",
+    "Unit": "",
+    "Range": [ 0, 1 ],
+    "Category": "Activity",
+    "RequiredModule": "Activity",
+    "Public": true,
+    "Description": "Binary signal stating if the tracked subject is currently speaking (1) or not speaking (0)."
+  },
+  {
+    "EnumID": "SESpeakingQ",
+    "EnumNumber": "0x03f1",
+    "DataType": "SEType_f64",
+    "Name": "SpeakingQ",
+    "Unit": "",
+    "Range": [ 0.0, 1.0 ],
+    "Category": "Activity",
+    "RequiredModule": "Activity",
+    "Public": true,
+    "Description": "The current quality of the Speaking signal."
+  }
+]

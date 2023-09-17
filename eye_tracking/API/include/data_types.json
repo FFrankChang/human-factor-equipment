@@ -1,0 +1,207 @@
+[
+  {
+    "DataType": "SEType_u8",
+    "TypeID": "0x0000",
+    "ConsistsOf": "Unsigned integer 1 byte"
+  },
+  {
+    "DataType": "SEType_u16",
+    "TypeID": "0x0001",
+    "ConsistsOf": "Unsigned integer 2 bytes"
+  },
+  {
+    "DataType": "SEType_u32",
+    "TypeID": "0x0002",
+    "ConsistsOf": "Unsigned integer 4 bytes"
+  },
+  {
+    "DataType": "SEType_s32",
+    "TypeID": "0x0003",
+    "ConsistsOf": "Signed integer 4 bytes"
+  },
+  {
+    "DataType": "SEType_u64",
+    "TypeID": "0x0004",
+    "ConsistsOf": "Unsigned integer 8 bytes"
+  },
+  {
+    "DataType": "SEType_f64",
+    "TypeID": "0x0005",
+    "ConsistsOf": "Floating point 8 bytes"
+  },
+  {
+    "DataType": "SEType_float",
+    "TypeID": "0x0005",
+    "ConsistsOf": "(deprecated) Alias for SEType_f64"
+  },
+  {
+    "DataType": "SEType_Point2D",
+    "TypeID": "0x0006",
+    "ConsistsOf": [
+      "SEType_f64 x",
+      "SEType_f64 y"
+    ]
+  },
+  {
+    "DataType": "SEType_Vect2D",
+    "TypeID": "0x0007",
+    "ConsistsOf": [
+      "SEType_f64 x",
+      "SEType_f64 y"
+    ]
+  },
+  {
+    "DataType": "SEType_Point3D",
+    "TypeID": "0x0008",
+    "ConsistsOf": [
+      "SEType_f64 x",
+      "SEType_f64 y",
+      "SEType_f64 z"
+    ]
+  },
+  {
+    "DataType": "SEType_Vect3D",
+    "TypeID": "0x0009",
+    "ConsistsOf": [
+      "SEType_f64 x",
+      "SEType_f64 y",
+      "SEType_f64 z"
+    ]
+  },
+  {
+    "DataType": "SEType_String",
+    "TypeID": "0x000A",
+    "ConsistsOf": [
+      "SEType_u16 characters (N)",
+      "SEType_u8 character 1",
+      "SEType_u8 character 2",
+      "...",
+      "SEType_u8 character N"
+    ]
+  },
+  {
+    "DataType": "SEType_Vector",
+    "TypeID": "0x000B",
+    "ConsistsOf": [
+      "SEType_u16 elements (N)",
+      "SEType_u16 typeId of element 1",
+      "Element 1",
+      "SEType_u16 typeId of element 2",
+      "Element 2",
+      "...",
+      "SEType_u16 typeId of element N",
+      "Element N"
+    ]
+  },
+  {
+    "DataType": "SEType_Struct",
+    "TypeID": "0x000C",
+    "ConsistsOf": [
+      "SEType_u16 elements (N)",
+      "SEType_String id of element 1",
+      "SEType_u16 typeId of element 1",
+      "Element 1",
+      "SEType_String id of element 2",
+      "SEType_u16 typeId of element 2",
+      "Element 2",
+      "...",
+      "SEType_String id of element N",
+      "SEType_u16 typeId of element N",
+      "Element N"
+    ]
+  },
+  {
+    "DataType": "SEType_WorldIntersection",
+    "TypeID": "0x000D",
+    "ConsistsOf": [
+      "SEType_u16 intersections (0|1)",
+      "[SEType_Point3D worldPoint]",
+      "[SEType_Point3D objectPoint]",
+      "[SEType_String objectName]"
+    ]
+  },
+  {
+    "DataType": "SEType_WorldIntersections",
+    "TypeID": "0x000E",
+    "ConsistsOf": [
+      "SEType_u16 intersections (N)",
+      "[SEType_Point3D worldPoint1]",
+      "[SEType_Point3D objectPoint1]",
+      "[SEType_String objectName1]",
+      "...",
+      "[SEType_Point3D worldPointN]",
+      "[SEType_Point3D objectPointN]",
+      "[SEType_String objectNameN]"
+    ]
+  },
+  {
+    "DataType": "SEType_PacketHeader",
+    "TypeID": "0x000F",
+    "ConsistsOf": [
+      "SEType_u32 syncId",
+      "SEType_u16 packetType",
+      "SEType_u16 length"
+    ]
+  },
+  {
+    "DataType": "SEType_SubPacketHeader",
+    "TypeID": "0x0010",
+    "ConsistsOf": [
+      "SEType_u16 id",
+      "SEType_u16 length"
+    ]
+  },
+  {
+    "DataType": "SEType_f32",
+    "TypeID": "0x0011",
+    "ConsistsOf": "Floating point 4 bytes"
+  },
+  {
+    "DataType": "SEType_Matrix3x3",
+    "TypeID": "0x0012",
+    "ConsistsOf": [
+      "A 3x3 Matrix"
+    ]
+  },
+  {
+    "DataType": "SEType_Matrix2x2",
+    "TypeID": "0x0013",
+    "ConsistsOf": [
+      "A 2x2 Matrix"
+    ]
+  },
+  {
+    "DataType": "SEType_Quaternion",
+    "TypeID": "0x0014",
+    "ConsistsOf": [
+      "SEType_f64 w",
+      "SEType_f64 x",
+      "SEType_f64 y",
+      "SEType_f64 z"
+    ]
+  },
+  {
+    "DataType": "SEType_UserMarker",
+    "TypeID": "0x0015",
+    "ConsistsOf": [
+      "SEType_u16 exists (0|1)",
+      "[SEType_s32 error]",
+      "[SEType_u64 cameraClock]",
+      "[SEType_u8 cameraIdx]",
+      "[SEType_u64 data]"
+    ]
+  },
+  {
+    "DataType": "SEType_PupilMatchPointAnalysis",
+    "TypeID": "0x0016",
+    "ConsistsOf": [
+      "SEType_u64 eye",
+      "SEType_u8 cameraIdx",
+      "SEType_f64 quality",
+      "SEType_Point2D position",
+      "SEType_Vect2D axes",
+      "SEType_f64 angle",
+      "SEType_f64 pupilRadiusInPixels"
+    ]
+  }
+]

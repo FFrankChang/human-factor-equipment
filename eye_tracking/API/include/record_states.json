@@ -1,0 +1,12 @@
+[
+  {
+    "StateName": "NotRecording",
+    "EnumValue": "0x1000",
+    "Description": "The system is not currently recording."
+  },
+  {
+    "StateName": "Recording",
+    "EnumValue": "0x1010",
+    "Description": "The system is currently recording."
+  }
+]

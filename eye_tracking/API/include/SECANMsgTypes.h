@@ -1,0 +1,203 @@
+// Copyright (C) Smart Eye AB 2002-2018
+// THE CODE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+// OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+// OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE CODE OR THE USE OR OTHER DEALINGS IN THE CODE.
+//----------------------------------------------------------------------------//
+// Smart Eye AB
+// Första långgatan 28 B,
+// 413 27 Göteborg, Sweden
+// Contact: support@smarteye.se
+//
+// You are free to modify and use this code together with
+// your purchased Smart Eye system.
+//
+// You MAY NOT distribute this code (modified or unmodified)
+// without prior written consent from Smart Eye AB.
+//----------------------------------------------------------------------------//
+
+#ifndef SE_CANMSGTYPES_H
+#define SE_CANMSGTYPES_H
+
+/**
+  * \file
+  * Defines of CAN Message both 29-bit and 11-bit
+  *
+  * If SE_CAN_EXTENDED is defined 29 bit is used.
+**/
+
+// Define Base of CAN messages range
+#ifndef SE_CAN_EXTENDED
+#define SE_CAN_MSG_BASE 0x400
+#else
+#define SE_CAN_MSG_BASE 0x400
+#endif
+
+typedef enum
+{
+  // byte type name unit
+  /// SE_CAN_SYNCH size = 8,
+  //[0..3] u32 frameNr,
+  //[4..5] timestamp u16 (1/10ms), wraps around every 6.5536s
+  // should be used to calculate difference between frames, to synchronize with external events, use
+  // user timestamp
+  //[6..7] u16 est. delay (1/10ms) saturates at 6.5535s
+  SE_CAN_SYNCH = 1,
+
+  ///  SE_CAN_USERTIMESTAMP size = 8,
+  // [0..7] u64 userTimeStamp
+  SE_CAN_USERTIMESTAMP = 2,
+
+  /// SE_CAN_HEADPOSITION size = 8,
+  //[0..1] s16 x (1/10mm),
+  //[2..3] s16 y (1/10mm),
+  //[4..5] s16 z (1/10mm),
+  //[6..7] u16 quality (0-10000)
+  SE_CAN_HEADPOSITION = 3,
+
+  /// SE_CAN_HEADROTATION size = 8,
+  //[0..1] s16 x (1/10000 rad),
+  //[2..3] s16 y (1/10000 rad),
+  //[4..5] s16 z (1/10000 rad),
+  //[6..7] u16 quality (0-10000)
+  SE_CAN_HEADROTATION = 4,
+
+  /// SE_CAN_GAZEORIGIN size = 8,
+  //[0..1] s16 x (1/10mm),
+  //[2..3] s16 y (1/10mm),
+  //[4..5] s16 z (1/10mm),
+  //[6..7] u16 quality (0-10000)
+  SE_CAN_GAZEORIGIN = 5,
+
+  /// SE_CAN_GAZEDIRECTION size = 8,
+  //[0..1] s16 x (1/10mm),
+  //[2..3] s16 y (1/10mm),
+  //[4..5] s16 z (1/10mm),
+  //[6..7] u16 quality
+  SE_CAN_GAZEDIRECTION = 6,
+
+  /// SE_CAN_EYECLOSURE size = 4,
+  //[0..1] u16 closure (1/10 mm),
+  //[2..3] u16 quality (0-10000)
+  SE_CAN_EYECLOSURE = 7,
+
+  /// SE_CAN_BOTHEYECLOSURES size = 8,
+  //[0..1] u16 left closure (1/10 mm),
+  //[2..3] u16 left quality (0-10000)
+  //[4..5] u16 right closure (1/10 mm),
+  //[6..7] u16 right quality (0-10000)
+  SE_CAN_BOTHEYECLOSURES = 8,
+
+  /// SE_CAN_PUPILDIAMETER size = 4,
+  //[0..1] u16 diameter (1/10 mm),
+  //[2..3] u16 quality (0-10000)
+  SE_CAN_PUPILDIAMETER = 9,
+
+  /// SE_CAN_BOTHPUPILDIAMETERS size = 8,
+  //[0..1] u16 closure (1/10 mm),
+  //[2..3] u16 quality (0-10000)
+  //[4..5] u16 right diameter (1/10 mm),
+  //[6..7] u16 right quality (0-10000)
+  SE_CAN_BOTHPUPILDIAMETERS = 10,
+
+  /// SE_CAN_ASCIIKEY size = 1,
+  //[0] u8 last keypress value
+  SE_CAN_ASCIIKEY = 11,
+
+  /// SE_CAN_WORLDINTERSECTION size = 8,
+  //[0..1] u16 world intersection id
+  //[2..3] s16 x (1/10mm)
+  //[4..5] s16 y (1/10mm)
+  //[6..7] s16 z (1/10mm)
+  SE_CAN_WORLDINTERSECTION = 12,
+
+  SE_CAN_FILTEREDGAZEDIRECTION = 13,
+
+  SE_CAN_FILTEREDLEFTGAZEDIRECTION = 14,
+
+  SE_CAN_FILTEREDRIGHTGAZEDIRECTION = 15,
+
+  SE_CAN_SYNCH_NON_REALTIME = 16,
+
+  SE_CAN_USERTIMESTAMP_NON_REALTIME = 17,
+
+  SE_CAN_BLINK = 18,
+
+  SE_CAN_SACCADE = 19,
+
+  SE_CAN_LEFTBLINKCLOSINGMIDTIME = 20,
+
+  SE_CAN_LEFTBLINKCLOSINGAMPLITUDE = 21,
+
+  SE_CAN_LEFTBLINKCLOSINGSPEED = 22,
+
+  SE_CAN_LEFTBLINKOPENINGMIDTIME = 23,
+
+  SE_CAN_LEFTBLINKOPENINGAMPLITUDE = 24,
+
+  SE_CAN_LEFTBLINKOPENINGSPEED = 25,
+
+  SE_CAN_RIGHTBLINKCLOSINGMIDTIME = 26,
+
+  SE_CAN_RIGHTBLINKCLOSINGAMPLITUDE = 27,
+
+  SE_CAN_RIGHTBLINKCLOSINGSPEED = 28,
+
+  SE_CAN_RIGHTBLINKOPENINGMIDTIME = 29,
+
+  SE_CAN_RIGHTBLINKOPENINGAMPLITUDE = 30,
+
+  SE_CAN_RIGHTBLINKOPENINGSPEED = 31,
+
+  //put new messagetypes here
+
+  SE_CAN_LAST_MESSAGE // must be last
+
+} SECANMsgTypes;
+
+typedef struct SECANData_
+{
+  SECANMsgTypes numericalDataId;
+  const char* dataId;
+} SECANData;
+
+static SECANData CANDataList[] = {
+    // Frame information
+    {SE_CAN_SYNCH, "SE_CAN_SYNCH"},
+    {SE_CAN_USERTIMESTAMP, "SE_CAN_USERTIMESTAMP"},
+    {SE_CAN_HEADPOSITION, "SE_CAN_HEADPOSITION"},
+    {SE_CAN_HEADROTATION, "SE_CAN_HEADROTATION"},
+    {SE_CAN_GAZEORIGIN, "SE_CAN_GAZEORIGIN"},
+    {SE_CAN_GAZEDIRECTION, "SE_CAN_GAZEDIRECTION"},
+    {SE_CAN_EYECLOSURE, "SE_CAN_EYECLOSURE"},
+    {SE_CAN_BOTHEYECLOSURES, "SE_CAN_BOTHEYECLOSURES"},
+    {SE_CAN_PUPILDIAMETER, "SE_CAN_PUPILDIAMETER"},
+    {SE_CAN_BOTHPUPILDIAMETERS, "SE_CAN_BOTHPUPILDIAMETERS"},
+    {SE_CAN_ASCIIKEY, "SE_CAN_ASCIIKEY"},
+    {SE_CAN_WORLDINTERSECTION, "SE_CAN_WORLDINTERSECTION"},
+    {SE_CAN_FILTEREDGAZEDIRECTION, "SE_CAN_FILTEREDGAZEDIRECTION"},
+    {SE_CAN_FILTEREDLEFTGAZEDIRECTION, "SE_CAN_FILTEREDLEFTGAZEDIRECTION"},
+    {SE_CAN_FILTEREDRIGHTGAZEDIRECTION, "SE_CAN_FILTEREDRIGHTGAZEDIRECTION"},
+    {SE_CAN_SYNCH_NON_REALTIME, "SE_CAN_SYNCH_NON_REALTIME"},
+    {SE_CAN_SYNCH_NON_REALTIME, "SE_CAN_USERTIMESTAMP_NON_REALTIME"},
+    {SE_CAN_BLINK, "SE_CAN_BLINK"},
+    {SE_CAN_SACCADE, "SE_CAN_SACCADE"},
+    {SE_CAN_LEFTBLINKCLOSINGMIDTIME, "SE_CAN_LEFTBLINKCLOSINGMIDTIME"},
+    {SE_CAN_LEFTBLINKCLOSINGAMPLITUDE, "SE_CAN_LEFTBLINKCLOSINGAMPLITUDE"},
+    {SE_CAN_LEFTBLINKCLOSINGSPEED, "SE_CAN_LEFTBLINKCLOSINGSPEED"},
+    {SE_CAN_LEFTBLINKOPENINGMIDTIME, "SE_CAN_LEFTBLINKOPENINGMIDTIME"},
+    {SE_CAN_LEFTBLINKOPENINGAMPLITUDE, "SE_CAN_LEFTBLINKOPENINGAMPLITUDE"},
+    {SE_CAN_LEFTBLINKOPENINGSPEED, "SE_CAN_LEFTBLINKOPENINGSPEED"},
+    {SE_CAN_RIGHTBLINKCLOSINGMIDTIME, "SE_CAN_RIGHTBLINKCLOSINGMIDTIME"},
+    {SE_CAN_RIGHTBLINKCLOSINGAMPLITUDE, "SE_CAN_RIGHTBLINKCLOSINGAMPLITUDE"},
+    {SE_CAN_RIGHTBLINKCLOSINGSPEED, "SE_CAN_RIGHTBLINKCLOSINGSPEED"},
+    {SE_CAN_RIGHTBLINKOPENINGMIDTIME, "SE_CAN_RIGHTBLINKOPENINGMIDTIME"},
+    {SE_CAN_RIGHTBLINKOPENINGAMPLITUDE, "SE_CAN_RIGHTBLINKOPENINGAMPLITUDE"},
+    {SE_CAN_RIGHTBLINKOPENINGSPEED, "SE_CAN_RIGHTBLINKOPENINGSPEED"},
+};
+
+#endif //SE_CANMSGTYPES_H

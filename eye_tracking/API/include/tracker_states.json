@@ -1,0 +1,102 @@
+[
+  {
+    "StateName": "Idling",
+    "EnumValue": "0x0000",
+    "Description": "The system is idle, ready to go into any other state."
+  },
+  {
+    "StateName": "Tracking",
+    "EnumValue": "0x0010",
+    "Description": "The system is tracking"
+  },
+  {
+    "StateName": "ChessboardTracker",
+    "EnumValue": "0x0015",
+    "Description": "The system is currently tracking a chessboard"
+  },
+  {
+    "StateName": "CalibratingCameras",
+    "EnumValue": "0x0020",
+    "Description": "The system is currently performing camera calibration"
+  },
+  {
+    "StateName": "VerifyingCalibration",
+    "EnumValue": "0x0021",
+    "Description": "The system is verifying the camera calibration"
+  },
+  {
+    "StateName": "CheckingFocus",
+    "EnumValue": "0x0030",
+    "Description": "The system is adjusting focus and aperture"
+  },
+  {
+    "StateName": "DefiningWCS",
+    "EnumValue": "0x0040",
+    "Description": "The system is performing manual WCS definition"
+  },
+  {
+    "StateName": "DefiningAutomaticWCS",
+    "EnumValue": "0x0041",
+    "Description": "The system is in an defining WCS automatically using a chessboard"
+  },
+  {
+    "StateName": "DefiningCameraTiedWCS",
+    "EnumValue": "0x0042",
+    "Description": "The system is defining wcs manually, but using cameras for position and rotation"
+  },
+  {
+    "StateName": "GazeCalibrating",
+    "EnumValue": "0x0050",
+    "Description": "The system is performing gaze calibration"
+  },
+  {
+    "StateName": "GazeVerifying",
+    "EnumValue": "0x0051",
+    "Description": "The system is verifying gaze calibration"
+  },
+  {
+    "StateName": "RecordingProfile",
+    "EnumValue": "0x0060",
+    "Description": "The system is collecting snapshots for manual profile creation"
+  },
+  {
+    "StateName": "PlacingMarkers",
+    "EnumValue": "0x0061",
+    "Description": "The system is placing markers in manual profile creation"
+  },
+  {
+    "StateName": "ProfileSelectingPoses",
+    "EnumValue": "0x0062",
+    "Description": "The system is selecting/reviewing/removing poses in manual profile creation"
+  },
+  {
+    "StateName": "ProfileReselectingPoses",
+    "EnumValue": "0x0063",
+    "Description": "The system is reselecting poses in manual profile creation"
+  },
+  {
+    "StateName": "RecordingToFile",
+    "EnumValue": "0x0070",
+    "Description": "[OBSOLETE] The system is recording to disk"
+  },
+  {
+    "StateName": "ScriptedRecordingToFile",
+    "EnumValue": "0x0071",
+    "Description": "[OBSOLETE] The system is recording to disk (without open UI dialog)"
+  },
+  {
+    "StateName": "DefiningExpectedPose",
+    "EnumValue": "0x0080",
+    "Description": "The system is defining expected pose"
+  },
+  {
+    "StateName": "WorldMeasurement",
+    "EnumValue": "0x0090",
+    "Description": "[OBSOLETE] The system is measuring/building a world model"
+  },
+  {
+    "StateName": "AutoDetectLens",
+    "EnumValue": "0x00A0",
+    "Description": "The system is detecting lenses"
+  }
+]
