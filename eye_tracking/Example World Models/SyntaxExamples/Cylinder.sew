@@ -1,0 +1,26 @@
+// This is a world model of a simple one cylinder setup
+// Refer to the manual for complete description of cylinder object
+Cylinder : {
+  // This name will be included in the output data
+  name = "SimulatorScreen"
+
+  // The position of the center of the circle that forms the bottom of the cylinder
+  // It is also possible to use topCenter or just center, which is the midpoint in the centerAxis
+  bottomCenter = 0.2, -0.5, -.6
+
+  // The axis that defines the center line of the cylinder, directed from bottom to top
+  // In this case the centerAxis is alligned with the y-axis of the parent coordinate system
+  centerAxis = 0,1,0  
+  
+  // The radius of the cylinder is 2.5m
+  radius = 2.5
+
+  // The distance from the bottom to the top along the center axis is 1.5m
+  height = 1.5
+
+  // The angle for the start edge of the cylinder section, se manual for more details
+  startAngle = 45
+  
+  // The angle for the end edge of the cylinder section, se manual for more details
+  endAngle = 135
+}

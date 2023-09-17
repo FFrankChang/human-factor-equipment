@@ -1,0 +1,17 @@
+// This is a world model of a simple one screen setup
+Screen : {
+  // This name will be included in the output data
+  name = "SEScreen"
+
+  // The WCS is assumed to be about 10 cm cm down and 4 cm in front of the lower middle pixel of the screen
+  lowerMiddle = 0.0, 0.1, -0.04
+  
+  // The real size of the pixel surface area of the screen is WxH = 34.0 x 27.1 cm
+  size = 0.34, 0.271
+
+  // The screen resolution is 1280 x 1024
+  resolution = 1280, 1024       
+
+  // Generates automatic calibration points usable in the gaze calibration dialog
+  calibrationPoints = 4         
+}

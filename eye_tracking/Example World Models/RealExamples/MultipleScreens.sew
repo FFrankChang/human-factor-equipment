@@ -1,0 +1,111 @@
+// Advanced example:
+// This is a world model over a working desk environment. The person working on this desk has
+// three screens of various sizes, angles and resolutions. This example uses some special
+// settings, so please study some of the other screen examples so you understand the differences.
+
+Screen : {
+  name = "ScreenLeft" // This name will be included in the intersection data.
+  
+  lowerMiddle = -0.44, 0.02, -0.11 // Can also origins such as lowerLeft, upperMiddle, lowerRight. 
+                                   // Use the origin which can be measured with the best accuracy.
+                                   
+  xAxis = 0.8, 0, -0.2 // The norm (length) of the axises does not have to be 1, as in this case.
+  yAxis = 0, 1, 0
+  
+  size = 0.29, 0.514 // This is measured in meters. Please not that this should be EXCLUDING 
+                     // the frame of the screen. Only the visual display of the screen should be measured.
+                     
+  resolution = 1, 1 // Setting resolution to (1,1) gives the resulting intersection point in percentage [0,1]
+                    // The default way is to set it to the real resolution of the screen, but this might be 
+                    // easier to use in some situations.
+  
+  CalibrationPoint2D : {
+	name = "p11"
+	center = 0.2, 0.2 // Since resolution is (1,1) the position of the calibration point is defined in percentage.
+	key = "a" // Setting a "key" value creates keyboard shortcut in the calibration dialog to this calibration point.
+  }
+  
+  CalibrationPoint2D : {
+	name = "p12"
+	center = 0.8, 0.2
+	key = "b"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p21"
+	center = 0.2, 0.8
+	key = "c"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p22"
+	center = 0.8, 0.8
+	key = "d"
+  }
+}
+
+Screen : {
+  name = "ScreenMiddle"
+  lowerMiddle = 0.0, 0.03, -0.12
+  xAxis = 1, 0, 0
+  yAxis = 0, 0.75, -0.25
+  size = 0.52, 0.295
+  resolution = 1, 1
+  
+  CalibrationPoint2D : {
+	name = "p11"
+	center = 0.2, 0.2 
+	key = "e"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p12"
+	center = 0.8, 0.2
+	key = "f"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p21"
+	center = 0.2, 0.8
+	key = "g"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p22"
+	center = 0.8, 0.8
+	key = "h"
+  }
+}
+
+Screen : {
+  name = "ScreenRight"
+  lowerMiddle = 0.46, 0.13, -0.12
+  xAxis = 0.8, 0, 0.2
+  yAxis = 0, 1, 0
+  size = 0.38, 0.305
+  resolution = 1, 1
+  
+  CalibrationPoint2D : {
+	name = "p11"
+	center = 0.2, 0.2 
+	key = "i"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p12"
+	center = 0.8, 0.2
+	key = "j"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p21"
+	center = 0.2, 0.8
+	key = "k"
+  }
+  
+  CalibrationPoint2D : {
+	name = "p22"
+	center = 0.8, 0.8
+	key = "l"
+  }
+}

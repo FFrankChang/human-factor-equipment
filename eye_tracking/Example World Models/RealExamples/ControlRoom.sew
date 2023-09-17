@@ -1,0 +1,111 @@
+// Advanced example:
+// This world model describes a control room simulator with 4 screens and one big 
+// projector 4.5 m away from the screens. Since SmartEye has no control over the
+// computers connected to the screens markers has been placed at the frames of the
+// screens and projectors to be used as calibration points.
+
+// The WCS was changed after the world model was measured, so everything was put into
+// a LocalCS and then adjusted.
+LocalCS : {
+	name = "LocalCS"
+	origin = -0.1, 0, 0
+	xAxis = 0.90, 0, -0.1
+	yAxis = 0, 1, 0
+	
+
+	Screen : {
+	 name = "Screen1"
+	 lowerLeft = -0.919, 0.044, 0.046
+	 xAxis = 0.901, 0.013, -0.434
+	 yAxis = -0.026, 1.000, 0.013
+	 size = 0.51, 0.29
+	 resolution = 1280, 1024
+	}
+
+	Screen : {
+	 name = "Screen2"
+	 lowerLeft = -0.417, 0.048, -0.180
+	 xAxis = 0.997, 0.010, 0.076
+	 yAxis = -0.013, 1.000, 0.007
+	 size = 0.51, 0.29
+	 resolution = 1280, 1024
+	}
+
+	Screen : {
+	 name = "Screen3"
+	 lowerLeft = 0.137, 0.053, -0.138
+	 xAxis = 0.990, 0.009, 0.143
+	 yAxis = -0.020, 1.000, 0.012
+	 size = 0.51, 0.29
+	 resolution = 1280, 1024
+	}
+
+	Screen : {
+	 name = "Screen4"
+	 lowerLeft = 0.688, 0.049, -0.052
+	 xAxis = 0.852, -0.011, 0.524
+	 yAxis = -0.014, 1.000, 0.014
+	 size = 0.51, 0.29
+	 resolution = 1280, 1024
+	}
+
+	Screen : {
+	 name = "Projector"
+	 lowerLeft = -0.532, 0.141, -4.409
+	 xAxis = 0.997, 0.002, 0.080
+	 yAxis = 0.014, 1.000, 0.014
+	 size = 2.34, 1.75
+	 resolution = 1280, 1024
+	}
+		
+		
+	CalibrationPoint3D : {
+	 name = "Screen1LowerMiddle"
+	 center = -0.701, 0.039, -0.065
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen2UpperLeft"
+	 center = -0.446, 0.256, -0.180
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen2LowerLeft"
+	 center = -0.447, 0.124, -0.180
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen3UpperLeft"
+	 center = 0.110, 0.254, -0.137
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen3LowerLeft"
+	 center = 0.113, 0.122, -0.138
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen3UpperRight"
+	 center = 0.645, 0.241, -0.044
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen3LowerRight"
+	 center = 0.645, 0.148, -0.045
+	}
+
+	CalibrationPoint3D : {
+	 name = "Screen4LowerMiddle"
+	 center = 0.894, 0.040, 0.102
+	}
+
+	CalibrationPoint3D : {
+	 name = "ProjectorMiddleLeft"
+	 center = -0.540, 0.842, -4.390
+	}
+
+	CalibrationPoint3D : {
+	 name = "ProjectorMiddleRight"
+	 center = 1.818, 0.766, -4.210
+	}
+}

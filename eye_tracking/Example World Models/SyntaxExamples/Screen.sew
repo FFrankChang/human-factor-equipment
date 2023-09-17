@@ -1,0 +1,42 @@
+// *******************
+// This is an example of what you can do with a screen
+// If you want to start measuring right away, use screen 17 and just att your measurements there
+// *******************
+
+Screen : { // the screen object, can contain child objects such as calibration points or zones
+  name = "ExampleScreen" // the name of the screen output will be ExampleScreen if it is intersected
+  lowerMiddle = 0.0, -0.015, 0.02 // the position of the lower middle of the screen, in world coordinates
+  xAxis = 1, 0, 0 // optional: the xAxis of the screen, used to rotate the screen
+  yAxis = 0, .25, 0.04 // optional: the yAxis of the screen, used to rotate the screen
+  size = 0.34, 0.271 // the size of the screen in metres
+  resolution = 1280, 1024 // the resolution of the screen, in pixels
+  calibrationPoints = 4 // number of automatically placed calibration points. can be 0,2,4 or 9. 4 is recommended
+  
+  CalibrationPoint2D : { // can be used for calibration, instead of or in addition to the automatically placed points
+    name = "userpoint1" // name of the point
+    center = 145, 120 // position of the point, in pixels
+  }
+  
+  CalibrationPoint2D : {
+    name = "userpoint2"
+    center = 500, 200
+  }
+  
+  CalibrationPoint2D : {
+    name = "userpoint3"
+    center = 600, 500
+  }
+  
+  RectangularZone : { // a rectangular zone in the screen, used if you want to define a specific area of interest on the screen 
+    name = "RectangularZone"  // name of the zone, output will be ExampleScreen.RectangularZone if it is intersected
+    lowerLeft = 20, 20 // origin of the zone, in pixels
+    width = 250 // width in pixels
+    height = 200 // height in pixels 
+  }
+  
+  CircularZone : {
+    name = "CircularZone" // name of the zone, output will be ExampleScreen.RectangularZone if it is intersected
+    center = 600, 400 // origin of the zone in pixels 
+    radius = 100 // radius of the circle in pixels 
+  }
+}

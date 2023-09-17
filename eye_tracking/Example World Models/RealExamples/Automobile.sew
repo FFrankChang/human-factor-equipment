@@ -1,0 +1,140 @@
+// Advanced example:
+// This is a world model of a modern car. It's been measured using the laser chessboard tool.
+
+// In the case of a car, where all the parts are static relative to eachother, it's a good practice to 
+// group all objects in a LocalCS. If the WCS have been moved for some reason it is not 
+// necessary to re-measure every object in the car, just calculate the change in position 
+// and rotation of the WCS and adjust the LocalCS accordingly.
+LocalCS : {
+    name = "localCS"
+    origin = 0, 0, 0
+    xAxis = 1, 0, 0
+    yAxis = 0, 1, 0
+    
+    Plane : {
+     name = "WindScreen"
+     lowerLeft = 0.128, -0.049, 1.062
+     xAxis = -0.993, 0.001, -0.122
+     yAxis = -0.013, 0.365, -0.931
+     size = 1.251, 0.658
+     
+     // Divide the wind screen in half since it might be interesting to know 
+     // which half of the screen the subject is looking into
+     RectangularZone : {
+        name = "WindScreenLeftHalf"
+        lowerLeft = 0,0
+        width = 0.625
+        height = 0.658    
+     }
+     
+     RectangularZone : {
+        name = "WindScreenRightHalf"
+        lowerLeft = 0.625,0
+        width = 0.625
+        height = 0.658    
+     }
+     
+    }
+    
+    Plane : {
+     name = "Centerstack"
+     lowerLeft = -0.357, -0.491, 0.548
+     xAxis = -0.966, -0.023, -0.259
+     yAxis = -0.095, 0.907, 0.409
+     size = 0.204, 0.282
+    }
+
+    Plane : {
+     name = "Dimmer"
+     lowerLeft = 0.102, -0.230, 0.779
+     xAxis = -0.985, -0.008, -0.175
+     yAxis = -0.046, 0.999, -0.021
+     size = 0.373, 0.143
+    }
+
+    Plane : {
+     name = "HMIDisplay"
+     lowerLeft = -0.423, -0.258, 0.755
+     xAxis = -0.973, 0.017, -0.230
+     yAxis = -0.030, 0.984, 0.173
+     size = 0.140, 0.089
+    }
+
+    Plane : {
+     name = "RearViewMirror"
+     lowerLeft = -0.332, 0.092, 0.450
+     xAxis = -0.888, -0.032, -0.458
+     yAxis = 0.010, 0.917, -0.399
+     size = 0.221, 0.068
+    }
+
+
+    Plane : {
+     name = "LeftMirror"
+     lowerLeft = 0.586, -0.073, 0.715
+     xAxis = -0.961, -0.058, 0.270
+     yAxis = -0.267, 0.964, 0.005
+     size = 0.169, 0.094
+    }
+
+    Plane : {
+     name = "RightMirror"
+     lowerLeft = -1.327, -0.166, 0.590
+     xAxis = -0.844, -0.009, -0.537
+     yAxis = 0.062, 0.998, -0.002
+     size = 0.138, 0.129
+    }
+
+    Sphere : {
+     name = "RPMIndicator"
+     center = -0.163, -0.187, 0.821
+     radius = 0.06
+    }
+
+    Sphere : {
+     name = "SpeedIndicator"
+     center = -0.038, -0.185, 0.833
+     radius = 0.06
+    }
+    
+    
+    CalibrationPoint3D : {
+     name = "LeftMarker"
+     center = 0.270, -0.067, 0.765
+    }
+
+    CalibrationPoint3D : {
+     name = "RightMarker"
+     center = -1.187, -0.095, 0.624
+    }
+    
+    CalibrationPoint3D : {
+     name = "LowerDIM"
+     center = -0.096, -0.250, 0.750
+    }
+
+    CalibrationPoint3D : {
+     name = "UpperDIM"
+     center = -0.085, -0.077, 0.722
+    }
+
+    CalibrationPoint3D : {
+     name = "UpperCenterStack"
+     center = -0.470, -0.255, 0.632
+    }
+
+    CalibrationPoint3D : {
+     name = "FanWheelAtCenterStack"
+     center = -0.432, -0.432, 0.539
+    }
+
+    CalibrationPoint3D : {
+     name = "AlarmLED"
+     center = -0.494, -0.071, 1.013
+    }
+
+    CalibrationPoint3D : {
+     name = "CenterScenecameraHolder"
+     center = -0.443, 0.093, 0.534
+    }
+}

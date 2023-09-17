@@ -1,0 +1,44 @@
+LocalCS : {
+  name = "localCS"
+  origin = 0.1, 0.1, 0
+  xAxis = 1, 0, 0
+  yAxis = 0, 0.4, 0.1
+  
+  Plane : {
+    name = "aPlane"
+    center = -0.5, 0, 0
+    size = 0.5, 0.5
+    
+    CalibrationPoint2D : {
+      name = "C2D_1"
+      center = 0.3, 0.3
+    }
+  }
+  
+  LocalCS : {
+    name = "localCS in localCS"
+    origin = 0.3, 0, 0
+    xAxis = 1, 0, 0
+    yAxis = 0, 0.4, -0.1
+  
+    Plane : {
+      name = "plane2"
+      center = 0.3, 0.2, 0.0 
+      size = 0.7, 0.7
+    }
+  }  
+  
+  CalibrationPoint3D : {
+    name = "CP_1"
+    center = 0,0,0.4
+  }
+  
+
+  
+}
+
+Sphere : {
+  name = "a sphere"
+  center = 0,0.15,0.3
+  radius = 0.1
+}
