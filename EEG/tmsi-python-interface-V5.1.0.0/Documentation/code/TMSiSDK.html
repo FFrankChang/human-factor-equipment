@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>TMSiSDK package &#8212; TMSi Python Interface V5.0.0.0 Documentatation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'code/TMSiSDK';</script>
+    <link rel="icon" href="../_static/SAGA shape.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TMSiSDK.device package" href="TMSiSDK.device.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="TMSiFrontend.viewer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/TMSi_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/TMSi_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://gitlab.com/tmsi/tmsi-python-examples" title="Examples GitLab" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-gitlab"></i></span>
+            <label class="sr-only">Examples GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://knowledge.tmsi.com/" title="Knowledge Base" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src=".././_static/SAGA_kb.png" class="icon-link-image" alt="Knowledge Base"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.tmsi.com/distributors/?continent=18" title="Questions" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-circle-question"></i></span>
+            <label class="sr-only">Questions</label></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/index_gs.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/installation.html">Installing the interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/features.html">Features</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting_started/examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_apex.html">Examples APEX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_saga.html">Examples SAGA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_data.html">Examples reading and analyzing data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tutorials/tutorial_plotters.html">Tutorial Plotters</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_filtered.html">Tutorial 1: Filtered data plotter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_heatmap.html">Tutorial 2: Heatmap plotter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_differential.html">Tutorial 3: Differential plotter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_eeg_workflow.html">Tutorial EEG Workflow (APEX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_emg_workflow.html">Tutorial HD-EMG Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_changing_configuration.html">Tutorial changing configuration (APEX)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changes from V4.1.0.0 to V5.1.0.0</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">tmsi_python_interface</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="TMSiFrontend.html">TMSiFrontend package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.charts.html">TMSiFrontend.charts package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.heatmap_chart.html"><code class="docutils literal notranslate"><span class="pre">HeatmapChart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.impedance_chart.html"><code class="docutils literal notranslate"><span class="pre">Electrode</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.signal_chart.html"><code class="docutils literal notranslate"><span class="pre">SignalChart</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.components.html">TMSiFrontend.components package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.dialogs.html">TMSiFrontend.components.dialogs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.channel_component.html"><code class="docutils literal notranslate"><span class="pre">ChannelComponent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.dialog.html"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.table_impedance_values.html"><code class="docutils literal notranslate"><span class="pre">TableImpedanceValues</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.legends.html">TMSiFrontend.legends package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.legends.impedance_legend.html"><code class="docutils literal notranslate"><span class="pre">ImpedanceLegend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.plotters.html">TMSiFrontend.plotters package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.heatmap_plotter.html"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.impedance_plotter.html"><code class="docutils literal notranslate"><span class="pre">ImpedancePlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.signal_plotter.html"><code class="docutils literal notranslate"><span class="pre">SignalPlotter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.utilities.html">TMSiFrontend.utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.tmsi_grids.html"><code class="docutils literal notranslate"><span class="pre">TMSiGrids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.tmsi_headcaps.html"><code class="docutils literal notranslate"><span class="pre">TMSiHeadcaps</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.chart.html"><code class="docutils literal notranslate"><span class="pre">Chart</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.plotter.html"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.viewer.html"><code class="docutils literal notranslate"><span class="pre">Viewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">TMSiSDK package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.device.html">TMSiSDK.device package</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.devices.html">TMSiSDK.device.devices package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html"><code class="docutils literal notranslate"><span class="pre">TMSiDevice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a></li>
+
+
+
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_dongle.html"><code class="docutils literal notranslate"><span class="pre">TMSiDongle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_event_reader.html"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_impedance_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html"><code class="docutils literal notranslate"><span class="pre">TMSiThread</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.sample_data_server.html">TMSiSDK.sample_data_server package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.event_data.html"><code class="docutils literal notranslate"><span class="pre">EventData</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data.html"><code class="docutils literal notranslate"><span class="pre">SampleData</span></code></a></li>
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html"><code class="docutils literal notranslate"><span class="pre">SampleDataServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.tmsi_errors.html">TMSiSDK.tmsi_errors package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html"><code class="docutils literal notranslate"><span class="pre">DeviceErrorLookupTable()</span></code></a></li>
+
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_resources.html">TMSiSDK.tmsi_resources package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html">TMSiSDK.tmsi_utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.apex.html">TMSiSDK.tmsi_utilities.apex package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.saga.html">TMSiSDK.tmsi_utilities.saga package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.decorators.html"><code class="docutils literal notranslate"><span class="pre">LogPerformances()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.logger_filter.html"><code class="docutils literal notranslate"><span class="pre">LoggerFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html"><code class="docutils literal notranslate"><span class="pre">MaskType</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html"><code class="docutils literal notranslate"><span class="pre">array_to_matrix()</span></code></a></li>
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html"><code class="docutils literal notranslate"><span class="pre">TMSiLogger</span></code></a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html"><code class="docutils literal notranslate"><span class="pre">TMSiSDK</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes V5.1.0.0</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://gitlab.com/tmsi/tmsi-python-interface/-/releases" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/code/TMSiSDK.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TMSiSDK package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-TMSiSDK">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tmsisdk-package">
+<h1>TMSiSDK package<a class="headerlink" href="#tmsisdk-package" title="Permalink to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.device.html">TMSiSDK.device package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.device.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.devices.html">TMSiSDK.device.devices package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.devices.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.devices.html#module-TMSiSDK.device.devices">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.device.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_bandwidth"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_bandwidth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_divider"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_divider()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_exp"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_exp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_format"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_imp_divider"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_imp_divider()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_index"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_name"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_sampling_frequency"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_sampling_frequency()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_type"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.get_channel_unit_name"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.get_channel_unit_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.is_reference"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.is_reference()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.set_channel_divider"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.set_channel_divider()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.set_channel_index"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.set_channel_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.set_channel_information"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.set_channel_information()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.set_channel_name"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.set_channel_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html#TMSiSDK.device.tmsi_channel.TMSiChannel.set_reference"><code class="docutils literal notranslate"><span class="pre">TMSiChannel.set_reference()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html"><code class="docutils literal notranslate"><span class="pre">TMSiDevice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.apply_mask"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.apply_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.close"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.discover"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.discover()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.download_file_from_device"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.download_file_from_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.export_configuration"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.export_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_card_recording_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_card_recording_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_card_status"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_card_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_active_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_active_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_active_impedance_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_bandwidth"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_bandwidth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_card_file_info"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_card_file_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_card_file_list"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_card_file_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_data"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_handle_value"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_handle_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_impedance_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_impedance_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_impedance_data"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_impedance_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_info_report"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_info_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_interface"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_interface_status"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_interface_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_list"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_power_status"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_power_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_references"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_references()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_repair_logging"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_repair_logging()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_sampling_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_sampling_frequency"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_sampling_frequency()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_serial_number"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_serial_number()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_state"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_sync_out_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_sync_out_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_time"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_triggers"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_triggers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_device_type"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_device_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_dongle_list"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_dongle_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_dongle_serial_number"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_dongle_serial_number()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_downloaded_percentage"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_downloaded_percentage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_dr_interface"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_dr_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_event"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_event_buffer"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_event_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_id"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_live_impedance"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_live_impedance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_num_active_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_num_active_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_num_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_num_active_impedance_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_num_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_num_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_num_impedance_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_num_impedance_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_pairing_status"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_pairing_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.get_sdk"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.get_sdk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.import_configuration"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.import_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.open"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.open()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.pair_device"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.pair_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.reload_device"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.reload_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.reset_device_card"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.reset_device_card()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.reset_device_data_buffer"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.reset_device_data_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.reset_device_event_buffer"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.reset_device_event_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.reset_to_factory_default"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.reset_to_factory_default()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_card_recording_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_card_recording_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_active_channels"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_active_channels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_backup_logging"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_backup_logging()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_channel_names"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_channel_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_download_file_request"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_download_file_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_impedance_request"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_impedance_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_interface"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_references"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_references()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_repair_logging"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_repair_logging()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_sampling_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_sampling_request"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_sampling_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_sync_out_config"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_sync_out_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_time"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.set_device_triggers"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.set_device_triggers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.start_download_file"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.start_download_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.start_measurement"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.start_measurement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.stop_download_file"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.stop_download_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.stop_measurement"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.stop_measurement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice.user_abort_download"><code class="docutils literal notranslate"><span class="pre">TMSiDevice.user_abort_download()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.AUX"><code class="docutils literal notranslate"><span class="pre">ChannelType.AUX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.BIP"><code class="docutils literal notranslate"><span class="pre">ChannelType.BIP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.UNI"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNI</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.all_types"><code class="docutils literal notranslate"><span class="pre">ChannelType.all_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.counter"><code class="docutils literal notranslate"><span class="pre">ChannelType.counter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.cycling_status"><code class="docutils literal notranslate"><span class="pre">ChannelType.cycling_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.impedance"><code class="docutils literal notranslate"><span class="pre">ChannelType.impedance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.sensor"><code class="docutils literal notranslate"><span class="pre">ChannelType.sensor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.status"><code class="docutils literal notranslate"><span class="pre">ChannelType.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ChannelType.unknown"><code class="docutils literal notranslate"><span class="pre">ChannelType.unknown</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.bluetooth"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.bluetooth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.docked"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.docked</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.network"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.none"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.none</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.optical"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.optical</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.serial"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.serial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.usb"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.usb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType.wifi"><code class="docutils literal notranslate"><span class="pre">DeviceInterfaceType.wifi</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState"><code class="docutils literal notranslate"><span class="pre">DeviceState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState.connected"><code class="docutils literal notranslate"><span class="pre">DeviceState.connected</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState.disconnected"><code class="docutils literal notranslate"><span class="pre">DeviceState.disconnected</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState.sampling"><code class="docutils literal notranslate"><span class="pre">DeviceState.sampling</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceType"><code class="docutils literal notranslate"><span class="pre">DeviceType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceType.apex"><code class="docutils literal notranslate"><span class="pre">DeviceType.apex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceType.none"><code class="docutils literal notranslate"><span class="pre">DeviceType.none</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceType.saga"><code class="docutils literal notranslate"><span class="pre">DeviceType.saga</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType"><code class="docutils literal notranslate"><span class="pre">MeasurementType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.APEX_DOWNLOAD"><code class="docutils literal notranslate"><span class="pre">MeasurementType.APEX_DOWNLOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.APEX_IMPEDANCE"><code class="docutils literal notranslate"><span class="pre">MeasurementType.APEX_IMPEDANCE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.APEX_SIGNAL"><code class="docutils literal notranslate"><span class="pre">MeasurementType.APEX_SIGNAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.SAGA_DOWNLOAD"><code class="docutils literal notranslate"><span class="pre">MeasurementType.SAGA_DOWNLOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.SAGA_IMPEDANCE"><code class="docutils literal notranslate"><span class="pre">MeasurementType.SAGA_IMPEDANCE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType.SAGA_SIGNAL"><code class="docutils literal notranslate"><span class="pre">MeasurementType.SAGA_SIGNAL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.PairingStatus"><code class="docutils literal notranslate"><span class="pre">PairingStatus</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.PairingStatus.no_pairing_needed"><code class="docutils literal notranslate"><span class="pre">PairingStatus.no_pairing_needed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.PairingStatus.not_paired"><code class="docutils literal notranslate"><span class="pre">PairingStatus.not_paired</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.PairingStatus.paired"><code class="docutils literal notranslate"><span class="pre">PairingStatus.paired</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceMethod"><code class="docutils literal notranslate"><span class="pre">ReferenceMethod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceMethod.average"><code class="docutils literal notranslate"><span class="pre">ReferenceMethod.average</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceMethod.common"><code class="docutils literal notranslate"><span class="pre">ReferenceMethod.common</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceSwitch"><code class="docutils literal notranslate"><span class="pre">ReferenceSwitch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceSwitch.auto"><code class="docutils literal notranslate"><span class="pre">ReferenceSwitch.auto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.ReferenceSwitch.fixed"><code class="docutils literal notranslate"><span class="pre">ReferenceSwitch.fixed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_dongle.html"><code class="docutils literal notranslate"><span class="pre">TMSiDongle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_dongle.html#TMSiSDK.device.tmsi_dongle.TMSiDongle.get_id"><code class="docutils literal notranslate"><span class="pre">TMSiDongle.get_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_dongle.html#TMSiSDK.device.tmsi_dongle.TMSiDongle.get_serial_number"><code class="docutils literal notranslate"><span class="pre">TMSiDongle.get_serial_number()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_event_reader.html"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_event_reader.html#TMSiSDK.device.tmsi_event_reader.TMSiEventReader.start"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_event_reader.html#TMSiSDK.device.tmsi_event_reader.TMSiEventReader.stop"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader.stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_impedance_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_impedance_channel.html#TMSiSDK.device.tmsi_impedance_channel.TMSiImpedanceChannel.get_channel_index"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel.get_channel_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_impedance_channel.html#TMSiSDK.device.tmsi_impedance_channel.TMSiImpedanceChannel.get_channel_name"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel.get_channel_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.get_conversion_pause"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.get_conversion_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.get_download_percentage"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.get_download_percentage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.get_name"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.get_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.get_sampling_pause"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.get_sampling_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.is_timeout"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.is_timeout()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.set_conversion_pause"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.set_conversion_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.set_download_samples_limit"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.set_download_samples_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.set_sampling_pause"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.set_sampling_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.start"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html#TMSiSDK.device.tmsi_measurement.TMSiMeasurement.stop"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement.stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html"><code class="docutils literal notranslate"><span class="pre">TMSiThread</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html#TMSiSDK.device.tmsi_thread.TMSiThread.get_pause"><code class="docutils literal notranslate"><span class="pre">TMSiThread.get_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html#TMSiSDK.device.tmsi_thread.TMSiThread.run"><code class="docutils literal notranslate"><span class="pre">TMSiThread.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html#TMSiSDK.device.tmsi_thread.TMSiThread.set_pause"><code class="docutils literal notranslate"><span class="pre">TMSiThread.set_pause()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html#TMSiSDK.device.tmsi_thread.TMSiThread.stop"><code class="docutils literal notranslate"><span class="pre">TMSiThread.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.device.html#module-TMSiSDK.device">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.sample_data_server.html">TMSiSDK.sample_data_server package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.sample_data_server.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.event_data.html"><code class="docutils literal notranslate"><span class="pre">EventData</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.event_data.html#TMSiSDK.sample_data_server.event_data.EventDataConsumer"><code class="docutils literal notranslate"><span class="pre">EventDataConsumer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data.html"><code class="docutils literal notranslate"><span class="pre">SampleData</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data.html#TMSiSDK.sample_data_server.sample_data.SampleDataConsumer"><code class="docutils literal notranslate"><span class="pre">SampleDataConsumer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data.html#TMSiSDK.sample_data_server.sample_data.SampleSet"><code class="docutils literal notranslate"><span class="pre">SampleSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html"><code class="docutils literal notranslate"><span class="pre">SampleDataServer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.get_consumer_list"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.get_consumer_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.get_event_consumer_list"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.get_event_consumer_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.put_event_data"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.put_event_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.put_sample_data"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.put_sample_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.register_consumer"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.register_consumer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.register_event_consumer"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.register_event_consumer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.unregister_consumer"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.unregister_consumer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html#TMSiSDK.sample_data_server.sample_data_server.SampleDataServer.unregister_event_consumer"><code class="docutils literal notranslate"><span class="pre">SampleDataServer.unregister_event_consumer()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.sample_data_server.html#module-TMSiSDK.sample_data_server">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.tmsi_errors.html">TMSiSDK.tmsi_errors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_errors.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html"><code class="docutils literal notranslate"><span class="pre">DeviceErrorLookupTable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.SdkErrorLookupTable"><code class="docutils literal notranslate"><span class="pre">SdkErrorLookupTable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError"><code class="docutils literal notranslate"><span class="pre">TMSiError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.already_in_use_dll"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.already_in_use_dll</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.api_incompatible_configuration"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.api_incompatible_configuration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.api_incorrect_argument"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.api_incorrect_argument</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.api_invalid_command"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.api_invalid_command</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.api_no_driver"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.api_no_driver</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.device_error"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.device_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.device_not_connected"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.device_not_connected</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.file_import_error"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.file_import_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.file_writer_error"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.file_writer_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.general_error"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.general_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.missing_dll"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.missing_dll</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiErrorCode.no_devices_found"><code class="docutils literal notranslate"><span class="pre">TMSiErrorCode.no_devices_found</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_errors.html#module-TMSiSDK.tmsi_errors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.tmsi_resources.html">TMSiSDK.tmsi_resources package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_resources.html#module-TMSiSDK.tmsi_resources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html">TMSiSDK.tmsi_utilities package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.apex.html">TMSiSDK.tmsi_utilities.apex package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.apex.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.apex.html#module-TMSiSDK.tmsi_utilities.apex">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.saga.html">TMSiSDK.tmsi_utilities.saga package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.saga.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.saga.html#module-TMSiSDK.tmsi_utilities.saga">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.decorators.html"><code class="docutils literal notranslate"><span class="pre">LogPerformances()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.logger_filter.html"><code class="docutils literal notranslate"><span class="pre">LoggerFilter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.logger_filter.html#TMSiSDK.tmsi_utilities.logger_filter.LoggerFilter.filter"><code class="docutils literal notranslate"><span class="pre">LoggerFilter.filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html"><code class="docutils literal notranslate"><span class="pre">MaskType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html#TMSiSDK.tmsi_utilities.mask_type.MaskType.DEFAULT"><code class="docutils literal notranslate"><span class="pre">MaskType.DEFAULT()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html#TMSiSDK.tmsi_utilities.mask_type.MaskType.REVERSE"><code class="docutils literal notranslate"><span class="pre">MaskType.REVERSE()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html#TMSiSDK.tmsi_utilities.mask_type.robust_reverse"><code class="docutils literal notranslate"><span class="pre">robust_reverse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html"><code class="docutils literal notranslate"><span class="pre">array_to_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html#TMSiSDK.tmsi_utilities.support_functions.float_to_uint"><code class="docutils literal notranslate"><span class="pre">float_to_uint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html#TMSiSDK.tmsi_utilities.support_functions.get_documents_path"><code class="docutils literal notranslate"><span class="pre">get_documents_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html#TMSiSDK.tmsi_utilities.support_functions.get_local_app_data"><code class="docutils literal notranslate"><span class="pre">get_local_app_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html#TMSiSDK.tmsi_utilities.support_functions.matrix_to_multiplexed_array"><code class="docutils literal notranslate"><span class="pre">matrix_to_multiplexed_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html"><code class="docutils literal notranslate"><span class="pre">TMSiLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLogger.critical"><code class="docutils literal notranslate"><span class="pre">TMSiLogger.critical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLogger.debug"><code class="docutils literal notranslate"><span class="pre">TMSiLogger.debug()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLogger.info"><code class="docutils literal notranslate"><span class="pre">TMSiLogger.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLogger.warning"><code class="docutils literal notranslate"><span class="pre">TMSiLogger.warning()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLoggerActivity"><code class="docutils literal notranslate"><span class="pre">TMSiLoggerActivity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLoggerActivity.log"><code class="docutils literal notranslate"><span class="pre">TMSiLoggerActivity.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLoggerPerformance"><code class="docutils literal notranslate"><span class="pre">TMSiLoggerPerformance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html#TMSiSDK.tmsi_utilities.tmsi_logger.TMSiLoggerPerformance.log"><code class="docutils literal notranslate"><span class="pre">TMSiLoggerPerformance.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html#module-TMSiSDK.tmsi_utilities">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html"><code class="docutils literal notranslate"><span class="pre">TMSiSDK</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html#TMSiSDK.tmsi_sdk.TMSiSDK.discover"><code class="docutils literal notranslate"><span class="pre">TMSiSDK.discover()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html#TMSiSDK.tmsi_sdk.TMSiSDK.get_device_list"><code class="docutils literal notranslate"><span class="pre">TMSiSDK.get_device_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html#TMSiSDK.tmsi_sdk.TMSiSDK.get_dongle_list"><code class="docutils literal notranslate"><span class="pre">TMSiSDK.get_dongle_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html#TMSiSDK.tmsi_sdk.TMSiSDK.get_driver_version"><code class="docutils literal notranslate"><span class="pre">TMSiSDK.get_driver_version()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-TMSiSDK">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-TMSiSDK" title="Permalink to this heading">#</a></h2>
+<ol class="loweralpha simple" start="3">
+<li><p>2023 Twente Medical Systems International B.V., Oldenzaal The Netherlands</p></li>
+</ol>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</div></blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TMSiFrontend.viewer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TMSiSDK.device.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TMSiSDK.device package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-TMSiSDK">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By TMSi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, TMSi.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

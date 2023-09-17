@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Tutorial 3: Differential plotter &#8212; TMSi Python Interface V5.0.0.0 Documentatation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/tutorial_plotters_differential';</script>
+    <link rel="icon" href="../_static/SAGA shape.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial EEG Workflow (APEX)" href="tutorial_eeg_workflow.html" />
+    <link rel="prev" title="Tutorial 2: Heatmap plotter" href="tutorial_plotters_heatmap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/TMSi_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/TMSi_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://gitlab.com/tmsi/tmsi-python-examples" title="Examples GitLab" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-gitlab"></i></span>
+            <label class="sr-only">Examples GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://knowledge.tmsi.com/" title="Knowledge Base" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src=".././_static/SAGA_kb.png" class="icon-link-image" alt="Knowledge Base"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.tmsi.com/distributors/?continent=18" title="Questions" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-circle-question"></i></span>
+            <label class="sr-only">Questions</label></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/index_gs.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/installation.html">Installing the interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/features.html">Features</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting_started/examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_apex.html">Examples APEX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_saga.html">Examples SAGA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_data.html">Examples reading and analyzing data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="tutorial_plotters.html">Tutorial Plotters</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial_plotters_filtered.html">Tutorial 1: Filtered data plotter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_plotters_heatmap.html">Tutorial 2: Heatmap plotter</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Tutorial 3: Differential plotter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_eeg_workflow.html">Tutorial EEG Workflow (APEX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_emg_workflow.html">Tutorial HD-EMG Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_changing_configuration.html">Tutorial changing configuration (APEX)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changes from V4.1.0.0 to V5.1.0.0</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../code/modules.html">tmsi_python_interface</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../code/TMSiFrontend.html">TMSiFrontend package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiFrontend.charts.html">TMSiFrontend.charts package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.charts.heatmap_chart.html"><code class="docutils literal notranslate"><span class="pre">HeatmapChart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.charts.impedance_chart.html"><code class="docutils literal notranslate"><span class="pre">Electrode</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.charts.signal_chart.html"><code class="docutils literal notranslate"><span class="pre">SignalChart</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiFrontend.components.html">TMSiFrontend.components package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.components.dialogs.html">TMSiFrontend.components.dialogs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.components.channel_component.html"><code class="docutils literal notranslate"><span class="pre">ChannelComponent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.components.dialog.html"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.components.table_impedance_values.html"><code class="docutils literal notranslate"><span class="pre">TableImpedanceValues</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiFrontend.legends.html">TMSiFrontend.legends package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.legends.impedance_legend.html"><code class="docutils literal notranslate"><span class="pre">ImpedanceLegend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiFrontend.plotters.html">TMSiFrontend.plotters package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.plotters.heatmap_plotter.html"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.plotters.impedance_plotter.html"><code class="docutils literal notranslate"><span class="pre">ImpedancePlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.plotters.signal_plotter.html"><code class="docutils literal notranslate"><span class="pre">SignalPlotter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiFrontend.utilities.html">TMSiFrontend.utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.utilities.tmsi_grids.html"><code class="docutils literal notranslate"><span class="pre">TMSiGrids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiFrontend.utilities.tmsi_headcaps.html"><code class="docutils literal notranslate"><span class="pre">TMSiHeadcaps</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../code/TMSiFrontend.chart.html"><code class="docutils literal notranslate"><span class="pre">Chart</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code/TMSiFrontend.plotter.html"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code/TMSiFrontend.viewer.html"><code class="docutils literal notranslate"><span class="pre">Viewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../code/TMSiSDK.html">TMSiSDK package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiSDK.device.html">TMSiSDK.device package</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.devices.html">TMSiSDK.device.devices package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_device.html"><code class="docutils literal notranslate"><span class="pre">TMSiDevice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_device_enums.html"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a></li>
+
+
+
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_dongle.html"><code class="docutils literal notranslate"><span class="pre">TMSiDongle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_event_reader.html"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_impedance_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_measurement.html"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.device.tmsi_thread.html"><code class="docutils literal notranslate"><span class="pre">TMSiThread</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiSDK.sample_data_server.html">TMSiSDK.sample_data_server package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.sample_data_server.event_data.html"><code class="docutils literal notranslate"><span class="pre">EventData</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.sample_data_server.sample_data.html"><code class="docutils literal notranslate"><span class="pre">SampleData</span></code></a></li>
+
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.sample_data_server.sample_data_server.html"><code class="docutils literal notranslate"><span class="pre">SampleDataServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiSDK.tmsi_errors.html">TMSiSDK.tmsi_errors package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_errors.error.html"><code class="docutils literal notranslate"><span class="pre">DeviceErrorLookupTable()</span></code></a></li>
+
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../code/TMSiSDK.tmsi_resources.html">TMSiSDK.tmsi_resources package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.html">TMSiSDK.tmsi_utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.apex.html">TMSiSDK.tmsi_utilities.apex package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.saga.html">TMSiSDK.tmsi_utilities.saga package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.decorators.html"><code class="docutils literal notranslate"><span class="pre">LogPerformances()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.logger_filter.html"><code class="docutils literal notranslate"><span class="pre">LoggerFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.mask_type.html"><code class="docutils literal notranslate"><span class="pre">MaskType</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.support_functions.html"><code class="docutils literal notranslate"><span class="pre">array_to_matrix()</span></code></a></li>
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="../code/TMSiSDK.tmsi_utilities.tmsi_logger.html"><code class="docutils literal notranslate"><span class="pre">TMSiLogger</span></code></a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../code/TMSiSDK.tmsi_sdk.html"><code class="docutils literal notranslate"><span class="pre">TMSiSDK</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes V5.1.0.0</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://gitlab.com/tmsi/tmsi-python-interface/-/releases" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/tutorial_plotters_differential.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial 3: Differential plotter</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tutorial-3-differential-plotter">
+<h1>Tutorial 3: Differential plotter<a class="headerlink" href="#tutorial-3-differential-plotter" title="Permalink to this heading">#</a></h1>
+<p><em>Corresponding file for this tutorial: TMSiHelpers/differential_signal_plotter_helper.py</em></p>
+<p>The next example outlines a differential signal viewer for HD-EMG purposes. The viewer displays the difference between
+successively separated grid electrodes (along the row direction).</p>
+<p>To be able to view both the unprocessed data and the single differentials data, two windows are initialized from the Gui. Here, the
+first window (with unprocessed data) is defined to be the main window. The class’ close event is connected to this window. In the plotter helper,
+a main plotter is defined using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">FilteredSignalPlotterHelper</span></code> and a secondary plotter is created using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">DifferentialSignalPlotterHelper</span></code>.
+Both plotters are initialized similarly and receive the same data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.filtered_signal_plotter_helper</span> <span class="kn">import</span> <span class="n">FilteredSignalPlotterHelper</span>
+
+<span class="k">class</span> <span class="nc">DifferentialSignalPlotterHelper</span><span class="p">(</span><span class="n">FilteredSignalPlotterHelper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">grid_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hpf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lpf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">grid_type</span><span class="o">=</span><span class="n">grid_type</span><span class="p">,</span> <span class="n">hpf</span><span class="o">=</span><span class="n">hpf</span><span class="p">,</span> <span class="n">lpf</span><span class="o">=</span><span class="n">lpf</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plotter2</span> <span class="o">=</span> <span class="n">SignalPlotter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The single differentials can be calculated as a matrix multiplication between a pre-defined ‘single differential matrix’ and the data.
+The single differential matrix and the differential names are determined based on channel names. See the code snippet for details on the implementation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get_single_differential_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">RC_order</span><span class="p">,</span> <span class="n">RC_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_grid_order</span><span class="p">()</span>
+        
+        <span class="c1"># Initialize channel names</span>
+        <span class="n">ch_names_diff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;R1C1 - R1C2&#39;</span><span class="p">]</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Single differential matrix</span>
+        <span class="n">SD_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">get_device_active_channels</span><span class="p">())))</span>
+        <span class="n">n_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">RC_order</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">RC_order</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># If channel RC and R(C+1) are available, </span>
+                <span class="c1"># RC - R(C+1) </span>
+                <span class="c1"># SD = np.matmul(SD_matrix. samples) </span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">])</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="n">SD_matrix</span><span class="p">[</span><span class="n">n_C</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">c</span> <span class="o">-</span> <span class="n">skip</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">SD_matrix</span><span class="p">[</span><span class="n">n_C</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">c</span> <span class="o">-</span><span class="n">skip</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">RC_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+                    <span class="c1"># Create channel name</span>
+                    <span class="n">ch_names_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">ch_names_diff</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;C&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="s1">&#39;R&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;C&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">2</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Delete row when not available</span>
+                    <span class="n">SD_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">SD_matrix</span><span class="p">,</span> <span class="n">n_C</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">c</span><span class="o">-</span><span class="n">skip</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="n">skip</span> <span class="o">=</span> <span class="n">skip</span> <span class="o">+</span> <span class="mi">1</span> 
+        <span class="c1"># Remove initial channel name</span>
+        <span class="n">ch_names_diff</span> <span class="o">=</span> <span class="n">ch_names_diff</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>
+        <span class="k">return</span> <span class="n">SD_matrix</span><span class="p">,</span> <span class="n">ch_names_diff</span>
+</pre></div>
+</div>
+<p>Once the channel names are known, the plotters can be constructed. The controls for both plotters are then based on each plotter’s specific channel components.
+In order to initialize the channel components, a list of channels needs to be passed, not just channel names. Therefore, the type of the channels’
+instance is needed. A second instance should be created, where the new channel names should be appended to the channel list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">SignalType</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="c1"># Generate channels list with differential channel names</span>
+        <span class="n">differential_signals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ch_names_diff</span><span class="p">:</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">SignalType</span><span class="p">()</span>
+            <span class="n">sig</span><span class="o">.</span><span class="n">set_channel_name</span><span class="p">(</span><span class="n">alternative_channel_name</span><span class="o">=</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">differential_signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+        <span class="c1"># Initialize channel components</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plotter2</span><span class="o">.</span><span class="n">initialize_channels_components</span><span class="p">(</span><span class="n">differential_signals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to be able to see the action potentials travel across the grid in the single differential mode, a short time range should be used.
+Therefore, the time span of the differential plotter is set to 0.2s and the refresh rate is limited to 1 Hz,
+instead of the 10 Hz update frequency of the main plotter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+        <span class="c1"># Set time span of secondary window to 0.2 s</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plotter2</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">set_time_min_max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">differential_time_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_frequency</span><span class="p">)</span>
+        <span class="c1"># Set refresh rate to update every 10 times (=1Hz) to have readible signals</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plotter2_refresh_rate</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_plotter_refresh_counter</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Rather than updating the plotted data in a cycling update, the newest data is now appended to the right side of the plot. As this differs for the signal plotter,
+a change needs to be made on how the processed data should be passed to the window. After updating this, the single differential calculation can be made and data can be provided to the plot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="c1"># Update plotter2 depending on refresh rate</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_plotter_refresh_counter</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotter2_refresh_rate</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">size_dataset</span> <span class="o">&lt;</span> <span class="n">response</span><span class="o">.</span><span class="n">size_buffer</span><span class="p">:</span>
+                <span class="n">data_to_return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_channels</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">size_buffer</span><span class="p">))</span>
+                <span class="n">data_to_return</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+                <span class="n">data_to_return</span><span class="p">[:,</span><span class="n">response</span><span class="o">.</span><span class="n">size_buffer</span> <span class="o">-</span> <span class="n">pointer_data_to_plot</span><span class="p">:]</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">[:,:</span><span class="n">pointer_data_to_plot</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Flip data such that the newest data is on the end</span>
+                <span class="n">data_to_return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">data_to_plot</span><span class="p">)</span>
+                <span class="n">data_to_return</span><span class="p">[:,</span><span class="n">size_dataset</span> <span class="o">-</span> <span class="n">pointer_data_to_plot</span><span class="p">:]</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">[:,:</span><span class="n">pointer_data_to_plot</span><span class="p">]</span>
+                <span class="n">data_to_return</span><span class="p">[:,:</span><span class="n">size_dataset</span> <span class="o">-</span> <span class="n">pointer_data_to_plot</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">[:,</span><span class="n">pointer_data_to_plot</span><span class="p">:]</span>
+            
+            <span class="c1"># Calculate differential data</span>
+            <span class="n">SD_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SD_matrix</span><span class="p">,</span> <span class="n">data_to_return</span><span class="p">[:,</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">differential_time_span</span><span class="p">):])</span>
+            <span class="c1"># Send data to plotter and update chart</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plotter2</span><span class="o">.</span><span class="n">update_chart</span><span class="p">(</span><span class="n">data_to_plot</span> <span class="o">=</span> <span class="n">SD_data</span><span class="p">,</span> <span class="n">time_span</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">differential_time_span</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_plotter_refresh_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorial_plotters_heatmap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2: Heatmap plotter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tutorial_eeg_workflow.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial EEG Workflow (APEX)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By TMSi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, TMSi.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

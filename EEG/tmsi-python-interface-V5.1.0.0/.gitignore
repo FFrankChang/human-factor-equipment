@@ -1,0 +1,11 @@
+# ignore pycache-folders
+__pycache__/
+.*/
+dist/
+_docs/build/
+Output/
+measurements/
+__*.*
+!index.txt
+!__init__.py
+!TMSiSDK/device/devices/*/measurements/

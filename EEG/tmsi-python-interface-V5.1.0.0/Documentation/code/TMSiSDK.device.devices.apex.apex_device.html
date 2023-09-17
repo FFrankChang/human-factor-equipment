@@ -1,0 +1,1775 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>&lt;no title&gt; &#8212; TMSi Python Interface V5.0.0.0 Documentatation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'code/TMSiSDK.device.devices.apex.apex_device';</script>
+    <link rel="icon" href="../_static/SAGA shape.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="TMSiSDK.device.devices.apex.apex_dongle.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="TMSiSDK.device.devices.apex.apex_API_structures.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/TMSi_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/TMSi_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://gitlab.com/tmsi/tmsi-python-examples" title="Examples GitLab" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-gitlab"></i></span>
+            <label class="sr-only">Examples GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://knowledge.tmsi.com/" title="Knowledge Base" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src=".././_static/SAGA_kb.png" class="icon-link-image" alt="Knowledge Base"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.tmsi.com/distributors/?continent=18" title="Questions" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-circle-question"></i></span>
+            <label class="sr-only">Questions</label></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/index_gs.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/installation.html">Installing the interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/features.html">Features</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting_started/examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_apex.html">Examples APEX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_saga.html">Examples SAGA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples_data.html">Examples reading and analyzing data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tutorials/tutorial_plotters.html">Tutorial Plotters</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_filtered.html">Tutorial 1: Filtered data plotter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_heatmap.html">Tutorial 2: Heatmap plotter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_plotters_differential.html">Tutorial 3: Differential plotter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_eeg_workflow.html">Tutorial EEG Workflow (APEX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_emg_workflow.html">Tutorial HD-EMG Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_changing_configuration.html">Tutorial changing configuration (APEX)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changes from V4.1.0.0 to V5.1.0.0</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">tmsi_python_interface</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="TMSiFrontend.html">TMSiFrontend package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.charts.html">TMSiFrontend.charts package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.heatmap_chart.html"><code class="docutils literal notranslate"><span class="pre">HeatmapChart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.impedance_chart.html"><code class="docutils literal notranslate"><span class="pre">Electrode</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.charts.signal_chart.html"><code class="docutils literal notranslate"><span class="pre">SignalChart</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.components.html">TMSiFrontend.components package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.dialogs.html">TMSiFrontend.components.dialogs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.channel_component.html"><code class="docutils literal notranslate"><span class="pre">ChannelComponent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.dialog.html"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.components.table_impedance_values.html"><code class="docutils literal notranslate"><span class="pre">TableImpedanceValues</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.legends.html">TMSiFrontend.legends package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.legends.impedance_legend.html"><code class="docutils literal notranslate"><span class="pre">ImpedanceLegend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.plotters.html">TMSiFrontend.plotters package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.heatmap_plotter.html"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.impedance_plotter.html"><code class="docutils literal notranslate"><span class="pre">ImpedancePlotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.plotters.signal_plotter.html"><code class="docutils literal notranslate"><span class="pre">SignalPlotter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiFrontend.utilities.html">TMSiFrontend.utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.tmsi_grids.html"><code class="docutils literal notranslate"><span class="pre">TMSiGrids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiFrontend.utilities.tmsi_headcaps.html"><code class="docutils literal notranslate"><span class="pre">TMSiHeadcaps</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.chart.html"><code class="docutils literal notranslate"><span class="pre">Chart</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.plotter.html"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiFrontend.viewer.html"><code class="docutils literal notranslate"><span class="pre">Viewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="TMSiSDK.html">TMSiSDK package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="TMSiSDK.device.html">TMSiSDK.device package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4 current active"><a class="reference internal" href="TMSiSDK.device.devices.html">TMSiSDK.device.devices package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device.html"><code class="docutils literal notranslate"><span class="pre">TMSiDevice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a></li>
+
+
+
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_dongle.html"><code class="docutils literal notranslate"><span class="pre">TMSiDongle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_event_reader.html"><code class="docutils literal notranslate"><span class="pre">TMSiEventReader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_impedance_channel.html"><code class="docutils literal notranslate"><span class="pre">TMSiImpedanceChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_measurement.html"><code class="docutils literal notranslate"><span class="pre">TMSiMeasurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.device.tmsi_thread.html"><code class="docutils literal notranslate"><span class="pre">TMSiThread</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.sample_data_server.html">TMSiSDK.sample_data_server package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.event_data.html"><code class="docutils literal notranslate"><span class="pre">EventData</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data.html"><code class="docutils literal notranslate"><span class="pre">SampleData</span></code></a></li>
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.sample_data_server.sample_data_server.html"><code class="docutils literal notranslate"><span class="pre">SampleDataServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.tmsi_errors.html">TMSiSDK.tmsi_errors package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html"><code class="docutils literal notranslate"><span class="pre">DeviceErrorLookupTable()</span></code></a></li>
+
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_resources.html">TMSiSDK.tmsi_resources package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="TMSiSDK.tmsi_utilities.html">TMSiSDK.tmsi_utilities package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.apex.html">TMSiSDK.tmsi_utilities.apex package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.saga.html">TMSiSDK.tmsi_utilities.saga package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.decorators.html"><code class="docutils literal notranslate"><span class="pre">LogPerformances()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.logger_filter.html"><code class="docutils literal notranslate"><span class="pre">LoggerFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.mask_type.html"><code class="docutils literal notranslate"><span class="pre">MaskType</span></code></a></li>
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.singleton.html"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.support_functions.html"><code class="docutils literal notranslate"><span class="pre">array_to_matrix()</span></code></a></li>
+
+
+
+
+<li class="toctree-l4"><a class="reference internal" href="TMSiSDK.tmsi_utilities.tmsi_logger.html"><code class="docutils literal notranslate"><span class="pre">TMSiLogger</span></code></a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TMSiSDK.tmsi_sdk.html"><code class="docutils literal notranslate"><span class="pre">TMSiSDK</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes V5.1.0.0</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://gitlab.com/tmsi/tmsi-python-interface/-/releases" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-gitlab"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/code/TMSiSDK.device.devices.apex.apex_device.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.close"><code class="docutils literal notranslate"><span class="pre">ApexDevice.close()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.discover"><code class="docutils literal notranslate"><span class="pre">ApexDevice.discover()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.download_file_from_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.download_file_from_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.export_configuration"><code class="docutils literal notranslate"><span class="pre">ApexDevice.export_configuration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_recording_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_card_recording_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_card_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_active_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_active_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_info"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_card_file_info()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_card_file_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_data"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_data()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_handle_value"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_handle_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_data"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_impedance_data()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_info_report"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_info_report()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_interface_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_interface_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_power_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_power_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_sampling_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_frequency"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_sampling_frequency()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_serial_number"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_serial_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_state"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_state()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_time"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_type"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_type()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dongle_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_serial_number"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dongle_serial_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_downloaded_percentage"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_downloaded_percentage()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dr_interface"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dr_interface()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_driver_version"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_driver_version()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_event()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_event_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_id"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_id()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_live_impedance"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_live_impedance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_active_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_active_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_pairing_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_pairing_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_sdk"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_sdk()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.import_configuration"><code class="docutils literal notranslate"><span class="pre">ApexDevice.import_configuration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.open"><code class="docutils literal notranslate"><span class="pre">ApexDevice.open()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.pair_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.pair_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reload_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reload_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_card"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_card()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_data_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_data_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_event_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_event_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_to_factory_default"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_to_factory_default()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_card_recording_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_card_recording_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_channel_names"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_channel_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_download_file_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_download_file_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_impedance_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_impedance_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_interface"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_interface()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_references"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_references()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_sampling_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_sampling_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_time"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_download_file"><code class="docutils literal notranslate"><span class="pre">ApexDevice.start_download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_measurement"><code class="docutils literal notranslate"><span class="pre">ApexDevice.start_measurement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_download_file"><code class="docutils literal notranslate"><span class="pre">ApexDevice.stop_download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_measurement"><code class="docutils literal notranslate"><span class="pre">ApexDevice.stop_measurement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.user_abort_download"><code class="docutils literal notranslate"><span class="pre">ApexDevice.user_abort_download()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <span class="target" id="module-TMSiSDK.device.devices.apex.apex_device"></span><ol class="loweralpha simple" start="3">
+<li><p>2023 Twente Medical Systems International B.V., Oldenzaal The Netherlands</p></li>
+</ol>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</div></blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TMSiSDK.device.devices.apex.apex_device.</span></span><span class="sig-name descname"><span class="pre">ApexDevice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serial_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><span class="pre">DeviceInterfaceType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PairingStatus.no_pairing_needed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dongle_serial_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="TMSiSDK.device.tmsi_device.html#TMSiSDK.device.tmsi_device.TMSiDevice" title="TMSiSDK.device.tmsi_device.TMSiDevice"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMSiDevice</span></code></a></p>
+<p>A class to represent and handle the Apex</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.close" title="Permalink to this definition">#</a></dt>
+<dd><p>Closes the connection to the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if impossible to close.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.discover" title="Permalink to this definition">#</a></dt>
+<dd><p>Discovers available devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dr_interface</strong> (<a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><em>DeviceInterfaceType</em></a>) – Device interface to be searched. Allowed interfaces: usb and bluetooth.</p></li>
+<li><p><strong>num_retries</strong> – Number of retries, optional</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.download_file_from_device">
+<span class="sig-name descname"><span class="pre">download_file_from_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.download_file_from_device" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a data stream to download the file from the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_id</strong> (<em>int</em>) – id of the file to download.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – filename where to write the impedance report (if available), defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.file_writer_error if impedance report download fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if the file download fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if already sampling.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.export_configuration">
+<span class="sig-name descname"><span class="pre">export_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.export_configuration" title="Permalink to this definition">#</a></dt>
+<dd><p>Exports the current configuration to an xml file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of the file where to export configuration.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.file_writer_error if export configuration fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_recording_config">
+<span class="sig-name descname"><span class="pre">get_card_recording_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg"><span class="pre">TMSiDevCardRecCfg</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_recording_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets configuration for card recording.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get configuration fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configuration of the card recording.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg">TMSiDevCardRecCfg</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_status">
+<span class="sig-name descname"><span class="pre">get_card_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardStatus"><span class="pre">TMSiDevCardStatus</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets card status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get card status fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configuration of the card recording.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardStatus">TMSiDevCardStatus</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_channels">
+<span class="sig-name descname"><span class="pre">get_device_active_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of active channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get channels from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of channels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel">ApexChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_impedance_channels">
+<span class="sig-name descname"><span class="pre">get_device_active_impedance_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_impedance_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of active impedance channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get channels from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of channels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.ApexImpedanceChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.ApexImpedanceChannel">ApexImpedanceChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_info">
+<span class="sig-name descname"><span class="pre">get_device_card_file_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the information of the file on the device’s card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_id</strong> (<em>int</em>) – Id of the file to be investigated.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get card info fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple with file metadata and file details.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiFileMetadataHeader" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiFileMetadataHeader">TMSiFileMetadataHeader</a>, <a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardFileDetails" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardFileDetails">TMSiDevCardFileDetails</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_list">
+<span class="sig-name descname"><span class="pre">get_device_card_file_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of files available on the device’s card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get card file list fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of file info.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardFileInfo" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardFileInfo">TMSiDevCardFileInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_channels">
+<span class="sig-name descname"><span class="pre">get_device_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get channels from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of channels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel">ApexChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_data">
+<span class="sig-name descname"><span class="pre">get_device_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POINTER_received_data_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTER_num_of_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTER_data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pointer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal"><span class="pre">TMSiDeviceRetVal</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets data from the device during sampling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>POINTER_received_data_array</strong> (<em>pointer</em><em>(</em><em>array</em><em>[</em><em>c_float</em><em>]</em><em>)</em>) – array that will contain the received data.</p></li>
+<li><p><strong>buffer_size</strong> (<em>int</em>) – maximum size of the buffer.</p></li>
+<li><p><strong>POINTER_num_of_sets</strong> (<em>pointer</em><em>(</em><em>c_uint</em><em>)</em>) – number of sets of data received.</p></li>
+<li><p><strong>POINTER_data_type</strong> (<em>pointer</em><em>(</em><em>c_int</em><em>)</em>) – type of data received.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in sampling mode</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>return value of the call</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal">TMSiDeviceRetVal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_handle_value">
+<span class="sig-name descname"><span class="pre">get_device_handle_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_handle_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the value of the device handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Device handle.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_channels">
+<span class="sig-name descname"><span class="pre">get_device_impedance_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of impedance channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get channels from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of channels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.ApexImpedanceChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_impedance_channel.ApexImpedanceChannel">ApexImpedanceChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_data">
+<span class="sig-name descname"><span class="pre">get_device_impedance_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POINTER_received_data_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTER_num_of_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pointer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal"><span class="pre">TMSiDeviceRetVal</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets impedance data from the device during sampling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>POINTER_received_data_array</strong> (<em>pointer</em><em>(</em><em>array</em><em>[</em><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiImpedanceSample" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiImpedanceSample"><em>TMSiImpedanceSample</em></a><em>]</em><em>)</em>) – array that will contain the received data.</p></li>
+<li><p><strong>buffer_size</strong> (<em>int</em>) – maximum size of the buffer.</p></li>
+<li><p><strong>POINTER_num_of_sets</strong> (<em>pointer</em>) – number of sets of data received.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in sampling mode</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>return value of the call</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal">TMSiDeviceRetVal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_info_report">
+<span class="sig-name descname"><span class="pre">get_device_info_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevInfoReport" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevInfoReport"><span class="pre">TMSiDevInfoReport</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_info_report" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the report with device information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get device info from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the device info report.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevInfoReport" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevInfoReport">TMSiDevInfoReport</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_interface_status">
+<span class="sig-name descname"><span class="pre">get_device_interface_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DeviceInterfaceType.bluetooth</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus"><span class="pre">TMSiInterfaceStatus</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_interface_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the device interface status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><em>DeviceInterfaceType</em></a><em>, </em><em>optional</em>) – interface to check, defaults to DeviceInterfaceType.bluetooth</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get device interface status from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>interface status of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus">TMSiInterfaceStatus</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_list">
+<span class="sig-name descname"><span class="pre">get_device_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the list of available devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dr_interface</strong> (<a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><em>DeviceInterfaceType</em></a>) – interface to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of available devices on the requested interface.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice" title="TMSiSDK.device.devices.apex.apex_device.ApexDevice">ApexDevice</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_power_status">
+<span class="sig-name descname"><span class="pre">get_device_power_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevPowerStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevPowerStatus"><span class="pre">TMSiDevPowerStatus</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_power_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the power status of the device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get device power status from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>device power status.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevPowerStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevPowerStatus">TMSiDevPowerStatus</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_config">
+<span class="sig-name descname"><span class="pre">get_device_sampling_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg"><span class="pre">TMSiDevSamplingCfg</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the sampling configuration of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get device sampling configuration from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>device sampling configuration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg">TMSiDevSamplingCfg</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_frequency">
+<span class="sig-name descname"><span class="pre">get_device_sampling_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_frequency" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the sampling frequency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>detailed</strong> (<em>bool</em><em>, </em><em>optional</em>) – detailed frequency description, defaults to False</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>sampling frequency or frequencies.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or dictionary if detailed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_serial_number">
+<span class="sig-name descname"><span class="pre">get_device_serial_number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_serial_number" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the serial number of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>serial number of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_state">
+<span class="sig-name descname"><span class="pre">get_device_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState" title="TMSiSDK.device.tmsi_device_enums.DeviceState"><span class="pre">DeviceState</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_state" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the state of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the device state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceState" title="TMSiSDK.device.tmsi_device_enums.DeviceState">DeviceState</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_time">
+<span class="sig-name descname"><span class="pre">get_device_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datetime</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_time" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the time on the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if get time from the device fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returns the datetime on the device.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>datetime.datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_type">
+<span class="sig-name descname"><span class="pre">get_device_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the device type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the device type.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_list">
+<span class="sig-name descname"><span class="pre">get_dongle_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the list of available dongles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of available dongles.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_dongle.html#TMSiSDK.device.devices.apex.apex_dongle.ApexDongle" title="TMSiSDK.device.devices.apex.apex_dongle.ApexDongle">ApexDongle</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_serial_number">
+<span class="sig-name descname"><span class="pre">get_dongle_serial_number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_serial_number" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the serial number of the dongle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>serial number of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_downloaded_percentage">
+<span class="sig-name descname"><span class="pre">get_downloaded_percentage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_downloaded_percentage" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the percentage of file downloaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>percentage of file downloaded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dr_interface">
+<span class="sig-name descname"><span class="pre">get_dr_interface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><span class="pre">DeviceInterfaceType</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dr_interface" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the interface of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the interface of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType">DeviceInterfaceType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_driver_version">
+<span class="sig-name descname"><span class="pre">get_driver_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_driver_version" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the version of the DLL and USB drivers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if it fails.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple(dll_version, usb_version)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event">
+<span class="sig-name descname"><span class="pre">get_event</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the last event available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>POINTER_event</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiEvent" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiEvent"><em>TMSiEvent</em></a>) – pointer to the event structure to fill.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event_buffer">
+<span class="sig-name descname"><span class="pre">get_event_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event_buffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the available events in the buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TMSiDeviceRetVal</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal">TMSiDeviceRetVal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_id">
+<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the device id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the device id.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_live_impedance">
+<span class="sig-name descname"><span class="pre">get_live_impedance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_live_impedance" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns if live impedance is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if enabled, False if disabled.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_channels">
+<span class="sig-name descname"><span class="pre">get_num_active_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of active channels of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of active channels of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_impedance_channels">
+<span class="sig-name descname"><span class="pre">get_num_active_impedance_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_impedance_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of active impedance channels of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of active impedance channels of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_channels">
+<span class="sig-name descname"><span class="pre">get_num_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of channels of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of channels of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_impedance_channels">
+<span class="sig-name descname"><span class="pre">get_num_impedance_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_impedance_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of impedance channels of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of impedance channels of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_pairing_status">
+<span class="sig-name descname"><span class="pre">get_pairing_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_pairing_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the pairing status of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pairing status of the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiPairingStatus" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiPairingStatus">TMSiPairingStatus</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_sdk">
+<span class="sig-name descname"><span class="pre">get_sdk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CDLL</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_sdk" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the handle of the communication library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the handle of the communication library.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>CDLL</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.import_configuration">
+<span class="sig-name descname"><span class="pre">import_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.import_configuration" title="Permalink to this definition">#</a></dt>
+<dd><p>Imports the file configuration to the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of the file where to export configuration.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.general_error if import configuration fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dongle_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65535</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.open" title="Permalink to this definition">#</a></dt>
+<dd><p>Opens the connection with the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dongle_id</strong> (<em>int</em><em>, </em><em>optional</em>) – Id of the dongle to use for the connection. Defaults to ApexConst.TMSI_DONGLE_ID_NONE</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if open connection failed.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.no_devices_found if device not found.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.pair_device">
+<span class="sig-name descname"><span class="pre">pair_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal"><span class="pre">TMSiDeviceRetVal</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.pair_device" title="Permalink to this definition">#</a></dt>
+<dd><p>Pairs the device with the dongle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>device_id</strong> (<em>int</em>) – Id of the device</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>return value of the call</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiDeviceRetVal">TMSiDeviceRetVal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.reload_device">
+<span class="sig-name descname"><span class="pre">reload_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reload_device" title="Permalink to this definition">#</a></dt>
+<dd><p>Reload information from device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in connected state</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_card">
+<span class="sig-name descname"><span class="pre">reset_device_card</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_card" title="Permalink to this definition">#</a></dt>
+<dd><p>Resets the memory card of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if reset card fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_data_buffer">
+<span class="sig-name descname"><span class="pre">reset_device_data_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_data_buffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Resets the incoming buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in sampling mode</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if reset fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_event_buffer">
+<span class="sig-name descname"><span class="pre">reset_device_event_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_event_buffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Resets the incoming event buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if reset fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_to_factory_default">
+<span class="sig-name descname"><span class="pre">reset_to_factory_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_to_factory_default" title="Permalink to this definition">#</a></dt>
+<dd><p>Resets the device to default configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if reset fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_card_recording_config">
+<span class="sig-name descname"><span class="pre">set_card_recording_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg"><span class="pre">TMSiDevCardRecCfg</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg"><span class="pre">TMSiDevCardRecCfg</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_card_recording_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the configuration for recording on card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg"><em>TMSiDevCardRecCfg</em></a>) – configuration to be set.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set configuration fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the new available configuration for recording on card.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevCardRecCfg">TMSiDevCardRecCfg</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_channel_names">
+<span class="sig-name descname"><span class="pre">set_device_channel_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_channel_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the device channel names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – names to be set.</p></li>
+<li><p><strong>indices</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – index of the channels to edit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set names fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+<li><p><strong>TypeError</strong> – if names is not only strings</p></li>
+<li><p><strong>TypeError</strong> – if indices is not only integers.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of new channels.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel">ApexChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_download_file_request">
+<span class="sig-name descname"><span class="pre">set_device_download_file_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSetCardFileReq" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSetCardFileReq"><span class="pre">TMSiDevSetCardFileReq</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_download_file_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the download file request to start or stop the download stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_request</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSetCardFileReq" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSetCardFileReq"><em>TMSiDevSetCardFileReq</em></a>) – file request to start or stop.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set device download file request fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in sampling mode.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_impedance_request">
+<span class="sig-name descname"><span class="pre">set_device_impedance_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement_request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevImpedanceRequest" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevImpedanceRequest"><span class="pre">TMSiDevImpedanceRequest</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_impedance_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the impedance request to start or stop the acquisition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>measurement_request</strong> (<em>TMSiSetDeviceImpedanceRequest</em>) – measurement request to start or stop.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set impedance request fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in the correct state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_interface">
+<span class="sig-name descname"><span class="pre">set_device_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_interface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DeviceInterfaceType.bluetooth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">TMSiControl.ControlEnabled</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus"><span class="pre">TMSiInterfaceStatus</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_interface" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the device interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_interface</strong> (<a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType" title="TMSiSDK.device.tmsi_device_enums.DeviceInterfaceType"><em>DeviceInterfaceType</em></a><em>, </em><em>optional</em>) – the interface to set, defaults to DeviceInterfaceType.bluetooth</p></li>
+<li><p><strong>control</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.TMSiControl" title="TMSiSDK.device.devices.apex.apex_API_enums.TMSiControl"><em>TMSiControl</em></a><em>, </em><em>optional</em>) – enable or disable interface, defaults to TMSiControl.ControlEnabled</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the new status of the device interface.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiInterfaceStatus">TMSiInterfaceStatus</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_references">
+<span class="sig-name descname"><span class="pre">set_device_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_references" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the channels to be used as reference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_references</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of reference values.</p></li>
+<li><p><strong>list_indices</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of indices to be edited.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set references fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+<li><p><strong>TypeError</strong> – if references is not only integers</p></li>
+<li><p><strong>TypeError</strong> – if indices is not only integers.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of new channels.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_structures.apex_channel.html#TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel" title="TMSiSDK.device.devices.apex.apex_structures.apex_channel.ApexChannel">ApexChannel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_config">
+<span class="sig-name descname"><span class="pre">set_device_sampling_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ApexBaseSampleRate.Decimal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">live_impedance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ApexLiveImpedance.On</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impedance_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg"><span class="pre">TMSiDevSamplingCfg</span></a></span></span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the sampling configuration of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sampling_frequency</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.ApexBaseSampleRate" title="TMSiSDK.device.devices.apex.apex_API_enums.ApexBaseSampleRate"><em>ApexBaseSampleRate</em></a><em>, </em><em>optional</em>) – sample rate to set, defaults to ApexBaseSampleRate.Decimal</p></li>
+<li><p><strong>live_impedance</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_enums.html#TMSiSDK.device.devices.apex.apex_API_enums.ApexLiveImpedance" title="TMSiSDK.device.devices.apex.apex_API_enums.ApexLiveImpedance"><em>ApexLiveImpedance</em></a><em>, </em><em>optional</em>) – enable or disable live impedance, defaults to ApexLiveImpedance.On</p></li>
+<li><p><strong>impedance_limit</strong> (<em>int</em><em>, </em><em>optional</em>) – kOhms value of the impedance limit, defaults to 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set sampling configuration fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the new sampling configuration</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSamplingCfg">TMSiDevSamplingCfg</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_request">
+<span class="sig-name descname"><span class="pre">set_device_sampling_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement_request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSampleRequest" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSampleRequest"><span class="pre">TMSiDevSampleRequest</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the sampling request to start or stop the acquisition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>measurement_request</strong> (<a class="reference internal" href="TMSiSDK.device.devices.apex.apex_API_structures.html#TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSampleRequest" title="TMSiSDK.device.devices.apex.apex_API_structures.TMSiDevSampleRequest"><em>TMSiDevSampleRequest</em></a>) – measurement request to configure the acquisition.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set sampling request fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if device is not in sampling mode.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_time">
+<span class="sig-name descname"><span class="pre">set_device_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_time" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the datetime of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>datetime</strong> (<em>datetime.datetime</em>) – datetime to set on the device.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_error if set time fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_download_file">
+<span class="sig-name descname"><span class="pre">start_download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_of_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_download_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Starts the download of the file requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_id</strong> (<em>int</em>) – id of the file to download.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – filename where to write the impedance report (if available), defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.file_writer_error if impedance report download fails.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if already sampling.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_measurement">
+<span class="sig-name descname"><span class="pre">start_measurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType" title="TMSiSDK.device.tmsi_device_enums.MeasurementType"><span class="pre">MeasurementType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_refresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_measurement" title="Permalink to this definition">#</a></dt>
+<dd><p>Starts the measurement requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measurement_type</strong> (<a class="reference internal" href="TMSiSDK.device.tmsi_device_enums.html#TMSiSDK.device.tmsi_device_enums.MeasurementType" title="TMSiSDK.device.tmsi_device_enums.MeasurementType"><em>MeasurementType</em></a>) – measurement to start</p></li>
+<li><p><strong>thread_refresh</strong> (<em>float</em><em>, </em><em>optional.</em>) – refresh time for sampling and conversion threads, defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if already sampling.</p></li>
+<li><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.device_not_connected if not connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_download_file">
+<span class="sig-name descname"><span class="pre">stop_download_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_download_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Stops the download of the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if not sampling.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_measurement">
+<span class="sig-name descname"><span class="pre">stop_measurement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_measurement" title="Permalink to this definition">#</a></dt>
+<dd><p>Stops the measurement requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TMSiSDK.tmsi_errors.error.html#TMSiSDK.tmsi_errors.error.TMSiError" title="TMSiSDK.tmsi_errors.error.TMSiError"><strong>TMSiError</strong></a> – TMSiErrorCode.api_invalid_command if not sampling.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TMSiSDK.device.devices.apex.apex_device.ApexDevice.user_abort_download">
+<span class="sig-name descname"><span class="pre">user_abort_download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.user_abort_download" title="Permalink to this definition">#</a></dt>
+<dd><p>Interrupts the download after user abort command.</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TMSiSDK.device.devices.apex.apex_API_structures.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TMSiSDK.device.devices.apex.apex_dongle.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.close"><code class="docutils literal notranslate"><span class="pre">ApexDevice.close()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.discover"><code class="docutils literal notranslate"><span class="pre">ApexDevice.discover()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.download_file_from_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.download_file_from_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.export_configuration"><code class="docutils literal notranslate"><span class="pre">ApexDevice.export_configuration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_recording_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_card_recording_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_card_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_card_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_active_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_active_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_info"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_card_file_info()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_card_file_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_card_file_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_data"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_data()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_handle_value"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_handle_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_impedance_data"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_impedance_data()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_info_report"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_info_report()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_interface_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_interface_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_power_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_power_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_sampling_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_sampling_frequency"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_sampling_frequency()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_serial_number"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_serial_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_state"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_state()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_time"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_device_type"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_device_type()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_list"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dongle_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dongle_serial_number"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dongle_serial_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_downloaded_percentage"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_downloaded_percentage()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_dr_interface"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_dr_interface()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_driver_version"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_driver_version()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_event()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_event_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_event_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_id"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_id()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_live_impedance"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_live_impedance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_active_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_active_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_active_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_num_impedance_channels"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_num_impedance_channels()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_pairing_status"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_pairing_status()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.get_sdk"><code class="docutils literal notranslate"><span class="pre">ApexDevice.get_sdk()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.import_configuration"><code class="docutils literal notranslate"><span class="pre">ApexDevice.import_configuration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.open"><code class="docutils literal notranslate"><span class="pre">ApexDevice.open()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.pair_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.pair_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reload_device"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reload_device()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_card"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_card()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_data_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_data_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_device_event_buffer"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_device_event_buffer()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.reset_to_factory_default"><code class="docutils literal notranslate"><span class="pre">ApexDevice.reset_to_factory_default()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_card_recording_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_card_recording_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_channel_names"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_channel_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_download_file_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_download_file_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_impedance_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_impedance_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_interface"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_interface()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_references"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_references()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_config"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_sampling_config()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_sampling_request"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_sampling_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.set_device_time"><code class="docutils literal notranslate"><span class="pre">ApexDevice.set_device_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_download_file"><code class="docutils literal notranslate"><span class="pre">ApexDevice.start_download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.start_measurement"><code class="docutils literal notranslate"><span class="pre">ApexDevice.start_measurement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_download_file"><code class="docutils literal notranslate"><span class="pre">ApexDevice.stop_download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.stop_measurement"><code class="docutils literal notranslate"><span class="pre">ApexDevice.stop_measurement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TMSiSDK.device.devices.apex.apex_device.ApexDevice.user_abort_download"><code class="docutils literal notranslate"><span class="pre">ApexDevice.user_abort_download()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By TMSi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, TMSi.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

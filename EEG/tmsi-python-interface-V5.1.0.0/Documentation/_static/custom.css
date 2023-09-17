@@ -1,0 +1,58 @@
+
+a:link {
+    color: #FF8200;
+}
+
+a:visited {
+    color: #FF8200;
+}
+
+a:hover {
+    color: #FC4C02;
+}
+
+a:active {
+    color: #FC4C02;
+}
+
+h1 {
+    color:#F05E16  !important;
+}
+
+h2 {
+    color: #F06B22 !important;
+}
+
+
+h3 {
+    color: #FD8C3E !important;
+}
+
+p[data-theme=dark] {
+    color: #FFFFFF
+}
+
+nav.bd-links .active:hover>a, nav.bd-links .active>a {
+    color: #FC4C02;
+    font-weight: 600;
+}
+
+.nav {
+    --bs-nav-link-color: #FC4C02 !important;
+    --bs-nav-link-hover-color: #FC4C02 !important;
+    --bs-nav-link-disabled-color: #6c757d !important;
+}
+
+.navbar-nav li a:hover {
+    color: #FC4C02;
+}
+
+html[data-theme=dark], html[data-theme=light] {
+    --bs-link-color:  #FC4C02 !important;
+    --bs-link-hover-color: #FC4C02 !important;
+    --pst-color-text-base: #24272A !important;
+    --pst-color-primary:  #FC4C02 !important;
+    --pst-color-inline-code: #FC4C02 !important;
+}
+
+
