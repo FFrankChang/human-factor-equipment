@@ -1,33 +1,40 @@
 import cv2
+from pyzbar.pyzbar import decode
 
-# 初始化摄像头
 cap = cv2.VideoCapture(0)
-
-# 检查摄像头是否成功打开
+qrcode = cv2.QRCodeDetector()  
 if not cap.isOpened():
     print("无法打开摄像头")
     exit()
 
-# 读取一帧图像
-ret, frame = cap.read()
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        print("无法读取画面")
+        break
+    decoded_objects = decode(frame)
+    for obj in decoded_objects:
+        if obj.type == 'QRCODE':
+            data = obj.data.decode('utf-8')
 
-# 检查图像是否成功读取
-if not ret:
-    print("无法读取图像")
-    cap.release()
-    exit()
+            points = obj.polygon
+            print("points:", points)
+            
+            if len(points) >= 4:
+                for j in range(4):
+                    cv2.line(frame, points[j], points[(j+1) % 4], (0, 255, 0), 3)
+                    
+    # data, box, rectified = qrcode.detectAndDecode(frame)
+    # show_data = str(box)
+    # if data:
+    #     cv2.putText(frame, show_data, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+    #     print(box)
+        # cv2.rectangle(frame,(box[0],box[1]),(box[2],box[3]),(0,0,255),5)
+    
+    cv2.imshow('Camera Feed', frame)
 
-# # 保存图像为文件
-# cv2.imwrite("captured_image.jpg", frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
-# 关闭摄像头
 cap.release()
-
-# 展示拍摄的图像
-cv2.imshow("Captured Image", frame)
-
-# 等待用户按下任意键后关闭窗口
-cv2.waitKey(0)
-
-# 关闭所有OpenCV窗口
 cv2.destroyAllWindows()
