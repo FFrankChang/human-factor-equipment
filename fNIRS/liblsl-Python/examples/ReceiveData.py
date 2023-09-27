@@ -4,12 +4,12 @@ import pylsl
 # first resolve an EEG stream on the lab network
 print("looking for an AudioCaptureWin stream...")
 streams = pylsl.resolve_stream('type','Audio')
-
+print(1)
 # create a new inlet to read from the stream
 inlet = pylsl.stream_inlet(streams[0])
 
 sample = pylsl.vectorf()
-while True:
-	# get a new sample (you can also omit the timestamp part if you're not interested in it)
-	timestamp = inlet.pull_sample(sample)	
-	print(timestamp, list(sample))
+# while True:
+# 	# get a new sample (you can also omit the timestamp part if you're not interested in it)
+# 	timestamp = inlet.pull_sample(sample)	
+# 	print(timestamp, list(sample))
