@@ -21,6 +21,8 @@ def create_plots():
 
     o2hb_lines = []  # List to store o2hb lines
     hhb_lines = []  # List to store hhb lines
+    label1s = []  # List to store label1 objects
+    label2s = []  # List to store label2 objects
     y1_values = []
     y2_values = []
     
@@ -31,9 +33,11 @@ def create_plots():
         line2, = ax.plot(x_vals, y2_values[i], label=f'Curve {i}', color='lightblue')  # Create a line object
         ax.set_xlim(0, 10)  # Set X-axis range
         ax.set_ylim(-200, 200)  # Set Y-axis range
-        ax.set_title(f'channel{2*i}x{2*i+1}')  # Set subplot title
+        ax.set_title(f'channel {2 * i} x {2 * i + 1}')  # Set subplot title
         o2hb_lines.append(line1)  # Append the line object to the list
         hhb_lines.append(line2)  # Append the line object to the list
+        label1s.append([ax.text(0.75, 0.9, '', transform=ax.transAxes,color='lightcoral')])  # Create label objects
+        label2s.append([ax.text(0.75, 0.8, '', transform=ax.transAxes,color='lightblue')])  # Create label objects
 
     plt.tight_layout()  # Automatically adjust subplot layout
 
@@ -57,6 +61,8 @@ def create_plots():
             y2_values[i][:-1]= y2_values[i][1:]  # Corrected variable name to y_values
             y2_values[i][-1] = sample[b]  # Get new data
             hhb_lines[i].set_ydata(y2_values[i]) 
+            label1s[i][0].set_text(f'{sample[a]:.2f}')
+            label2s[i][0].set_text(f'{sample[b]:.2f}')
 
         plt.draw()
         plt.pause(0.1)
