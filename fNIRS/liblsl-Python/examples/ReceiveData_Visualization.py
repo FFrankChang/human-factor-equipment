@@ -6,48 +6,60 @@ from scipy.interpolate import make_interp_spline
 import threading
 import time
 
-def create_plot():
-    x_vals = np.linspace(0, 10, 100)  # X轴数据范围
-    y1_vals = np.zeros_like(x_vals)  # 初始化第一条曲线的Y轴数据为0
-    y2_vals = np.zeros_like(x_vals)  # 初始化第二条曲线的Y轴数据为0
-    plt.ion()  # 开启交互模式
+def create_plots():
+    num_plots = 24  # Number of subplots
+    num_rows = 4     # Number of rows of subplots
+    num_cols = 6     # Number of columns of subplots
 
-    fig, ax = plt.subplots()
+    x_vals = np.linspace(0, 10, 100)  # X-axis data range
+    plt.ion()  # Turn on interactive mode
 
-    line1, = ax.plot(x_vals, y1_vals, label='Curve 1',color='lightcoral')  # 创建第一条曲线对象
-    line2, = ax.plot(x_vals, y2_vals, label='Curve 2',color='lightblue')  # 创建第二条曲线对象
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=(16, 9))  # Create multiple subplots
 
-    ax.set_xlim(0, 10)  # 设置X轴范围
-    ax.set_ylim(-100, 100)  # 设置Y轴范围
+    # Flatten the 2D subplot array for indexing
+    axes = axes.ravel()
 
+    o2hb_lines = []  # List to store o2hb lines
+    hhb_lines = []  # List to store hhb lines
+    y1_values = []
+    y2_values = []
+    
+    for i, ax in enumerate(axes):
+        y1_values.append(np.zeros_like(x_vals))  # Initialize Y-axis data for the curve to zeros
+        y2_values.append(np.zeros_like(x_vals))  # Initialize Y-axis data for the curve to zeros
+        line1, = ax.plot(x_vals, y1_values[i], label=f'Curve {i}', color='lightcoral')  # Create a line object
+        line2, = ax.plot(x_vals, y2_values[i], label=f'Curve {i}', color='lightblue')  # Create a line object
+        ax.set_xlim(0, 10)  # Set X-axis range
+        ax.set_ylim(-200, 200)  # Set Y-axis range
+        ax.set_title(f'channel{2*i}x{2*i+1}')  # Set subplot title
+        o2hb_lines.append(line1)  # Append the line object to the list
+        hhb_lines.append(line2)  # Append the line object to the list
+
+    plt.tight_layout()  # Automatically adjust subplot layout
+
+    def on_key(event):
+        if event.key == 'q':
+            plt.close()  # Close the plot window
+            sys.exit(0)
+
+    fig.canvas.mpl_connect('key_press_event', on_key)  # Bind the key press event handler
 
     while True:
         global sample
-        y1_vals[:-1] = y1_vals[1:]  # 第一条曲线数据左移
-        y1_vals[-1] = sample[32]  # 获取第一条曲线新数据
 
-        y2_vals[:-1] = y2_vals[1:]  # 第二条曲线数据左移
-        y2_vals[-1] = sample[33] # 获取第二条曲线新数据
+        for i in range(num_plots):
+            a = 2*i
+            b = 2*i+1
+            y1_values[i][:-1]= y1_values[i][1:]  # Corrected variable name to y_values
+            y1_values[i][-1] = sample[a]  # Get new data
+            o2hb_lines[i].set_ydata(y1_values[i]) 
 
-        # 样条插值
-        x_smooth = np.linspace(x_vals.min(), x_vals.max(), 1000)  
-        spline1 = make_interp_spline(x_vals, y1_vals)
-        y1_smooth = spline1(x_smooth)
+            y2_values[i][:-1]= y2_values[i][1:]  # Corrected variable name to y_values
+            y2_values[i][-1] = sample[b]  # Get new data
+            hhb_lines[i].set_ydata(y2_values[i]) 
 
-        spline2 = make_interp_spline(x_vals, y2_vals)
-        y2_smooth = spline2(x_smooth)
-
-        line1.set_xdata(x_smooth)  # 更新第一条曲线X轴数据
-        line1.set_ydata(y1_smooth)  # 更新第一条曲线Y轴数据
-
-        line2.set_xdata(x_smooth)  # 更新第二条曲线X轴数据
-        line2.set_ydata(y2_smooth)  # 更新第二条曲线Y轴数据
-
-        plt.title('Real-time Data Visualization')
-        plt.xlabel('X-axis')
-        plt.ylabel('Y-axis')
-        plt.draw()  # 绘制图形
-        plt.pause(0.1)  # 暂停一段时间
+        plt.draw()
+        plt.pause(0.1)
 
 def receive():
     # first resolve an EEG stream on the lab network
@@ -67,6 +79,6 @@ def receive():
 
 def main():
     threading.Thread(target=receive).start()
-    threading.Thread(target=create_plot).start()
+    threading.Thread(target=create_plots).start()
 
 main()
