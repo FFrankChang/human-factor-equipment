@@ -3,7 +3,7 @@ import pylsl
 
 # first resolve an EEG stream on the lab network
 print("looking for an AudioCaptureWin stream...")
-streams = pylsl.resolve_stream('type','Audio')
+streams = pylsl.resolve_stream('type','NIRS')
 print(1)
 # create a new inlet to read from the stream
 inlet = pylsl.stream_inlet(streams[0])
