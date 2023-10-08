@@ -49,11 +49,11 @@ client.connect(mqtt_host, mqtt_port, 60)
 
 async def send_data():
     while True:
-        final_data['data']=parse()
+        final_data['data']=json.dumps(parse())
         final_data['timestamp']= int(datetime.now().timestamp() * 1000)
         client.publish(mqtt_topic, json.dumps(final_data).replace(' ',''))
         print(json.dumps(final_data).replace(' ',''))
-        time.sleep(10)
+        time.sleep(0.05)
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(send_data())
