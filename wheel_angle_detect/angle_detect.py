@@ -1,9 +1,5 @@
-from sys import _AsyncgenHook
 import cv2
 from pyzbar.pyzbar import decode
-
-
-
 
 raw_data={
         1:[0,0],
@@ -40,7 +36,8 @@ def  location(raw_data):
             loc[4]=raw_data[i]
     return loc
 
-def angle_detect(loc,mid,left,right,r,l):
+def angle_detect(loc,left,right,r,l):
+    mid = (r+l)/2
     angle=0
     if loc[1][0]==0:
         return 0
@@ -80,10 +77,10 @@ while True:
                     raw_data[j+1][1]=points[j].y
                     cv2.line(frame, points[j], points[(j+1) % 4], (0, 255, 0), 3)
             loc=location(raw_data)
-            # print(loc)
-            print(angle_detect(loc,329,70,608,220,438)) #中心，左极限，右极限，左中，右中
+            print(loc)
+            # print(angle_detect(loc,70,608,220,438)) #左极限，右极限，左中，右中
     cv2.imshow('Camera Feed', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-        cap.release()
-        cv2.destroyAllWindows()
+cap.release()
+cv2.destroyAllWindows()
