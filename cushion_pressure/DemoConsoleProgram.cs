@@ -65,8 +65,10 @@ namespace ConsoleSerialDllDemo
 
         public unsafe static void onReceiveData(int code, int row, int col, int* pData)
         {
-            Console.WriteLine("code = {0}, row = {1}, col = {2}", code, row, col);
-            string title = $"code = {code}, row = {row}, col = {col}";
+            DateTime time = DateTime.Now;
+            long timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            Console.WriteLine("code = {0}, row = {1}, col = {2}, time = {3}", code, row, col,time);
+            string title = $"code = {code}, row = {row}, col = {col},{time.ToString("yyyy-MM-dd HH:mm:ss.fff")},{timestamp}";
             sWriter.WriteLine(title);
             int index = 0;
             for (int i = 0; i < col; i++)
@@ -74,19 +76,9 @@ namespace ConsoleSerialDllDemo
                 string line = "";
                 for (int j = 0; j < row; j++)
                 {
-                    //下面两行等效的
-                    //line += " " + pData[i * row + j].ToString("x2");
-                    line += " " + pData[index++].ToString("x2");
+                    line += " " + pData[index++].ToString();
                 }
                 sWriter.WriteLine(line);
-                try
-                {
-                    sendUdp($"{title} {line}");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"send data exception: {e}");
-                }
                 Console.WriteLine($"{line}");
             }
             sWriter.Flush(); // 确保数据实时写入文件
