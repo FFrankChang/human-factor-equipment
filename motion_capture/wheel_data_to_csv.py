@@ -38,15 +38,19 @@ formatted_datetime = datetime.now().strftime("%Y%m%d_%H-%M-%S")
 filename = 'wheel_'+formatted_datetime.__str__()
 csv_file_path = os.path.join(data_folder_path, f"{filename}.csv")
 
-header = ['raw_wheel_data_x','raw_wheel_data_y','raw_wheel_data_z','timestamp']
+header = ['timestamp','raw_wheel_data_x','raw_wheel_data_y','raw_wheel_data_z']
 
 with open(csv_file_path, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
     csv_writer.writerow(header)
-    while 1:
-        mc_data = parse_euler()
-        angle_mea = mc_data[23][2][2]
-        # print( mc_data[23][2])
-        result = mc_data[23][2][0],mc_data[23][2][1],mc_data[23][2][2],time.time()
-        print(result)
-        csv_writer.writerow(result)
+    while True:
+        try:
+            mc_data = parse_euler()
+            angle_mea = mc_data[23][2][2]
+            result = time.time(), mc_data[23][2][0], mc_data[23][2][1], mc_data[23][2][2]
+            print(result)
+            csv_writer.writerow(result)
+        except IndexError:
+            print("IndexError")
+        except Exception as e:
+            print(f"An error occurred: {e}")
