@@ -1,6 +1,6 @@
 TMSiStyle = '''
 * {
-    background: transparent;
+    background: white;
     font-size: 12px;
 }                                
 
