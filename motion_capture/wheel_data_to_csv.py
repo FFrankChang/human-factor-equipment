@@ -48,7 +48,7 @@ with open(csv_file_path, 'w', newline='') as csvfile:
             mc_data = parse_euler()
             angle_mea = mc_data[23][2][2]
             result = time.time(), mc_data[23][2][0], mc_data[23][2][1], mc_data[23][2][2]
-            print(result)
+            print(round(mc_data[23][2][0],2),round(mc_data[23][2][1],2),round(mc_data[23][2][2],2))
             csv_writer.writerow(result)
         except IndexError:
             print("IndexError")

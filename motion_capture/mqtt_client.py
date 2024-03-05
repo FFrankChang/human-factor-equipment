@@ -19,7 +19,7 @@ def parse():
     # Unpack the binary data using the format string
     # print("等待消息...")
     data, addr = udp_socket.recvfrom(4096)  # 一次最多接收4096字节的数据
-    # print(data.__len__())
+    print(data.__len__())
     header = struct.unpack(format_string, data[0:24])
     body = []
     for i in range(23):
@@ -40,9 +40,9 @@ def parse():
         body.append(segment_body)
     return body
 
-mqtt_host = "139.198.181.66"
-mqtt_port = 14563
-mqtt_client_id = "python_mqtt"
+mqtt_host = "192.168.1.159"
+mqtt_port = 1883
+mqtt_client_id = "python_mqtt_1"
 mqtt_topic = "YHMotionCapture"
 client = mqtt.Client(mqtt_client_id)
 client.connect(mqtt_host, mqtt_port, 60)
