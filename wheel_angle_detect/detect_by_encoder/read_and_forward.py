@@ -33,13 +33,19 @@ def rightSetZero():  #置零右轮角度
     ser.write(slave2_set2zero)
     response = ser.read(8)
 
+def adjust_angle(angle):
+    if 180 < angle <= 360:
+        return angle - 360
+    else:
+        return angle
+    
 if __name__ == "__main__":
 
     com='com23'
     ser = serial.Serial(com, 9600, timeout=1)  
     leftSetZero()
     rightSetZero()
-    
+
     steer_data=0
     ws = None
     try:
@@ -49,7 +55,7 @@ if __name__ == "__main__":
         pass
 
     while(1):
-        steer_data=round(leftQueryAngle(),3)
+        steer_data=adjust_angle(round(leftQueryAngle(),3))
         v = {"timestamp":time.time(), "steer": steer_data, "action":"steering"}
         ws.send(json.dumps(v))
         print(steer_data)
