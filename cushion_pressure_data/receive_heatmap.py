@@ -90,7 +90,7 @@ def update(frame_number):
         
         # Adjust y-axis dynamically based on the max and avg pressures
         all_pressures = max_pressures + avg_pressures
-        ax2.set_ylim(min(all_pressures, default=0), max(all_pressures, default=1) * 1.1)  # Add some margin on top
+        ax2.set_ylim(0, max(all_pressures, default=1) * 1.1)  # Add some margin on top
         
         # Update pressure text
         pressure_text.set_text(f'Max Pressure: {max_pressure}\nAvg Pressure: {avg_pressure}')
