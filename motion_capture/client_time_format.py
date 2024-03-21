@@ -13,7 +13,14 @@ udp_socket.bind(local_address)
 udp_socket.settimeout(10)  
 
 def time_format(date_str, time_str):
-    # ... 时间格式化函数保持不变 ...
+    date_format = "%Y%m%d"
+    time_format = "%H:%M:%S.%f"
+    datetime_str = f"{date_str} {time_str}"
+    datetime_format = f"{date_format} {time_format}"
+    dt = datetime.strptime(datetime_str, datetime_format)
+    dt += timedelta(hours=8)
+    timestamp = dt.timestamp()
+    return timestamp
 
 def parse_euler(date=20240131):
     format_string = '>6sIcblbbbbhh'
@@ -25,7 +32,7 @@ def parse_euler(date=20240131):
         print(timestamp, header[1])
         data_list.append((timestamp, header[1]))
     except socket.timeout:
-        pass  # 当超时时，不执行任何操作
+        pass  
 
 def send_data():
     file_name = '022.csv'
