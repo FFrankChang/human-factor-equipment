@@ -3,8 +3,8 @@ from src.CushionData import CushionData
 import pandas as pd
 
 task_file_path = './data/Ma_task.csv'
-cushion_data_file_path = './data/Ma_eye.csv'
-pre_time = 10
+cushion_data_file_path = './data/Ma_cushion.csv'
+initial_period = 10
 
 if __name__ == "__main__":
     
@@ -18,13 +18,12 @@ if __name__ == "__main__":
         start_time = row['开始时间']
         end_time = row['结束时间']
         
-        extracted_data = cushion_data.extract_data_for_task(start_time-pre_time, end_time, task_name)
+        extracted_data = cushion_data.extract_data_for_task(start_time-initial_period, end_time, task_name)
         
         if extracted_data is not None:
             extracted_data_list.append(extracted_data)
             tasks.loc[index, '坐垫匹配'] = len(extracted_data)
-
-            
+            tasks.loc[index, '坐垫压力重心偏移'] = cushion_data.calculate_centroid_shift(extracted_data,initial_period=initial_period)
         else:
             tasks.loc[index, '坐垫匹配'] = 0
             
