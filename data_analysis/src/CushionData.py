@@ -68,3 +68,6 @@ class CushionData:
         average_x = data['Centroid X'].mean()
         average_y = data['Centroid Y'].mean()
         return average_x, average_y
+    
+    def count(self,extracted_data):
+        return len(extracted_data)

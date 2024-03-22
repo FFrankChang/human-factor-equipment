@@ -102,3 +102,6 @@ class EyeData(DataFile):
         else:
             print(f"{column_name} column does not exist in the data.")
             return None
+    
+    def count(self,extracted_data):
+        return len(extracted_data)

@@ -7,13 +7,15 @@ from src.SteeringPressureData import SteeringPressureData
 
 # 导入其他需要的数据类
 
-task_file_path = './data/Ma_task.csv'
+subject = 'Guo'
+task_file_path = f'./data/{subject}_task.csv'
+
 
 data_classes = {
     'cushion': {
         'class': CushionData,
         'initial_period': 10,
-        'file_path': './data/Ma_cushion.csv',
+        'file_path': f'./data/{subject}_cushion.csv',
         'metrics': {
             '坐垫匹配': 'count',
             '坐垫压力重心偏移': 'calculate_centroid_shift'
@@ -24,7 +26,7 @@ data_classes = {
     },
     'eye': {
         'class': EyeData,
-        'file_path': './data/Ma_eye.csv',
+        'file_path': f'./data/{subject}_eye.csv',
         'metrics': {
             '眼动匹配': 'count',
             '中控注视点个数': 'calculate_fixation_points',
@@ -41,7 +43,7 @@ data_classes = {
     },
     'motion':{
         'class': MotionData,
-        'file_path': './data/Ma_motion.csv',
+        'file_path': f'./data/{subject}_motion.csv',
         'metrics': {
             '动捕匹配': 'count',
             '右手拇指累计位移': 'calculate_total_movement',
@@ -52,7 +54,7 @@ data_classes = {
     },
     'scaner':{
         'class': ScanerData,
-        'file_path': './data/Ma_scaner.csv',
+        'file_path': f'./data/{subject}_scaner.csv',
         'metrics': {
             'scaner匹配': 'count',
             '车速偏移标准差': 'calculate_speed_std',
@@ -67,7 +69,7 @@ data_classes = {
     },
     'steering_pressure':{
         'class': SteeringPressureData,
-        'file_path': './data/Ma_steering.txt',
+        'file_path': f'./data/{subject}_steering.txt',
         'metrics': {
             '方向盘握力匹配': 'count',
             '方向盘握力极差': 'calculate_pressure_range',

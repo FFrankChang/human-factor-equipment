@@ -31,3 +31,6 @@ class MotionData(DataFile):
         total_movement = extracted_data['distance'].sum()
 
         return total_movement
+
+    def count(self,extracted_data):
+        return len(extracted_data)

@@ -66,3 +66,6 @@ class SteeringPressureData:
         """
         pressure_range = extracted_data['Pressure_Sum'].max() - extracted_data['Pressure_Sum'].min()
         return pressure_range
+
+    def count(self,extracted_data):
+        return len(extracted_data)

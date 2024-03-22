@@ -2,8 +2,8 @@ from src.TaskManager import TaskManager
 from src.MotionData import MotionData
 import pandas as pd
 
-task_file_path = './data/Ma_task.csv'
-motion_data_file_path = './data/Ma_motion.csv'
+task_file_path = './data/Guo_task.csv'
+motion_data_file_path = './data/Guo_motion.csv'
 finger = 'RightSecondDP'
 
 if __name__ == "__main__":

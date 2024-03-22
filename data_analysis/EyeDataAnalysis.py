@@ -2,8 +2,8 @@ from src.TaskManager import TaskManager
 from src.EyeData import EyeData
 import pandas as pd
 
-task_file_path = './data/Ma_task.csv'
-eye_data_file_path = './data/Ma_eye.csv'
+task_file_path = './data/Guo_task.csv'
+eye_data_file_path = './data/Guo_eye.csv'
 CID_coords = (50, 800, 100, 1000)
 except_roads_coords = (50, 800, 100, 1000)
 blink_threshold=0.0035
