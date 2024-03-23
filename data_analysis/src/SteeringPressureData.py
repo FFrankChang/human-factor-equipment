@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import ast
 from datetime import datetime
 
 class SteeringPressureData:
@@ -55,7 +54,7 @@ class SteeringPressureData:
 
         for index, row in self.data.iterrows():
             pressure_data_str = row['Pressure_Data']  
-            pressure_data = ast.literal_eval(pressure_data_str)  
+            pressure_data = np.fromstring(pressure_data_str, sep=',')
             pressure_sum = np.sum(pressure_data)
             pressure_sums.append(pressure_sum)
         self.data['Pressure_Sum'] = pressure_sums
