@@ -23,7 +23,7 @@ ser = serial.Serial(serial_port, baud_rate, timeout=timeout)
 fig, ax = plt.subplots()
 data_matrix = np.zeros((10, 96))
 cmap = plt.cm.binary
-c = ax.imshow(data_matrix, cmap=cmap, interpolation='nearest')
+c = ax.imshow(data_matrix, cmap='hot', interpolation='nearest')
 
 def update_data(*args):
     ser.write(b'A\r\n')
