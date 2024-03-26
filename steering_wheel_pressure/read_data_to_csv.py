@@ -18,7 +18,7 @@ def calibrate(data, a3, a2, a1, a0):
         return P
 
 # Load calibration parameters
-file_path = 'D:/Frank_Project/human-factor-equipment/wheel_pressure/calibration/'
+file_path = 'D:/Frank_Project/human-factor-equipment/steering_wheel_pressure/calibration/'
 calibration_file = 'calibration3.txt'  # Update this path
 calibration_file_path = file_path + calibration_file
 calibration_parameters = np.loadtxt(calibration_file_path, usecols=(2, 3, 4, 5))
