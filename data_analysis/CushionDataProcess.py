@@ -1,6 +1,4 @@
-from src.TaskManager import TaskManager
 from src.CushionData import CushionData
-import pandas as pd
 
 cushion_data_file_path = './test_data/cushion_test.csv'
 save_file_path = './test_data/cushion_cal.csv'
