@@ -71,3 +71,39 @@ class CushionData:
     
     def count(self,extracted_data):
         return len(extracted_data)
+    
+    def count_pressure_over_threshold(self, threshold_mmHg=0.43 * 7.50062,unit=1):
+        """
+        计算超过压力阈值的面积和，其中unit为单位传感器面积，暂定为1平方厘米
+        """
+        def count_over_threshold(row):
+            pressure_values = np.array(list(map(float, row.split(','))))
+            return (pressure_values > threshold_mmHg).sum()*unit
+        
+        self.data['Pressure Over Threshold'] = self.data['Pressure Data'].apply(count_over_threshold)
+    
+    def calculate_pressure_sum_change(self):
+        """
+        计算数据帧压力和之间的差值及变化率
+        """
+        pressure_sums = self.data['Pressure Data'].apply(lambda x: np.sum(np.array(list(map(float, x.split(','))))))
+        
+        pressure_sum_change = pressure_sums.diff()
+        time_diff = self.data['timestamp'].diff()
+        # self.data['timedelta'] = time_diff
+        pressure_sum_change_rate = pressure_sum_change / time_diff.replace(0, np.nan)
+        pressure_sum_change_rate = pressure_sum_change_rate.replace(np.inf, 0).fillna(0)
+        pressure_sum_change.iloc[0] = 0
+        pressure_sum_change_rate.iloc[0] = 0
+        if len(pressure_sum_change) > 1:  # Check if there's more than one frame to avoid index errors
+            pressure_sum_change.iloc[1] = 0
+            pressure_sum_change_rate.iloc[1] = 0
+        self.data['Pressure Sum Change'] = pressure_sum_change
+        self.data['Pressure Sum Change Rate'] = pressure_sum_change_rate
+
+    def calculate_centroid_movement(self, given_centroid_x=0, given_centroid_y=0):
+        """
+        计算与指定重心位置的偏移量
+        """
+        distances = np.sqrt((self.data['Centroid X'] - given_centroid_x) ** 2 + (self.data['Centroid Y'] - given_centroid_y) ** 2)
+        self.data['Centroid Movement Distance'] = distances
