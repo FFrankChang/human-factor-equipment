@@ -13,7 +13,6 @@ if __name__ == "__main__":
     cushion.calculate_centroid_movement()
     print(cushion.data.head())
     
-    
-    
-    
-    cushion.save_data(save_file_path)
+    cushion.show_heatmap()
+
+    # cushion.save_data(save_file_path)

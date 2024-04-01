@@ -1,5 +1,11 @@
-import pandas as pd
+import tkinter as tk
+from tkinter import ttk
+from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from datetime import datetime
 import numpy as np
+import pandas as pd
 
 def euclidean_distance(x1, y1, x2, y2):
     return np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
@@ -107,3 +113,55 @@ class CushionData:
         """
         distances = np.sqrt((self.data['Centroid X'] - given_centroid_x) ** 2 + (self.data['Centroid Y'] - given_centroid_y) ** 2)
         self.data['Centroid Movement Distance'] = distances
+
+
+
+    def show_heatmap(self):
+        """
+        使用Tkinter创建一个带有滑动条的GUI来展示坐垫的压力数据热图，
+        使用plot方法显示每一帧的重心位置，并使用固定范围的colorbar。
+        """
+        window = tk.Tk()
+        window.title("Cushion Pressure Data Visualization")
+
+        # 当窗口尝试关闭时安全退出
+        window.protocol("WM_DELETE_WINDOW", window.destroy)
+
+        fig, ax = plt.subplots()
+        canvas = FigureCanvasTkAgg(fig, master=window)  # 创建画布
+        canvas_widget = canvas.get_tk_widget()
+        canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.colorbar = None
+
+        def update_plot(frame):
+            """
+            更新热图显示为指定帧的数据，并使用plot方法显示重心位置。
+            使用固定范围的colorbar。
+            """
+            ax.clear()  
+            pressure_data_str = self.data.iloc[frame]['Pressure Data']
+            pressure_data = np.fromstring(pressure_data_str, sep=',').reshape((32, 32)) 
+            
+            im = ax.imshow(pressure_data, cmap='hot', interpolation='nearest', vmin=0, vmax=100)  # 压力值范围
+
+            centroid_x = self.data.iloc[frame]['Centroid X']
+            centroid_y = self.data.iloc[frame]['Centroid Y']
+            ax.plot(centroid_x, centroid_y, 'wo', markersize=10)  
+
+            if not self.colorbar:
+                self.colorbar = fig.colorbar(im, ax=ax) 
+            else:
+                self.colorbar.update_normal(im) 
+            timestamp = self.data.iloc[frame]['timestamp']
+            dt_object = datetime.fromtimestamp(timestamp)
+            formatted_time = dt_object.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+            timestamp_label.config(text=f"Timestamp: {formatted_time}") 
+            canvas.draw()  
+
+        timestamp_label = tk.Label(window, text="Timestamp: ", font=("Arial", 12))
+        timestamp_label.pack(side=tk.TOP, fill=tk.X, expand=False)
+        slider = ttk.Scale(window, from_=0, to=len(self.data)-1, orient=tk.HORIZONTAL,
+                           command=lambda s: update_plot(int(float(s)))) 
+        slider.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
+        update_plot(0)  
+        window.mainloop()  
