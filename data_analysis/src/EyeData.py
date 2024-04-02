@@ -133,12 +133,8 @@ class EyeData(DataFile):
         并将结果保存到新的三列中。确保第一帧和第二帧的差值被设置为0。
         """
         for column in ['smarteye|HeadHeading', 'smarteye|HeadPitch', 'smarteye|HeadRoll']:
-            # 新列的名称，例如：'delta_smarteye|HeadHeading'
             new_column_name = f'delta_{column}'
-            # 计算差值
             self.data[new_column_name] = self.data[column].diff()
-            # 用0替换NaN值（主要是第一帧的差值），以及第二帧的差值，如果第一帧是NaN
             self.data[new_column_name].fillna(0, inplace=True)
-            # 如果数据集中有超过一帧的数据，将第二帧的差值设置为0
-            if len(self.data[new_column_name]) > 1:
-                self.data[new_column_name].iloc[1] = 0
+            if len(self.data) > 1:
+                self.data.iat[1, self.data.columns.get_loc(new_column_name)] = 0

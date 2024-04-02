@@ -2,6 +2,7 @@ from src.EyeData import EyeData
 
 eye_data_file_path = './test_data/eye_test.csv'
 save_file_path = './test_data/eye_cal.csv'
+# except_roads_coords = (50, 800, 100, 1000)
 
 if __name__ == "__main__":
     
