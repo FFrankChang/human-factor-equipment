@@ -60,7 +60,7 @@ class SteeringPressureData:
         for index, row in self.data.iterrows():
             pressure_data_str = row['Pressure_Data']  
             pressure_data = np.fromstring(pressure_data_str, sep=',')
-            pressure_sum = np.sum(pressure_data)
+            pressure_sum = round(np.sum(pressure_data),6)
             pressure_sums.append(pressure_sum)
         self.data['Pressure_Sum'] = pressure_sums
     
@@ -129,3 +129,19 @@ class SteeringPressureData:
         update_plot(0)
         
         window.mainloop()
+
+
+    def calculate_max_min(self):
+        """
+        计算每一帧数据中的最大值和最小值，并将这些值作为新的列添加到DataFrame中。
+        """
+        max_values = []
+        min_values = []
+        for index, row in self.data.iterrows():
+            pressure_data_str = row['Pressure_Data']
+            pressure_data = np.fromstring(pressure_data_str, sep=',')
+            max_values.append(pressure_data.max())
+            min_values.append(pressure_data.min())
+    
+        self.data['Max_Pressure'] = max_values
+        self.data['Min_Pressure'] = min_values

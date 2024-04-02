@@ -105,3 +105,40 @@ class EyeData(DataFile):
     
     def count(self,extracted_data):
         return len(extracted_data)
+
+    def calculate_pupil_diameter_std_rolling(self,min_periods=1):
+        """
+        使用pandas的rolling方法优化计算，计算每一帧数据（每一行）smarteye|LeftPupilDiameter，
+        smarteye|RightPupilDiameter的前1秒内所有数据的标准差，并将结果保存到新的列中。
+        """
+        time_diffs = self.data['timestamp'].diff().fillna(0)  # 计算时间差
+        approx_rows_per_second = int(1 / time_diffs.median())  # 估算1秒内大约有多少行
+
+        self.data['left_pupil_diameter_std'] = self.data['smarteye|LeftPupilDiameter'].rolling(window=approx_rows_per_second, min_periods=min_periods).std()
+        self.data['right_pupil_diameter_std'] = self.data['smarteye|RightPupilDiameter'].rolling(window=approx_rows_per_second, min_periods=min_periods).std()
+
+        self.data['left_pupil_diameter_std'].fillna(0, inplace=True)
+        self.data['right_pupil_diameter_std'].fillna(0, inplace=True)
+
+    def calculate_max_head_movement(self):
+        """
+        计算smarteye|HeadHeading, smarteye|HeadPitch, 和 smarteye|HeadRoll三列数据中每一帧的最大值，
+        并将这个最大值保存到一个新列中。
+        """
+        self.data['max_head_movement'] = self.data[['smarteye|HeadHeading', 'smarteye|HeadPitch', 'smarteye|HeadRoll']].max(axis=1)
+    
+    def calculate_head_movement_differences(self):
+        """
+        计算smarteye|HeadHeading, smarteye|HeadPitch, smarteye|HeadRoll三列数据的差值，
+        并将结果保存到新的三列中。确保第一帧和第二帧的差值被设置为0。
+        """
+        for column in ['smarteye|HeadHeading', 'smarteye|HeadPitch', 'smarteye|HeadRoll']:
+            # 新列的名称，例如：'delta_smarteye|HeadHeading'
+            new_column_name = f'delta_{column}'
+            # 计算差值
+            self.data[new_column_name] = self.data[column].diff()
+            # 用0替换NaN值（主要是第一帧的差值），以及第二帧的差值，如果第一帧是NaN
+            self.data[new_column_name].fillna(0, inplace=True)
+            # 如果数据集中有超过一帧的数据，将第二帧的差值设置为0
+            if len(self.data[new_column_name]) > 1:
+                self.data[new_column_name].iloc[1] = 0
