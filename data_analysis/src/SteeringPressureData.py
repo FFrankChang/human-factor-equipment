@@ -15,27 +15,34 @@ class SteeringPressureData:
 
     def load_and_process_data(self):
         """
-        读取方向盘压力数据文件，并进行预处理。
+        根据文件扩展名读取方向盘压力数据文件，并进行预处理。
+        支持TXT和CSV格式的文件。
         """
-        with open(self.filepath, 'r') as file:
-            lines = file.readlines()
-        data_frames = [lines[i:i+33] for i in range(0, len(lines), 33)]
+        if self.filepath.endswith('.txt'):
+            with open(self.filepath, 'r') as file:
+                lines = file.readlines()
+            data_frames = [lines[i:i+33] for i in range(0, len(lines), 33)]
 
-        results = []
-        for frame in data_frames:
-            timestamp = datetime.strptime(frame[0].split('\t')[0], '%Y-%m-%d %H:%M:%S.%f')
-            timestamp_sec = timestamp.timestamp()
-            pressure_data = [row.split('\t')[:32] for row in frame[1:31]]
-            pressure_df = pd.DataFrame(pressure_data, dtype=float)
-            
-            top = pressure_df.iloc[:10].values.flatten()
-            middle = pressure_df.iloc[10:20].values.flatten()
-            bottom = pressure_df.iloc[20:].values.flatten()
-            reshaped_data = list(top) + list(middle) + list(bottom)
-            pressure_data_str = ','.join(map(str, reshaped_data))
-            results.append([timestamp_sec, pressure_data_str])
-        columns = ['timestamp', 'Pressure_Data']
-        return pd.DataFrame(results, columns=columns)
+            results = []
+            for frame in data_frames:
+                timestamp = datetime.strptime(frame[0].split('\t')[0], '%Y-%m-%d %H:%M:%S.%f')
+                timestamp_sec = timestamp.timestamp()
+                pressure_data = [row.split('\t')[:32] for row in frame[1:31]]
+                pressure_df = pd.DataFrame(pressure_data, dtype=float)
+                
+                top = pressure_df.iloc[:10].values.flatten()
+                middle = pressure_df.iloc[10:20].values.flatten()
+                bottom = pressure_df.iloc[20:].values.flatten()
+                reshaped_data = list(top) + list(middle) + list(bottom)
+                pressure_data_str = ','.join(map(str, reshaped_data))
+                results.append([timestamp_sec, pressure_data_str])
+            columns = ['timestamp', 'Pressure_Data']
+            return pd.DataFrame(results, columns=columns)
+
+        elif self.filepath.endswith('.csv'):
+            return pd.read_csv(self.filepath, names=['timestamp', 'Pressure_Data'], header=None)
+        else:
+            raise ValueError("Unsupported file format. Only '.txt' and '.csv' files are supported.")
 
     def save_data(self, filepath=None):
         if filepath is None:
