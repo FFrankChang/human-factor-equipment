@@ -89,10 +89,10 @@ with open(csv_file_path, mode='w', newline='') as file:
                 c.set_clim(vmin=0, vmax=v_max)
                 
                 # Convert diff_data to comma-separated string, preserving 5 decimal places
-                diff_data_str = ','.join(f"{val:.5f}" for val in diff_data.flatten())
+                data_matrix_str = ','.join(f"{val:.5f}" for val in data_matrix.flatten())
                 
                 # Write the timestamp and calibrated values to CSV
-                csv_row = [time.time(), diff_data_str]
+                csv_row = [time.time(), data_matrix_str]
                 writer.writerow(csv_row)
         else:
             print("Received incomplete data, please check connection and configuration.")
