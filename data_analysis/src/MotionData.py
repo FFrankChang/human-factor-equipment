@@ -1,4 +1,4 @@
-from .Datafile import DataFile
+from Datafile import DataFile
 import pandas as pd
 import numpy as np
 

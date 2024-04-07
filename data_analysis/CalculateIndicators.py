@@ -1,21 +1,25 @@
-from src.TaskManager import TaskManager
-from src.CushionData import CushionData
-from src.MotionData import MotionData
-from src.EyeData import EyeData
-from src.ScanerData import ScanerData
-from src.SteeringPressureData import SteeringPressureData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+data_dir = join(Example_dir, 'data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from TaskManager import TaskManager
+from CushionData import CushionData
+from MotionData import MotionData
+from EyeData import EyeData
+from ScanerData import ScanerData
+from SteeringPressureData import SteeringPressureData
 
-# 导入其他需要的数据类
-
+# The subject for the data files
 subject = 'Guo'
-task_file_path = f'./data/{subject}_task.csv'
-
+task_file_path = join(data_dir, f'{subject}_task.csv')
 
 data_classes = {
     'cushion': {
         'class': CushionData,
         'initial_period': 10,
-        'file_path': f'./data/{subject}_cushion.csv',
+        'file_path': join(data_dir, f'{subject}_cushion.csv'),
         'metrics': {
             '坐垫匹配': 'count',
             '坐垫压力重心偏移': 'calculate_centroid_shift'
@@ -26,7 +30,7 @@ data_classes = {
     },
     'eye': {
         'class': EyeData,
-        'file_path': f'./data/{subject}_eye.csv',
+        'file_path': join(data_dir, f'{subject}_eye.csv'),
         'metrics': {
             '眼动匹配': 'count',
             '中控注视点个数': 'calculate_fixation_points',
@@ -41,20 +45,20 @@ data_classes = {
             'calculate_blinks':{'blink_threshold':0.0035},
         }  
     },
-    'motion':{
+    'motion': {
         'class': MotionData,
-        'file_path': f'./data/{subject}_motion.csv',
+        'file_path': join(data_dir, f'{subject}_motion.csv'),
         'metrics': {
             '动捕匹配': 'count',
             '右手拇指累计位移': 'calculate_total_movement',
         },
         'metrics_params': {
-            'calculate_total_movement':{'finger':'RightSecondDP'},
+            'calculate_total_movement': {'finger': 'RightSecondDP'},
         }  
     },
-    'scaner':{
+    'scaner': {
         'class': ScanerData,
-        'file_path': f'./data/{subject}_scaner.csv',
+        'file_path': join(data_dir, f'{subject}_scaner.csv'),
         'metrics': {
             'scaner匹配': 'count',
             '车速偏移标准差': 'calculate_speed_std',
@@ -63,20 +67,20 @@ data_classes = {
             '方向盘响应时间': 'calculate_steering_reaction_time',
         },
         'metrics_params': {
-            'calculate_break_pedal_reaction_time':{'threshold':0.5},
-            'calculate_steering_reaction_time':{'threshold':10},
+            'calculate_break_pedal_reaction_time': {'threshold': 0.5},
+            'calculate_steering_reaction_time': {'threshold': 10},
         }  
     },
-    'steering_pressure':{
+    'steering_pressure': {
         'class': SteeringPressureData,
-        'file_path': f'./data/{subject}_steering.txt',
+        'file_path': join(data_dir, f'{subject}_steering.txt'),
         'metrics': {
             '方向盘握力匹配': 'count',
             '方向盘握力极差': 'calculate_pressure_range',
         },
-        'metrics_params': {
-        }  
+        'metrics_params': {}  
     }
+    # Add additional data classes as needed
 }
 
 def main():

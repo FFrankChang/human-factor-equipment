@@ -1,9 +1,15 @@
-from src.TaskManager import TaskManager
-from src.SteeringPressureData import SteeringPressureData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+data_dir = join(Example_dir, 'data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from TaskManager import TaskManager
+from SteeringPressureData import SteeringPressureData
 import pandas as pd
 
-task_file_path = './data/Ma_task.csv'
-steering_pressure_data_file_path = './data/Ma_steering.txt'
+task_file_path = join(data_dir, 'Ma_task.csv')
+steering_pressure_data_file_path = join(data_dir, 'Ma_steering.txt')
 
 if __name__ == "__main__":
     

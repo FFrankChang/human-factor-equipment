@@ -1,9 +1,15 @@
-from src.TaskManager import TaskManager
-from src.MotionData import MotionData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+data_dir = join(Example_dir, 'data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from TaskManager import TaskManager
+from MotionData import MotionData
 import pandas as pd
 
-task_file_path = './data/Guo_task.csv'
-motion_data_file_path = './data/Guo_motion.csv'
+task_file_path = join(data_dir, 'Guo_task.csv')
+motion_data_file_path = join(data_dir, 'Guo_motion.csv')
 finger = 'RightSecondDP'
 
 if __name__ == "__main__":

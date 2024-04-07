@@ -1,7 +1,14 @@
-from src.CushionData import CushionData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+test_data_dir = join(Example_dir, 'test_data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from CushionData import CushionData
 
-cushion_data_file_path = './test_data/cushion_test.csv'
-save_file_path = './test_data/cushion_cal.csv'
+cushion_data_file_path = join(test_data_dir, 'cushion_test.csv')
+save_file_path = join(test_data_dir, 'cushion_cal.csv')
+# Set parameters
 radio =  7.50062
 threshold_kpm2 = 0.43 
 unit = 1.0

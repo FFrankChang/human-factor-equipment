@@ -1,12 +1,18 @@
-from src.TaskManager import TaskManager
-from src.EyeData import EyeData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+data_dir = join(Example_dir, 'data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from TaskManager import TaskManager
+from EyeData import EyeData
 import pandas as pd
 
-task_file_path = './data/Guo_task.csv'
-eye_data_file_path = './data/Guo_eye.csv'
+task_file_path = join(data_dir, 'Guo_task.csv')
+eye_data_file_path = join(data_dir, 'Guo_eye.csv')
 CID_coords = (50, 800, 100, 1000)
 except_roads_coords = (50, 800, 100, 1000)
-blink_threshold=0.0035
+blink_threshold = 0.0035
 
 if __name__ == "__main__":
     

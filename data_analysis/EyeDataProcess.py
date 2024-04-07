@@ -1,7 +1,13 @@
-from src.EyeData import EyeData
+import sys
+from os.path import join, dirname, realpath
+Example_dir = dirname(realpath(__file__))
+test_data_dir = join(Example_dir, 'test_data')
+modules_dir = join(Example_dir, 'src')
+sys.path.append(modules_dir)
+from EyeData import EyeData
 
-eye_data_file_path = './test_data/eye_test.csv'
-save_file_path = './test_data/eye_cal.csv'
+eye_data_file_path = join(test_data_dir, 'eye_test.csv')
+save_file_path = join(test_data_dir, 'eye_cal.csv')
 # except_roads_coords = (50, 800, 100, 1000)
 
 if __name__ == "__main__":
