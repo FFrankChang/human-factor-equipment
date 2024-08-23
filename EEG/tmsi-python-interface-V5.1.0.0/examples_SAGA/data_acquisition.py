@@ -19,8 +19,8 @@ frame_count = 0
 
 mqtt_host = "192.168.1.179"
 mqtt_port = 1883
-mqtt_client_id = "python_mqtt_eye"
-mqtt_topic = "YHEYE"
+mqtt_client_id = "python_mqtt_eeg"
+mqtt_topic = "YHEEG"
 client = mqtt.Client(mqtt_client_id)
 client.connect(mqtt_host, mqtt_port, 60)
 
