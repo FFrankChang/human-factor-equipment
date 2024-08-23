@@ -13,7 +13,7 @@ last_time = time.time()
 frame_count = 0
 update_interval = 1 
 
-streams = resolve_stream('name', 'MockStream')
+streams = resolve_stream('name', 'SAGA')
 inlet = StreamInlet(streams[0])
 frame_count = 0
 
