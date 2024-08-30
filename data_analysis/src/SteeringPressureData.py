@@ -44,7 +44,8 @@ class SteeringPressureData:
             return pd.DataFrame(results, columns=columns)
 
         elif self.filepath.endswith('.csv'):
-            return pd.read_csv(self.filepath, names=['timestamp', 'Pressure_Data'], header=None)
+            raw_data = pd.read_csv(self.filepath, names=['timestamp', 'Pressure_Data'], header=None)
+            return raw_data
         else:
             raise ValueError("Unsupported file format. Only '.txt' and '.csv' files are supported.")
 

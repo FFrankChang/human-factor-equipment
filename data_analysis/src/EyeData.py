@@ -26,7 +26,42 @@ class EyeData(DataFile):
         if filepath is None:
             filepath = self.filepath  
         self.data.to_csv(filepath, index=False,encoding='utf-8')
+
+    def calculate_total_eyes_closed_time(self, extracted_data, duration,blink_threshold=0.002):
+        """
+        Calculate the total time the eyes are closed based on eyelid opening values.
+        Parameters:
+        - data: DataFrame containing eye data.
+        - blink_threshold: Threshold below which the eyes are considered closed.
         
+        Returns:
+        - Total time in seconds during which the eyes are considered closed.
+        """
+        total_closed_time = 0
+        previous_timestamp = None
+        is_closed = False
+
+        for index, row in extracted_data.iterrows():
+            current_timestamp = row['timestamp']
+            opening_value = row['smarteye|LeftEyelidOpening']  # You can adjust this if you use a different column
+
+            if opening_value < blink_threshold:
+                if not is_closed:
+                    is_closed = True
+                    closed_start_time = current_timestamp
+            else:
+                if is_closed:
+                    is_closed = False
+                    if previous_timestamp is not None:  # Ensure we have a start time to calculate from
+                        total_closed_time += (current_timestamp - closed_start_time)
+
+            previous_timestamp = current_timestamp
+
+        if is_closed:  # If the data ends while the eyes are still closed
+            total_closed_time += (extracted_data['timestamp'].iloc[-1] - closed_start_time)
+
+        return total_closed_time/duration
+    
     def calculate_fixation_points(self, extracted_data, rect_coords):
             """
             计算注视点个数。rect_coords 应为 (x_min, y_min, x_max, y_max) 格式，定义矩形范围。

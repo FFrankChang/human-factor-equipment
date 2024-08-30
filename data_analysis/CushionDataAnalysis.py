@@ -8,8 +8,8 @@ from TaskManager import TaskManager
 from CushionData import CushionData
 import pandas as pd
 
-task_file_path = join(data_dir, 'Ma_task.csv')
-cushion_data_file_path = join(data_dir, 'Ma_cushion.csv')
+task_file_path = join(data_dir, 'ZGY_50.csv')
+cushion_data_file_path = join(data_dir, 'ZGY_cushion.csv')
 
 initial_period = 10
 
@@ -31,11 +31,13 @@ if __name__ == "__main__":
             extracted_data_list.append(extracted_data)
             tasks.loc[index, '坐垫匹配'] = len(extracted_data)
             tasks.loc[index, '坐垫压力重心偏移'] = cushion_data.calculate_centroid_shift(extracted_data,initial_period=initial_period)
+            tasks.loc[index, '平均接触面积'] = cushion_data.count_pressure_over_threshold_mean(extracted_data)
+            
         else:
             tasks.loc[index, '坐垫匹配'] = 0
             
-    if extracted_data_list:
-        all_extracted_data = pd.concat(extracted_data_list, ignore_index=True)
-        all_extracted_data.to_csv(task_file_path.replace('.csv', '_extracted.csv'), index=False)  
+    # if extracted_data_list:
+    #     all_extracted_data = pd.concat(extracted_data_list, ignore_index=True)
+    #     all_extracted_data.to_csv(task_file_path.replace('.csv', '_extracted.csv'), index=False)  
               
-    tasks.to_csv(task_file_path.replace('.csv', '_calculated.csv'), index=False)
+    tasks.to_excel(task_file_path.replace('.csv', '_cushion_calculated.xlsx'), index=False)

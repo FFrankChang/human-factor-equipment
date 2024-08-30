@@ -67,6 +67,23 @@ class CushionData:
         shift = euclidean_distance(initial_centroid_x, initial_centroid_y, subsequent_centroid_x, subsequent_centroid_y)
         return shift
     
+    def count_pressure_over_threshold_mean(self, extracted_data, threshold_mmHg=0.43 * 7.50062, unit=1):
+        """
+        计算超过压力阈值的面积和，其中unit为单位传感器面积，暂定为1平方厘米。
+        参数：
+        - extracted_data: 处理的数据集。
+        - threshold_mmHg: 压力阈值，以毫米汞柱表示。
+        - unit: 每个超过阈值的传感器所占的面积，暂定为1平方厘米。
+        """
+        def count_over_threshold(row):
+            pressure_values = np.array(list(map(float, row.split(','))))
+            return (pressure_values > threshold_mmHg).sum() * unit
+
+        # 应用压力阈值计算函数到每一行数据，并计算平均值
+        pressure_areas = extracted_data['Pressure Data'].apply(count_over_threshold)
+        average_pressure_area = pressure_areas.mean()
+        return average_pressure_area
+
     def calculate_average_centroid(self, data):
         """计算给定数据的平均重心位置"""
         if data.empty:

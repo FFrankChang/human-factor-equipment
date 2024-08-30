@@ -8,8 +8,8 @@ from TaskManager import TaskManager
 from SteeringPressureData import SteeringPressureData
 import pandas as pd
 
-task_file_path = join(data_dir, 'Ma_task.csv')
-steering_pressure_data_file_path = join(data_dir, 'Ma_steering.txt')
+task_file_path = join(data_dir, 'ZGY_50.csv')
+steering_pressure_data_file_path = join(data_dir, 'ZGY_steering.csv')
 
 if __name__ == "__main__":
     
@@ -36,4 +36,4 @@ if __name__ == "__main__":
         all_extracted_data = pd.concat(extracted_data_list, ignore_index=True)
         all_extracted_data.to_csv(task_file_path.replace('.csv', '_extracted.csv'), index=False)  
               
-    tasks.to_csv(task_file_path.replace('.csv', '_calculated.csv'), index=False)
+    tasks.to_excel(task_file_path.replace('.csv', '_steering_calculated.xlsx'), index=False)
