@@ -8,8 +8,8 @@ from TaskManager import TaskManager
 from EEGData import EEGData
 import pandas as pd
 
-task_file_path = join(data_dir, 'HJY_50.csv')
-eeg_data_file_path = join(data_dir, 'HJY_eeg.csv')
+task_file_path = join(data_dir, 'ZGY_50.csv')
+eeg_data_file_path = join(data_dir, 'ZGY_eeg.csv')
 
 
 if __name__ == "__main__":

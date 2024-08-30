@@ -32,8 +32,8 @@ if __name__ == "__main__":
         else:
             tasks.loc[index, '方向盘握力匹配'] = 0
             
-    if extracted_data_list:
-        all_extracted_data = pd.concat(extracted_data_list, ignore_index=True)
-        all_extracted_data.to_csv(task_file_path.replace('.csv', '_extracted.csv'), index=False)  
+    # if extracted_data_list:
+    #     all_extracted_data = pd.concat(extracted_data_list, ignore_index=True)
+    #     all_extracted_data.to_csv(task_file_path.replace('.csv', '_extracted.csv'), index=False)  
               
     tasks.to_excel(task_file_path.replace('.csv', '_steering_calculated.xlsx'), index=False)
